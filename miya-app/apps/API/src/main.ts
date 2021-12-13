@@ -1,0 +1,18 @@
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import * as dotenv from 'dotenv';
+import { ValidationPipe } from '@nestjs/common';
+
+dotenv.config();
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule, { cors: true });
+  app.enableCors({
+    origin: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
+  app.useGlobalPipes(new ValidationPipe());
+  await app.listen(process.env.PORT || 7000);
+}
+bootstrap();

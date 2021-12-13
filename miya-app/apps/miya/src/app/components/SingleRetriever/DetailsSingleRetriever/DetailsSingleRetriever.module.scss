@@ -1,0 +1,27 @@
+.detailsRetriever {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-family: 'Sacramento';
+    font-weight: 300;
+    font-size: 32px;
+  }
+
+  p {
+    display: flex;
+    margin: 0;
+    margin-bottom: 12px;
+  }
+
+  span {
+    font-family: 'Dosis';
+    font-size: 16px;
+  }
+}
+
+.singleRetrieverProperty {
+  font-weight: 500;
+  margin-right: 8px;
+}
