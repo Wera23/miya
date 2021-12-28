@@ -1,55 +1,50 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Retriever, RetrieverTypes } from './retriever.model';
-import { Retrievers } from './retrievers.model';
+import { UpdateRetriever } from './dto/update-retriever.dto';
+import { RetrieversRepository } from './retrievers.repository';
+import { Retriever } from './schema/retriever.schema';
 
 @Injectable()
-export class RetrieversService {
-  private readonly retrievers: Retrievers = {
-    1: {
-      name: 'Miya',
-      age: '6 miesięcy',
-      city: 'Katowice',
-      description: '',
-      gender: 'Female',
-      id: 1,
-      lat: 50.26,
-      long: 19.02,
-      voivodeship: 'Silesia',
-      owner: '',
-    },
-  };
+export class RetriversService {
+  constructor(private readonly retrieversRepository: RetrieversRepository) {}
 
-  constructor(
-    @InjectModel('Retriever')
-    private readonly retrieverModel: Model<RetrieverTypes>,
-  ) {}
-
-  findAllRetrievers(): Retrievers {
-    return this.retrievers;
+  async getRetrieverById(id: number): Promise<Retriever> {
+    return this.retrieversRepository.findOneRetriever({ id });
   }
 
-  createRetriever(newRetriever: Retriever) {
-    const id = Date.now();
-    this.retrievers[id] = { ...newRetriever, id };
+  async getRetrievers(): Promise<Retriever[]> {
+    return this.retrieversRepository.findRetrievers({});
   }
 
-  findRetriever(id: number): Retriever {
-    const retriever: Retriever = this.retrievers[id];
-    if (!retriever) throw new Error('No retrievers found.');
-    return retriever;
+  async createRetriever(
+    name: string,
+    age: string,
+    city: string,
+    voivodeship: string,
+    owner: string,
+    description: string,
+    lat: number,
+    long: number,
+  ): Promise<Retriever> {
+    return this.retrieversRepository.createRetriever({
+      id: Date.now(),
+      name,
+      age,
+      city,
+      voivodeship,
+      description,
+      owner,
+      lat,
+      long,
+    });
   }
 
-  updateRetriever(retriever: Retriever) {
-    if (!this.retrievers[retriever.id]) throw new Error('No retriever found');
-    this.retrievers[retriever.id] = retriever;
-  }
-
-  deleteRetriever(id: number) {
-    const retriever: Retriever = this.retrievers[id];
-    if (!retriever) throw new Error('No retriever found');
-
-    delete this.retrievers[id];
+  async updateRetriever(
+    id: number,
+    retrieverUpdates: UpdateRetriever,
+  ): Promise<Retriever> {
+    return this.retrieversRepository.findOneRetrieverAndUpdate(
+      { id },
+      retrieverUpdates,
+    );
   }
 }

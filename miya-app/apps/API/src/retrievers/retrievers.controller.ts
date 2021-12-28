@@ -1,45 +1,54 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-} from '@nestjs/common';
-
-import { Retriever } from './retriever.model';
-import { Retrievers } from './retrievers.model';
-import { RetrieversService } from './retrievers.service';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { CreateRetriever } from './dto/create-retriever.dto';
+import { UpdateRetriever } from './dto/update-retriever.dto';
+import { RetriversService } from './retrievers.service';
+import { Retriever } from './schema/retriever.schema';
 
 // import { Retriever } from "@miya-app/shared-types";
 
 @Controller('retrievers')
 export class RetrieversController {
-  constructor(private readonly retrieversService: RetrieversService) {}
+  constructor(private readonly retrieversService: RetriversService) {}
 
   @Get()
-  async findAllRetrievers(): Promise<Retrievers> {
-    return this.retrieversService.findAllRetrievers();
+  async findAllRetrievers(): Promise<Retriever[]> {
+    return this.retrieversService.getRetrievers();
   }
 
   @Get(':id')
   async findRetriever(@Param('id') id: number): Promise<Retriever> {
-    return this.retrieversService.findRetriever(id);
+    return this.retrieversService.getRetrieverById(id);
   }
 
   @Post()
-  createRetriever(@Body() retriever: Retriever) {
-    this.retrieversService.createRetriever(retriever);
+  createRetriever(@Body() retriever: CreateRetriever) {
+    return this.retrieversService.createRetriever(
+      retriever.name,
+      retriever.age,
+      retriever.voivodeship,
+      retriever.gender,
+      retriever.description,
+      retriever.owner,
+      retriever.lat,
+      retriever.long,
+    );
   }
 
-  @Put()
-  updateRetriever(@Body() retriever: Retriever) {
-    this.retrieversService.updateRetriever(retriever);
+  // @Put()
+  // updateRetriever(@Body() retriever: RetrieverTypes) {
+  //   this.retrieversService.updateRetriever(retriever);
+  // }
+
+  @Patch(':id')
+  async updateRetriever(
+    @Param('id') id: number,
+    @Body() retriever: UpdateRetriever,
+  ): Promise<Retriever> {
+    return this.retrieversService.updateRetriever(id, retriever);
   }
 
-  @Delete(':id')
-  deleteRetriever(@Param('id') id: number) {
-    this.retrieversService.deleteRetriever(id);
-  }
+  // @Delete(':id')
+  // deleteRetriever(@Param('id') id: number) {
+  //   this.retrieversService.deleteRetriever(id);
+  // }
 }

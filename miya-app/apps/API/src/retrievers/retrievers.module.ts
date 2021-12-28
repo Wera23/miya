@@ -1,15 +1,18 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import { RetrieversService } from './retrievers.service';
 import { RetrieversController } from './retrievers.controller';
-import { RetrieverSchema } from './retriever.model';
+import { RetriversService } from './retrievers.service';
+import { Retriever, RetrieverSchema } from './schema/retriever.schema';
+import { RetrieversRepository } from './retrievers.repository';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'Retreiver', schema: RetrieverSchema }]),
+    MongooseModule.forFeature([
+      { name: Retriever.name, schema: RetrieverSchema },
+    ]),
   ],
-  providers: [RetrieversService],
+  providers: [RetriversService, RetrieversRepository],
   controllers: [RetrieversController],
 })
 export class RetrieversModule {}
