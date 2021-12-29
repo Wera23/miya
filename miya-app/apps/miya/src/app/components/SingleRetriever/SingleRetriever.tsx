@@ -1,25 +1,24 @@
-import { FC } from 'react';
-import { Retriever } from '@miya-app/shared-types';
-
 import ReactModal from 'react-modal';
 import { useModal } from 'react-modal-hook';
+import { Button, Typography } from '@mui/material';
 
 import styles from './SingleRetriever.module.scss';
-import { Button } from '@mui/material';
-import DetailsSingleRetriever from './DetailsSingleRetriever/DetailsSingleRetriever';
+import { DetailsSingleRetriever } from '..';
+
+import { Retriever } from '@miya-app/shared-types';
 
 interface SingleRetrieverTypes {
-  handleModalReservation?: () => void;
+  handleModalSeeDetails?: () => void;
   singleRetriever: Retriever;
 }
 
-const ModalReservation: React.FC<SingleRetrieverTypes> = ({
-  handleModalReservation,
+const SingleRetrieverModal: React.FC<SingleRetrieverTypes> = ({
+  handleModalSeeDetails,
   singleRetriever,
 }) => {
   const [showModal, hideModal] = useModal(() => {
     return (
-      <ReactModal isOpen>
+      <ReactModal isOpen ariaHideApp={false}>
         <DetailsSingleRetriever
           closeModal={hideModal}
           singleRetriever={singleRetriever}
@@ -30,14 +29,29 @@ const ModalReservation: React.FC<SingleRetrieverTypes> = ({
 
   const handleClick = (): void => {
     showModal();
-    handleModalReservation && handleModalReservation();
+    handleModalSeeDetails && handleModalSeeDetails();
   };
 
   return (
-    <div>
-      <Button onClick={handleClick}>{singleRetriever.name}</Button>
+    <div className={styles.labelSingleRetriever}>
+      <Typography variant="h2" mb={0}>
+        {singleRetriever.name}
+      </Typography>
+      <Typography variant="body1" mb={3} mt={0}>
+        {singleRetriever.city}
+      </Typography>
+      <Button
+        size="small"
+        className={styles.buttonSingleRetriever}
+        onClick={handleClick}
+        color="success"
+      >
+        <Typography variant="button">
+          Poznaj psa <i className="icon-paw" />
+        </Typography>
+      </Button>
     </div>
   );
 };
 
-export default ModalReservation;
+export default SingleRetrieverModal;

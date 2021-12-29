@@ -7,11 +7,12 @@
 }
 
 .ReactModal__Content {
-  width: 40%;
-  height: 50%;
   border-radius: 0;
   inset-block: auto !important;
   inset-inline: auto !important;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 @media (max-width: 1375px) {

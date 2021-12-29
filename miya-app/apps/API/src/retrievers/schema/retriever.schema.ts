@@ -6,23 +6,29 @@ export type RetrieverDokument = Retriever & Document;
 @Schema()
 export class Retriever {
   @Prop()
-  name: string;
+  id: number;
   @Prop()
-  city?: string;
+  name: string;
   @Prop()
   age: string;
   @Prop()
+  city?: string;
+  @Prop()
   voivodeship: string;
+  @Prop()
+  gender: string;
+  @Prop()
+  owner?: string;
+  @Prop()
+  description?: string;
   @Prop()
   lat: number;
   @Prop()
   long: number;
   @Prop()
-  id: number;
+  instagram: string;
   @Prop()
-  owner?: string;
-  @Prop()
-  description?: string;
+  facebook: string;
 }
 
 export const RetrieverSchema = SchemaFactory.createForClass(Retriever);

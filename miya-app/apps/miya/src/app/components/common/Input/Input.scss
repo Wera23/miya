@@ -1,0 +1,21 @@
+@mixin centralize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inputIcon {
+  @include centralize;
+}
+
+.inputSize {
+  display: flex;
+  flex: 1;
+}
+
+.inputContainer {
+  @include centralize;
+}
+
+.inputField{
+    width: 100%;
+}

@@ -10,3 +10,25 @@
   position: relative;
   z-index: 3;
 }
+
+.leaflet-popup-content-wrapper {
+  border-radius: 5px;
+  text-align: center;
+  background-color: rgba(253, 250, 246, 0.85);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.point {
+  z-index: 444;
+
+  &:hover {
+    opacity: 0.9;
+    filter: saturate(30%);
+    filter: sepia(60%);
+    filter: brightness(0.9);
+  }
+}

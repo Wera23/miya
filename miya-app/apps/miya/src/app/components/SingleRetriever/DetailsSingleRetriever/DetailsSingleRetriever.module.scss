@@ -1,27 +1,49 @@
+@mixin centralize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .detailsRetriever {
-  padding: 30px;
   display: flex;
   flex-direction: column;
-
-  h2 {
-    font-family: 'Sacramento';
-    font-weight: 300;
-    font-size: 32px;
-  }
 
   p {
     display: flex;
     margin: 0;
-    margin-bottom: 12px;
-  }
-
-  span {
-    font-family: 'Dosis';
-    font-size: 16px;
+    margin-bottom: 5px;
   }
 }
 
-.singleRetrieverProperty {
-  font-weight: 500;
-  margin-right: 8px;
+.detailsRetrieverContent {
+  width: 40vw;
+  min-height: 25vw;
+  @include centralize;
+  flex-direction: column;
+}
+
+.detailsClose {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.detailsNameIcon {
+  opacity: 0.9;
+  font-size: 22px;
+}
+.detailsSocialMedia {
+  @include centralize;
+  margin-top: 25px;
+
+  a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Dosis';
+    @include centralize;
+  }
+
+  i {
+    color: green;
+  }
 }

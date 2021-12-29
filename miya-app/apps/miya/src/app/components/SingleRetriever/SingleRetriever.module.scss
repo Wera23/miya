@@ -1,4 +1,9 @@
-.elementRetriever{
-    padding: 20px;
-    border: 2px solid black;
+.labelSingleRetriever {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonSingleRetriever{
+  text-transform: none;
+  display: flex;
 }

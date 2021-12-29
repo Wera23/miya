@@ -1,10 +1,16 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { CreateRetriever } from './dto/create-retriever.dto';
 import { UpdateRetriever } from './dto/update-retriever.dto';
 import { RetriversService } from './retrievers.service';
 import { Retriever } from './schema/retriever.schema';
-
-// import { Retriever } from "@miya-app/shared-types";
 
 @Controller('retrievers')
 export class RetrieversController {
@@ -25,19 +31,17 @@ export class RetrieversController {
     return this.retrieversService.createRetriever(
       retriever.name,
       retriever.age,
+      retriever.city,
       retriever.voivodeship,
       retriever.gender,
-      retriever.description,
       retriever.owner,
+      retriever.description,
       retriever.lat,
       retriever.long,
+      retriever.instagram,
+      retriever.facebook,
     );
   }
-
-  // @Put()
-  // updateRetriever(@Body() retriever: RetrieverTypes) {
-  //   this.retrieversService.updateRetriever(retriever);
-  // }
 
   @Patch(':id')
   async updateRetriever(
@@ -47,8 +51,8 @@ export class RetrieversController {
     return this.retrieversService.updateRetriever(id, retriever);
   }
 
-  // @Delete(':id')
-  // deleteRetriever(@Param('id') id: number) {
-  //   this.retrieversService.deleteRetriever(id);
-  // }
+  @Delete(':id')
+  async deleteRetriever(@Param('id') id: number): Promise<Retriever> {
+    return this.retrieversService.deleteRetriever(id);
+  }
 }

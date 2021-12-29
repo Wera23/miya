@@ -1,8 +1,11 @@
-import { AllRetrievers, Header } from './components';
+import { Header, MapWithAllRetrievers } from './components';
 import { ModalProvider } from 'react-modal-hook';
 
 import WebFont from 'webfontloader';
 import { useEffect } from 'react';
+import { ThemeProvider } from '@emotion/react';
+import fontTheme from '../assets/fonts/appFonts';
+import '../assets/fontello/css/fontello.css';
 
 export function App() {
   useEffect(() => {
@@ -14,12 +17,12 @@ export function App() {
   }, []);
 
   return (
-    <ModalProvider>
-      <div>
+    <ThemeProvider theme={fontTheme}>
+      <ModalProvider>
         <Header />
-        <AllRetrievers />
-      </div>
-    </ModalProvider>
+        <MapWithAllRetrievers />
+      </ModalProvider>
+    </ThemeProvider>
   );
 }
 

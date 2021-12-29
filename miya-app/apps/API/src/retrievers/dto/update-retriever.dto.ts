@@ -1,12 +1,14 @@
 export class UpdateRetriever {
+  id: number;
   name: string;
   age?: string;
   city: string;
-  description?: string;
+  voivodeship: string;
   gender: string;
-  id: number;
+  owner?: string;
+  description?: string;
   lat: number;
   long: number;
-  voivodeship: string;
-  owner?: string;
+  instagram: string;
+  facebook: string;
 }

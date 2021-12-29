@@ -20,10 +20,13 @@ export class RetriversService {
     age: string,
     city: string,
     voivodeship: string,
+    gender: string,
     owner: string,
     description: string,
     lat: number,
     long: number,
+    instagram: string,
+    facebook: string,
   ): Promise<Retriever> {
     return this.retrieversRepository.createRetriever({
       id: Date.now(),
@@ -31,10 +34,13 @@ export class RetriversService {
       age,
       city,
       voivodeship,
+      gender,
       description,
       owner,
       lat,
       long,
+      instagram,
+      facebook,
     });
   }
 
@@ -46,5 +52,9 @@ export class RetriversService {
       { id },
       retrieverUpdates,
     );
+  }
+
+  async deleteRetriever(id: number): Promise<Retriever> {
+    return await this.retrieversRepository.deleteOneRetriever(id);
   }
 }

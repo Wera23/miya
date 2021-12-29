@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import { Retriever } from '@miya-app/shared-types';
+import classnames from 'classnames';
 
 import styles from './DetailsSingleRetriever.module.scss';
 import './ReactModal.scss';
+import { Typography } from '@mui/material';
 
 interface SingleRetrieverTypes {
   singleRetriever: Retriever;
@@ -14,43 +16,94 @@ const DetailsSingleRetriever: FC<SingleRetrieverTypes> = ({
   closeModal,
 }) => {
   return (
-    <div className={styles.detailsRetriever}>
-      <span onClick={closeModal}>x</span>
-      <h2>{singleRetriever.name}</h2>
+    <div onClick={closeModal} className={styles.detailsRetriever}>
+      <i
+        className={classnames('icon-cancel', styles.detailsClose)}
+        onClick={closeModal}
+      />
 
-      {singleRetriever?.gender && (
-        <p>
-          <span className={styles.singleRetrieverProperty}>Płeć:</span>
-          <span>{singleRetriever.gender}</span>
-        </p>
-      )}
+      <div className={styles.detailsRetrieverContent}>
+        <Typography variant="h2" mb={3}>
+          {singleRetriever.name}{' '}
+          <i className={classnames('icon-paw', styles.detailsNameIcon)} />
+        </Typography>
 
-      {singleRetriever?.city && singleRetriever?.voivodeship && (
-        <p>
-          <span className={styles.singleRetrieverProperty}>Skąd:</span>
-          <span>{singleRetriever.voivodeship}, </span> 
-          <span>{singleRetriever.city}</span>
-        </p>
-      )}
+        {singleRetriever?.gender && (
+          <p>
+            <Typography
+              variant="body1"
+              className={styles.singleRetrieverProperty}
+            >
+              Płeć:
+            </Typography>
+            <Typography variant="body1">{singleRetriever.gender}</Typography>
+          </p>
+        )}
 
-      {singleRetriever?.age && (
-        <p>
-          <span className={styles.singleRetrieverProperty}>Wiek: </span>
-          <span>{singleRetriever.age}</span>
-        </p>
-      )}
-      {singleRetriever?.description && (
-        <p>
-          <span className={styles.singleRetrieverProperty}>Charakter:</span>
-          <span>{singleRetriever.description}</span>
-        </p>
-      )}
-      {singleRetriever?.owner && (
-        <p>
-          <span className={styles.singleRetrieverProperty}>Właściciel:</span>
-          <span>{singleRetriever.owner}</span>
-        </p>
-      )}
+        {singleRetriever?.city && singleRetriever?.voivodeship && (
+          <p>
+            <Typography variant="body2" mt={2} pr={1}>
+              Skąd:
+            </Typography>
+            <Typography variant="body1">{singleRetriever.city},</Typography>
+            <Typography variant="body1">
+              {singleRetriever.voivodeship}
+            </Typography>
+          </p>
+        )}
+
+        {singleRetriever?.age && (
+          <p>
+            <Typography variant="body2" mt={2} pr={1}>
+              Wiek:
+            </Typography>
+            <Typography variant="body1">{singleRetriever.age}</Typography>
+          </p>
+        )}
+        {singleRetriever?.description && (
+          <p>
+            <Typography variant="body2" mt={2} pr={1}>
+              Charakter:
+            </Typography>
+            <Typography variant="body1">
+              {singleRetriever.description}
+            </Typography>
+          </p>
+        )}
+        {singleRetriever?.owner && (
+          <p>
+            <Typography variant="body2" mt={2} pr={1}>
+              Właściciel:
+            </Typography>
+            <Typography variant="body1">{singleRetriever.owner}</Typography>
+          </p>
+        )}
+
+        <div className={styles.detailsSocialMedia}>
+          {singleRetriever?.facebook && (
+            <a href={singleRetriever.facebook} target="_blank" rel="noreferrer">
+              <i
+                className={classnames(
+                  'icon-facebook-circled',
+                  styles.detailsNameIcon
+                )}
+              />
+            </a>
+          )}
+          {singleRetriever?.instagram && (
+            <a
+              href={`https://www.instagram.com/${singleRetriever.instagram}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i
+                className={classnames('icon-instagram', styles.detailsNameIcon)}
+              />
+              @{singleRetriever.instagram}
+            </a>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

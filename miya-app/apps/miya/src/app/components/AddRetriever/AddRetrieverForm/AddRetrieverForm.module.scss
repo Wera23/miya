@@ -1,0 +1,26 @@
+@mixin centralize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addRetriever {
+  @include centralize;
+  flex-direction: column;
+  width: 40vw;
+
+  i {
+    font-size: 22px;
+  }
+}
+
+.addRetrieverForm {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.addRetrieverButton {
+  @include centralize;
+  margin-top: 40px;
+}

@@ -2,14 +2,17 @@ import { MapContainer, TileLayer, Popup } from 'react-leaflet';
 
 import Marker from 'react-leaflet-enhanced-marker';
 
-import { retrieverMapPoint, retrieverMapPointPng } from '../../../assets/images';
+import {
+  retrieverMapPoint,
+  retrieverMapPointPng,
+} from '../../../assets/images';
 
 import './MapWithAllRetrievers.scss';
-import useNestRetrievers from '../../hooks/useNestRetrievers';
 import { Retriever } from '@miya-app/shared-types';
 import { SingleRetriever } from '..';
+import useNestRetrievers from '../../services/dataHooks/useNestRetrievers';
 
-const MapWithAllRetrievers = () => {
+const MapWithAllRetrievers: React.FC = () => {
   const { retrievers } = useNestRetrievers();
 
   const listOfRetievers = Object.keys(retrievers).map(function (key: any) {
@@ -22,12 +25,18 @@ const MapWithAllRetrievers = () => {
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
         {listOfRetievers.map((retriever: Retriever, key: number) => (
-          <div>
+          <div key={key}>
             {retriever?.lat && retriever?.long && (
-              <div key={key}>
+              <div key={retriever.id}>
                 <Marker
                   position={[retriever.lat, retriever.long]}
-                  icon={<img className="point" src={retrieverMapPointPng} alt=""/>}
+                  icon={
+                    <img
+                      className="point"
+                      src={retrieverMapPointPng}
+                      alt={retriever.name}
+                    />
+                  }
                 >
                   <Popup>
                     <SingleRetriever singleRetriever={retriever} />
