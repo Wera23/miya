@@ -24,12 +24,12 @@ const DetailsSingleRetriever: FC<SingleRetrieverTypes> = ({
 
       <div className={styles.detailsRetrieverContent}>
         <Typography variant="h2" mb={3}>
-          {singleRetriever.name}{' '}
+          {singleRetriever.name}
           <i className={classnames('icon-paw', styles.detailsNameIcon)} />
         </Typography>
 
         {singleRetriever?.gender && (
-          <p>
+          <div className={styles.detailsRetrieverLine}>
             <Typography
               variant="body1"
               className={styles.singleRetrieverProperty}
@@ -37,46 +37,46 @@ const DetailsSingleRetriever: FC<SingleRetrieverTypes> = ({
               Płeć:
             </Typography>
             <Typography variant="body1">{singleRetriever.gender}</Typography>
-          </p>
+          </div>
         )}
 
         {singleRetriever?.city && singleRetriever?.voivodeship && (
-          <p>
-            <Typography variant="body2" mt={2} pr={1}>
+          <div className={styles.detailsRetrieverLine}>
+            <Typography variant="body2"pr={1}>
               Skąd:
             </Typography>
             <Typography variant="body1">{singleRetriever.city},</Typography>
             <Typography variant="body1">
               {singleRetriever.voivodeship}
             </Typography>
-          </p>
+          </div>
         )}
 
         {singleRetriever?.age && (
-          <p>
-            <Typography variant="body2" mt={2} pr={1}>
+          <div className={styles.detailsRetrieverLine}>
+            <Typography variant="body2" pr={1}>
               Wiek:
             </Typography>
             <Typography variant="body1">{singleRetriever.age}</Typography>
-          </p>
+          </div>
         )}
         {singleRetriever?.description && (
-          <p>
-            <Typography variant="body2" mt={2} pr={1}>
+          <div className={styles.detailsRetrieverLine}>
+            <Typography variant="body2"pr={1}>
               Charakter:
             </Typography>
             <Typography variant="body1">
               {singleRetriever.description}
             </Typography>
-          </p>
+          </div>
         )}
         {singleRetriever?.owner && (
-          <p>
-            <Typography variant="body2" mt={2} pr={1}>
+          <div className={styles.detailsRetrieverLine}>
+            <Typography variant="body2" pr={1}>
               Właściciel:
             </Typography>
             <Typography variant="body1">{singleRetriever.owner}</Typography>
-          </p>
+          </div>
         )}
 
         <div className={styles.detailsSocialMedia}>

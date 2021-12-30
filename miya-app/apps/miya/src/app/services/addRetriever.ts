@@ -21,9 +21,9 @@ function addNewRetrieverForm(values: NewRetrieverValues): Retriever {
 }
 
 // eslint-disable-next-line
-async function addNewRetriever(newRetriever: Retriever) {
+async function postNewRetrieverForm(newRetriever: Retriever) {
   // eslint-disable-next-line
   await dataService.postNewRetriever(newRetriever);
 }
 
-export { addNewRetriever, addNewRetrieverForm };
+export { postNewRetrieverForm, addNewRetrieverForm };

@@ -11,6 +11,7 @@
 
   i {
     font-size: 22px;
+    margin-right: 10px;
   }
 }
 
@@ -23,4 +24,10 @@
 .addRetrieverButton {
   @include centralize;
   margin-top: 40px;
+}
+
+.addRetrieverClose {
+  width: 100%;
+  display: flex;
+  justify-content: end;
 }

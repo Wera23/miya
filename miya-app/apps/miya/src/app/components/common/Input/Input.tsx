@@ -14,6 +14,7 @@ interface IProps {
   containerClassName?: string;
   value: string;
   size: any;
+  error: any;
   onChange: React.EventHandler<React.ChangeEvent<HTMLInputElement>>;
 }
 
@@ -26,6 +27,7 @@ const TextInput: React.FC<IProps> = ({
   inputClassName,
   containerClassName,
   size,
+  error,
   ...props
 }) => {
   return (
@@ -39,7 +41,8 @@ const TextInput: React.FC<IProps> = ({
         margin="normal"
         {...props}
         className={classnames('inputField', inputClassName)}  
-        size={size}      
+        size={size}  
+        error={error}    
       />
     </div>
   );

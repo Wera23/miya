@@ -3,21 +3,23 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { NewRetrieverValues, RetrieverFormTypes } from './FormInitialValues';
 import {
-  addNewRetriever,
+  postNewRetrieverForm,
   addNewRetrieverForm,
 } from '../../../services/addRetriever';
 import { Button, TextField, Typography } from '@mui/material';
 import styles from './AddRetrieverForm.module.scss';
 import { Input } from '../../common';
+import classnames from 'classnames';
 
 interface AddRetrieverTypes {
   onSubmit: () => void;
+  closeModal: () => void;
   initialValues: NewRetrieverValues;
 }
 
 const AddRetrieverForm: FC<AddRetrieverTypes> = ({
   initialValues,
-  ...props
+  closeModal,
 }) => {
   const NewRetrieverSchema = Yup.object().shape({
     idId: Yup.number(),
@@ -40,13 +42,20 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
 
     onSubmit: (values) => {
       console.log('x');
-      addNewRetriever(addNewRetrieverForm(values));
+      alert(JSON.stringify(values, null, 2));
+
+      postNewRetrieverForm(addNewRetrieverForm(values));
       formik.resetForm();
     },
   });
 
   return (
     <div className={styles.addRetriever}>
+      <i
+        className={classnames('icon-cancel', styles.addRetrieverClose)}
+        onClick={closeModal}
+      />
+
       <Typography variant="h2" mb={4}>
         Dodaj Golden Retrievera <i className="icon-paw" />
       </Typography>
@@ -60,6 +69,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
           onChange={formik.handleChange}
           icon="paw"
           size="small"
+          error="Błąd"
         />
 
         <Input
@@ -70,6 +80,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
           onChange={formik.handleChange}
           icon="paw"
           size="small"
+          error="Błąd"
         />
 
         <Input
@@ -80,6 +91,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
           onChange={formik.handleChange}
           icon="paw"
           size="small"
+          error="Błąd"
         />
 
         <div className={styles.addRetrieverButton}>

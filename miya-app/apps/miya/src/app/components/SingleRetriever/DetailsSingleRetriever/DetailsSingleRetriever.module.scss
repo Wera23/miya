@@ -7,12 +7,12 @@
 .detailsRetriever {
   display: flex;
   flex-direction: column;
+}
 
-  p {
-    display: flex;
-    margin: 0;
-    margin-bottom: 5px;
-  }
+.detailsRetrieverLine {
+  display: flex;
+  margin: 0;
+  margin-bottom: 5px;
 }
 
 .detailsRetrieverContent {

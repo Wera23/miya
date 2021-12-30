@@ -1,11 +1,11 @@
-import { Retriever } from "@miya-app/shared-types";
-import { AxiosPromise, AxiosResponse } from "axios";
-import { apiService } from "./api.service";
+import { Retriever } from '@miya-app/shared-types';
+import { AxiosPromise, AxiosResponse } from 'axios';
+import { apiService } from './api.service';
 
 class DataService {
   postNewRetriever(newRetriever: Retriever): AxiosPromise {
     return apiService
-      .post(`retriever`, newRetriever)
+      .post(`retrievers`, newRetriever)
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 }

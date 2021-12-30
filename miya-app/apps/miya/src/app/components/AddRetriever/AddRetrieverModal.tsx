@@ -4,7 +4,6 @@ import { Button, Typography } from '@mui/material';
 import { AddRetrieverForm } from '..';
 import { initialValues } from './AddRetrieverForm/FormInitialValues';
 
-
 interface SingleRetrieverTypes {
   handleAddRetriever?: () => void;
 }
@@ -17,6 +16,7 @@ const AddRetrieverModal: React.FC<SingleRetrieverTypes> = ({
       <ReactModal isOpen ariaHideApp={false}>
         <AddRetrieverForm
           onSubmit={() => alert('onSubmit')}
+          closeModal={hideModal}
           initialValues={initialValues}
         />
       </ReactModal>
