@@ -7,9 +7,13 @@ import AddRetrieverModal from '../AddRetriever/AddRetrieverModal';
 const Header: FC = () => {
   return (
     <div className={styles.header}>
-      <img src={retrieverMapPointPng} alt="" />
-      <Typography variant="h1">Retrievers</Typography>
-      <AddRetrieverModal  />
+      <div className={styles.addRetrieverAction}>
+        <AddRetrieverModal />
+      </div>
+      <div className={styles.logo}>
+        <img src={retrieverMapPointPng} alt="" />
+        <Typography variant="h1">Retrievers</Typography>
+      </div>
     </div>
   );
 };

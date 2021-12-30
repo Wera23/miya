@@ -1,10 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
-import './Input.scss';
-import { TextField } from '@mui/material';
-import { sizeWidth } from '@mui/system';
 
-interface IProps {
+import { TextField } from '@mui/material';
+
+import './Input.scss';
+
+interface InputTypes {
   inputId: string;
   label: string;
   placeholder: string;
@@ -12,13 +13,13 @@ interface IProps {
   iconClassName?: string;
   inputClassName?: string;
   containerClassName?: string;
-  value: string;
+  value: string | number;
   size: any;
-  error: any;
+  error?: any;
   onChange: React.EventHandler<React.ChangeEvent<HTMLInputElement>>;
 }
 
-const TextInput: React.FC<IProps> = ({
+const TextInput: React.FC<InputTypes> = ({
   inputId,
   label,
   placeholder,
@@ -40,9 +41,10 @@ const TextInput: React.FC<IProps> = ({
         placeholder={placeholder}
         margin="normal"
         {...props}
-        className={classnames('inputField', inputClassName)}  
-        size={size}  
-        error={error}    
+        className={inputClassName}
+        size={size}
+        error={error}
+        fullWidth
       />
     </div>
   );

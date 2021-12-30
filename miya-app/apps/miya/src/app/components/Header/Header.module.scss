@@ -1,6 +1,18 @@
-.header {
+
+.header{
+  display: flex;
+  flex-direction: column; 
+  margin: 40px 0;
+
+}
+.logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40px 0;
+}
+
+.addRetrieverAction{
+  display: flex;
+  justify-content: end;
+  margin-right: 50px;
 }

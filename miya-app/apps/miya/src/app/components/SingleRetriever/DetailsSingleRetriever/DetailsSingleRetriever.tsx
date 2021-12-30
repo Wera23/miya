@@ -42,7 +42,7 @@ const DetailsSingleRetriever: FC<SingleRetrieverTypes> = ({
 
         {singleRetriever?.city && singleRetriever?.voivodeship && (
           <div className={styles.detailsRetrieverLine}>
-            <Typography variant="body2"pr={1}>
+            <Typography variant="body2" pr={1}>
               Skąd:
             </Typography>
             <Typography variant="body1">{singleRetriever.city},</Typography>
@@ -62,7 +62,7 @@ const DetailsSingleRetriever: FC<SingleRetrieverTypes> = ({
         )}
         {singleRetriever?.description && (
           <div className={styles.detailsRetrieverLine}>
-            <Typography variant="body2"pr={1}>
+            <Typography variant="body2" pr={1}>
               Charakter:
             </Typography>
             <Typography variant="body1">

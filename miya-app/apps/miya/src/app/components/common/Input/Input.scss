@@ -7,6 +7,11 @@
   @include centralize;
 }
 
+.inputWhole{
+  display: flex;
+  flex-direction: column;
+}
+
 .inputSize {
   display: flex;
   flex: 1;
@@ -14,8 +19,6 @@
 
 .inputContainer {
   @include centralize;
+  width: 100%;
 }
 
-.inputField{
-    width: 100%;
-}

@@ -28,12 +28,11 @@ export const initialValues: NewRetrieverValues = {
   facebookId: '',
 };
 
-//TODO clean
 export enum RetrieverFormTypes {
   name = 'nameId',
   age = 'ageId',
   city = 'cityId',
-  voivodeship = 'voivodeshiplId',
+  voivodeship = 'voivodeshipId',
   gender = 'genderId',
   owner = 'ownerId',
   description = 'descriptionId',

@@ -18,7 +18,7 @@
 .addRetrieverForm {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 75%;
 }
 
 .addRetrieverButton {
@@ -30,4 +30,12 @@
   width: 100%;
   display: flex;
   justify-content: end;
+}
+
+.addRetrieverCoordinates {
+  display: flex;
+}
+
+.successMessage{
+  margin-top: 20px;
 }

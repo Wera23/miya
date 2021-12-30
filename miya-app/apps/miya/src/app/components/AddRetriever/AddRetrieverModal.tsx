@@ -3,6 +3,7 @@ import { useModal } from 'react-modal-hook';
 import { Button, Typography } from '@mui/material';
 import { AddRetrieverForm } from '..';
 import { initialValues } from './AddRetrieverForm/FormInitialValues';
+import classnames from 'classnames';
 
 interface SingleRetrieverTypes {
   handleAddRetriever?: () => void;
@@ -31,7 +32,8 @@ const AddRetrieverModal: React.FC<SingleRetrieverTypes> = ({
   return (
     <div>
       <Button onClick={handleClick}>
-        <Typography>Dodaj psa</Typography>
+        <i className={classnames('icon-paw')} />
+        <Typography> Dodaj psa</Typography>
       </Button>
     </div>
   );
