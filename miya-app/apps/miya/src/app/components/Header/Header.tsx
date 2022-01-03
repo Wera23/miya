@@ -1,8 +1,10 @@
-import { Typography } from '@mui/material';
-import { retrieverMapPointPng } from '../../../assets/images';
 import { FC } from 'react';
+
+import { Typography } from '@mui/material';
+import { AddRetrieverModal } from '..';
+
+import { retrieverMapPointPng } from '../../../assets/images';
 import styles from './Header.module.scss';
-import AddRetrieverModal from '../AddRetriever/AddRetrieverModal';
 
 const Header: FC = () => {
   return (

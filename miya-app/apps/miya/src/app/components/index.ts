@@ -4,3 +4,4 @@ export { default as DetailsSingleRetriever } from './SingleRetriever/DetailsSing
 export { default as MapWithAllRetrievers } from './AllRetrievers/MapWithAllRetrievers';
 export { default as AddRetrieverModal } from './AddRetriever/AddRetrieverModal';
 export { default as AddRetrieverForm } from './AddRetriever/AddRetrieverForm/AddRetrieverForm';
+export { default as RegisterForm } from './Register/RegisterForm';

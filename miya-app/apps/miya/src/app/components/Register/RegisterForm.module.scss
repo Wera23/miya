@@ -1,0 +1,28 @@
+@mixin centralize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerForm {
+  width: 40vw;
+  height: 40vw;
+  @include centralize;
+  flex-direction: column;
+  background-color: white;
+  margin-left: 6vw;
+  -webkit-box-shadow: 2px 2px 15px 0px rgba(66, 68, 90, 0.19);
+  -moz-box-shadow: 2px 2px 15px 0px rgba(66, 68, 90, 0.19);
+  box-shadow: 2px 2px 15px 0px rgba(66, 68, 90, 0.19);
+}
+
+.registerFormContent {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.registerFormButton {
+  @include centralize;
+  margin-top: 40px;
+}
