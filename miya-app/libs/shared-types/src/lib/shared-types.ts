@@ -19,3 +19,11 @@ export class Retriever {
   @IsString() @IsOptional() readonly instagram: string;
   @IsString() @IsOptional() readonly facebook: string;
 }
+
+export class User {
+  @IsNumber() @IsOptional() readonly userId: number;
+  @IsString() readonly username: string;
+  @IsString() readonly userPassword: string;
+  @IsString() @IsOptional() readonly dateOfBirth: string;
+  @IsString() @IsOptional() readonly userDescription: string;
+}

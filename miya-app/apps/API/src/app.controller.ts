@@ -7,25 +7,25 @@ import { JwtAuthGuard } from './auth/jwt-auth.guard';
 export class AppController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('auth/register')
-  async register(@Request() req) {
-    return this.authService.register(
-      req.body.userPassword,
-      req.body.username,
-      req.body.userDescription,
-      req.body.dateOfBirth,
-    );
-  }
+  // @Post('auth/register')
+  // async register(@Request() req) {
+  //   return this.authService.register(
+  //     req.body.userPassword,
+  //     req.body.username,
+  //     req.body.userDescription,
+  //     req.body.dateOfBirth,
+  //   );
+  // }
 
-  @UseGuards(LocalAuthGuard)
-  @Post('auth/login')
-  async login(@Request() req) {
-    return this.authService.login(req.user);
-  }
+  // @UseGuards(LocalAuthGuard)
+  // @Post('auth/login')
+  // async login(@Request() req) {
+  //   return this.authService.login(req.user);
+  // }
 
-  @UseGuards(JwtAuthGuard)
-  @Get('profile')
-  getProfile(@Request() req) {
-    return req.user;
-  }
+  // @UseGuards(JwtAuthGuard)
+  // @Get('profile')
+  // getProfile(@Request() req) {
+  //   return req.user;
+  // }
 }

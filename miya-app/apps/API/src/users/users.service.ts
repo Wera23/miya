@@ -9,7 +9,7 @@ export class UsersService {
 
   async getUserByName(username: string): Promise<User> {
     // return this.usersRepository.find((user) => user.username === username)
-    return this.usersRepository.findOneUSer({ username });
+    return this.usersRepository.findOneUser({ username });
   }
 
   async getUsers(): Promise<User[]> {

@@ -33,6 +33,8 @@
     "react-leaflet-enhanced-marker": "^1.0.21",
     "react-modal": "^3.14.4",
     "react-modal-hook": "^3.0.0",
+    "react-router": "^6.2.1",
+    "react-router-dom": "^6.2.1",
     "regenerator-runtime": "0.13.7",
     "tslib": "^2.0.0",
     "webfontloader": "^1.6.28",
