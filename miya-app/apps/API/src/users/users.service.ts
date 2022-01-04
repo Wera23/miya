@@ -5,23 +5,6 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-  // private readonly usersRepository: UsersRepository = [
-  //   {
-  //     userId: 1,
-  //     username: 'wera',
-  //     dateOfBirth: '20.06.1994',
-  //     password: '12345',
-  //     userDescription: '',
-  //   },
-  //   {
-  //     userId: 1,
-  //     username: 'Luiza',
-  //     dateOfBirth: '14.08.2001',
-  //     password: '12345',
-  //     userDescription: '',
-  //   },
-  // ];
-
   constructor(private readonly usersRepository: UsersRepository) {}
 
   async getUserByName(username: string): Promise<User> {
