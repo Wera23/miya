@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-const fontTheme = createTheme({
+const appTheme = createTheme({
   typography: {
     h1: {
       fontFamily: 'Sacramento',
@@ -23,9 +23,31 @@ const fontTheme = createTheme({
     body2: {
       fontFamily: 'Dosis',
       fontSize: '16px',
-      fontWeight: "bold",
+      fontWeight: 'bold',
+    },
+  },
+  palette: {
+    primary: {
+      //dark green
+      main: '#005740',
+    },
+    //light green
+    secondary: {
+      main: '#349041',
+    },
+    warning: {
+      //yellow
+      main: '#ffc000',
+    },
+    error: {
+      //red
+      main: '#ee0027',
+    },
+    success: {
+      //light green
+      main: '#349041',
     },
   },
 });
 
-export default fontTheme;
+export default appTheme;

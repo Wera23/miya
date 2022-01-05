@@ -1,0 +1,24 @@
+//TODO: import variables
+@import './variables.scss';
+@import './mixins.scss';
+
+.actionForm {
+  width: 40vw;
+  height: 40vw;
+  @include centralize;
+  flex-direction: column;
+  background-color: $white;
+  margin-left: 6vw;
+  @include shadow;
+}
+
+.actionFormContent {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.actionFormButton {
+  @include centralize;
+  margin-top: 40px;
+}

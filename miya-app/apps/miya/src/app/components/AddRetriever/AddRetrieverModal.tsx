@@ -5,11 +5,11 @@ import { AddRetrieverForm } from '..';
 import { initialValues } from './AddRetrieverForm/FormInitialValues';
 import classnames from 'classnames';
 
-interface SingleRetrieverTypes {
+interface AddRetrieverTypes {
   handleAddRetriever?: () => void;
 }
 
-const AddRetrieverModal: React.FC<SingleRetrieverTypes> = ({
+const AddRetrieverModal: React.FC<AddRetrieverTypes> = ({
   handleAddRetriever,
 }) => {
   const [showModal, hideModal] = useModal(() => {

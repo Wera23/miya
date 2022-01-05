@@ -1,16 +1,12 @@
+import Marker from 'react-leaflet-enhanced-marker';
 import { MapContainer, TileLayer, Popup } from 'react-leaflet';
 
-import Marker from 'react-leaflet-enhanced-marker';
-
-import {
-  retrieverMapPoint,
-  retrieverMapPointPng,
-} from '../../../assets/images';
-
-import './MapWithAllRetrievers.scss';
-import { Retriever } from '@miya-app/shared-types';
 import { SingleRetriever } from '..';
+
+import { Retriever } from '@miya-app/shared-types';
 import useNestRetrievers from '../../services/dataHooks/useNestRetrievers';
+import { retrieverMapPointPng } from '../../../assets/images';
+import './MapWithAllRetrievers.scss';
 
 const MapWithAllRetrievers: React.FC = () => {
   const { retrievers } = useNestRetrievers();

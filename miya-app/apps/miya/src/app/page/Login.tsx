@@ -1,12 +1,13 @@
-import { Homepage } from '.';
-import { registerBackground } from '../../assets/images';
-import { RegisterForm } from '../components';
-
-import { initialValues } from '../components/Register/RegisterInitialValues';
 import { useLoggedInContext } from '../context/IsLoggedIn';
-import styles from './pages.module.scss';
 
-export function Register() {
+import { Homepage } from '.';
+import LoginForm from '../components/LoginForm/LoginForm';
+
+import styles from './pages.module.scss';
+import { initialValues } from '../components/Register/RegisterInitialValues';
+import { registerBackground } from '../../assets/images';
+
+export function Login() {
   const { loggedIn } = useLoggedInContext();
 
   return (
@@ -18,11 +19,11 @@ export function Register() {
           className={styles.registerPage}
           style={{ backgroundImage: `url(${registerBackground})` }}
         >
-          <RegisterForm initialValues={initialValues} />
+          <LoginForm initialValues={initialValues} />
         </div>
       )}
     </div>
   );
 }
 
-export default Register;
+export default Login;

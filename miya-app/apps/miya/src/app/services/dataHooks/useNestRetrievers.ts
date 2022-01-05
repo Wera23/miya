@@ -15,7 +15,7 @@ const useNestRetrievers = () => {
 
   useEffect(() => {
     getRetrievers();
-  }, []);
+  }, [getRetrievers]);
 
   return { retrievers };
 };

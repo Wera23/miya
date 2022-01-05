@@ -12,10 +12,10 @@ export class User {
   @Prop()
   username: string;
   @Prop()
-  userPassword: string;
-  @Prop()
   @IsOptional()
   dateOfBirth?: string;
+  @Prop()
+  userPassword: string;
   @IsOptional()
   @Prop()
   userDescription?: string;
