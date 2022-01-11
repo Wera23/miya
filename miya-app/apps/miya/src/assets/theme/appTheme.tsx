@@ -33,7 +33,7 @@ const appTheme = createTheme({
     },
     //light green
     secondary: {
-      main: '#349041',
+      main: '#c66f5ds',
     },
     warning: {
       //yellow

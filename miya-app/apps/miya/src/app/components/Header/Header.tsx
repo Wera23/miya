@@ -9,16 +9,14 @@ import SingleUser from './UserPanel';
 import useNestUser from '../../services/dataHooks/useNestUser';
 
 const Header: FC = () => {
-
   const { user } = useNestUser();
-
 
   return (
     <div className={styles.header}>
       <div className={styles.addRetrieverAction}>
         <AddRetrieverModal />
         <div>
-         <SingleUser singleUser={user}/>
+          <SingleUser singleUser={user} />
         </div>
       </div>
       <div className={styles.logo}>

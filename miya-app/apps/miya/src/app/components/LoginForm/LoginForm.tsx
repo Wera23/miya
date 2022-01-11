@@ -57,7 +57,7 @@ const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
     <div className="actionForm">
       {!loggedIn && (
         <React.Fragment>
-          <Typography variant="h2" mb={4}>
+          <Typography color="secondary" variant="h2" mb={4}>
             Zaloguj się
           </Typography>
           <form className="actionFormContent" onSubmit={formik.handleSubmit}>

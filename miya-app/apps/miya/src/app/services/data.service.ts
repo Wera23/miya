@@ -21,10 +21,8 @@ class DataService {
   }
 
   getCurrentUser(): AxiosPromise {
-    const token = localStorage.getItem('token');
-
     return apiService
-      .get('profile', { headers: { Authorization: `Bearer ${token!}` } })
+      .get('profile')
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 }

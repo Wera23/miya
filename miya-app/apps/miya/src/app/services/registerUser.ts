@@ -16,7 +16,9 @@ function addNewUserForm(values: RegisterValues): User {
 // eslint-disable-next-line
 async function postNewUserForm(newUser: User) {
   // eslint-disable-next-line
-  await dataService.postNewUser(newUser);
+  const response = await dataService.postNewUser(newUser);
+  
+  return response.data
 }
 
 export { postNewUserForm, addNewUserForm };

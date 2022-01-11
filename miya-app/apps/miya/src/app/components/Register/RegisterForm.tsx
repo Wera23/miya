@@ -45,10 +45,13 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
 
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
-      postNewUserForm(addNewUserForm(values));
-      setLoggedIn(true);
-      formik.resetForm();
-      // onSubmitForm();
+      postNewUserForm(addNewUserForm(values))
+        .then((response: { access_token: string }) => {
+          localStorage.setItem('token', response.access_token);
+          setLoggedIn(true);
+          formik.resetForm();
+        })
+        .catch((error) => console.error(error));
     },
   });
 
