@@ -27,3 +27,8 @@ export class User {
   @IsString() @IsOptional() readonly dateOfBirth: string;
   @IsString() @IsOptional() readonly userDescription: string;
 }
+
+export class UserLogin {
+  @IsString() readonly username: string;
+  @IsString() readonly password: string;
+}
