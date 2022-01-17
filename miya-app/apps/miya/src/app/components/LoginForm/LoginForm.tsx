@@ -42,7 +42,6 @@ const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
     validationSchema: LoginUserSchema,
 
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
       postLoginUserForm(loginRegisteredUserForm(values))
         .then((response: { access_token: string }) => {
           localStorage.setItem('token', response.access_token);

@@ -36,7 +36,6 @@ export const LoggedContextProvider: React.FC = ({ children }) => {
     }
   }, [loggedIn]);
 
-
   useEffect(() => getCurrentUser(), [getCurrentUser]);
 
   return (

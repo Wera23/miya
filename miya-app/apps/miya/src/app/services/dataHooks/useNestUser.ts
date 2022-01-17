@@ -1,20 +1,27 @@
 import { User } from '@miya-app/shared-types';
-import axios from 'axios';
+import { AxiosResponse } from 'axios';
 import { useCallback, useEffect, useState } from 'react';
+import { useLoggedInContext } from '../../context/IsLoggedIn';
+import { dataService } from '../data.service';
 
 const useNestUser = () => {
   const [user, setUser] = useState<User>();
+  const { loggedIn } = useLoggedInContext();
 
   const token = localStorage.getItem('token');
-  const getUser = useCallback(async () => {
-    const resp = await axios.get<User>(`http://localhost:7000/profile`);
 
-    setUser(resp.data);
-  }, []);
+  const getCurrentUser = useCallback(() => {
+    if (loggedIn) {
+      dataService
+        .getCurrentUser()
+        .then((response: AxiosResponse) => setUser(response.data));
+    }
+  }, [loggedIn]);
 
+  //TODO: token
   useEffect(() => {
-    !token && getUser();
-  }, [getUser, token]);
+    !!token && getCurrentUser();
+  }, [getCurrentUser, token]);
 
   return { user };
 };

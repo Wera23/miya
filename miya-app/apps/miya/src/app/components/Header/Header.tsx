@@ -1,11 +1,10 @@
 import { FC } from 'react';
 
 import { Typography } from '@mui/material';
-import { AddRetrieverModal } from '..';
+import { AddRetrieverModal, UserProfileModal } from '..';
 
 import { retrieverMapPointPng } from '../../../assets/images';
 import styles from './Header.module.scss';
-import SingleUser from './UserPanel';
 import useNestUser from '../../services/dataHooks/useNestUser';
 
 const Header: FC = () => {
@@ -13,11 +12,9 @@ const Header: FC = () => {
 
   return (
     <div className={styles.header}>
-      <div className={styles.addRetrieverAction}>
+      <div className={styles.retrieverAction}>
         <AddRetrieverModal />
-        <div>
-          <SingleUser singleUser={user} />
-        </div>
+        <UserProfileModal />
       </div>
       <div className={styles.logo}>
         <img src={retrieverMapPointPng} alt="" />

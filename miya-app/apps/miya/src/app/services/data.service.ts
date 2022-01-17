@@ -8,6 +8,7 @@ class DataService {
       .post(`retrievers`, newRetriever)
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
+
   postNewUser(newUser: User): AxiosPromise {
     return apiService
       .post(`auth/register`, newUser)
@@ -22,7 +23,13 @@ class DataService {
 
   getCurrentUser(): AxiosPromise {
     return apiService
-      .get('profile')
+      .get('users/current')
+      .catch((error: AxiosResponse) => Promise.reject(error));
+  }
+  
+  getRetrievers(): AxiosPromise {
+    return apiService
+      .get('retrievers')
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 }

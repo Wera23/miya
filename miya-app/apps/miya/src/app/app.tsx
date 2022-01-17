@@ -5,7 +5,7 @@ import { ThemeProvider } from '@emotion/react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import WebFont from 'webfontloader';
 
-import { Homepage, Login, Register } from './page';
+import { Homepage, Login, PrivateRoute, Register } from './page';
 
 import '../assets/fontello/css/fontello.css';
 import './app.module.scss';
@@ -27,7 +27,9 @@ export function App() {
         <ModalProvider>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Homepage />} />
+              <Route path="/" element={<PrivateRoute />}>
+                <Route path="/" element={<Homepage />} />
+              </Route>
               <Route path="register" element={<Register />} />
               <Route path="login" element={<Login />} />
             </Routes>

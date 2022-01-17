@@ -7,12 +7,17 @@ import { UsersModule } from './users/users.module';
 
 import config from './config/keys';
 import { AppController } from './app.controller';
+import { MulterModule } from '@nestjs/platform-express';
 @Module({
   imports: [
     RetrieversModule,
     MongooseModule.forRoot(config.mongoURI),
     AuthModule,
     UsersModule,
+    MulterModule.register({
+      dest: 'files',
+      storage: 'files',
+    }),
   ],
   controllers: [AppController],
   providers: [],

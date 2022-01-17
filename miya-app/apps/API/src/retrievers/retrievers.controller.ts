@@ -6,16 +6,32 @@ import {
   Param,
   Patch,
   Post,
+  UploadedFile,
+  UseInterceptors,
+  UploadedFiles,
+  Res,
+  Response,
+  StreamableFile,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateRetriever } from './dto/create-retriever.dto';
 import { UpdateRetriever } from './dto/update-retriever.dto';
 import { RetriversService } from './retrievers.service';
 import { Retriever } from './schema/retriever.schema';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { Observable, of } from 'rxjs';
+
+import { Express } from 'express';
+import { diskStorage } from 'multer';
+import { createReadStream } from 'fs';
+import { join } from 'path';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @Controller('retrievers')
 export class RetrieversController {
   constructor(private readonly retrieversService: RetriversService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   async findAllRetrievers(): Promise<Retriever[]> {
     return this.retrieversService.getRetrievers();
@@ -54,5 +70,33 @@ export class RetrieversController {
   @Delete(':id')
   async deleteRetriever(@Param('id') id: number): Promise<Retriever> {
     return this.retrieversService.deleteRetriever(id);
+  }
+
+  @Post()
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: 'files',
+      }),
+    }),
+  )
+  async uploadedFile(@UploadedFile() file) {
+    const response = {
+      originalname: file.originalname,
+      filename: file.filename,
+    };
+    console.log(response);
+    return response;
+  }
+
+  @Get('files/:imagename')
+  seeUploadedFile(@Param('imagename') imagename, @Res() res) {
+    return of(res.sendFile(join(process.cwd(), 'files/' + imagename)));
+  }
+
+  @Get()
+  getFile(): StreamableFile {
+    const file = createReadStream(join(process.cwd(), 'package.json'));
+    return new StreamableFile(file);
   }
 }

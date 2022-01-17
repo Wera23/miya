@@ -1,16 +1,17 @@
 import { Retriever } from '@miya-app/shared-types';
-import axios from 'axios';
+import { AxiosResponse } from 'axios';
 import { useCallback, useEffect, useState } from 'react';
+import { dataService } from '../data.service';
 
 const useNestRetrievers = () => {
   const [retrievers, setRetreivers] = useState<Retriever[]>([]);
 
   const getRetrievers = useCallback(async () => {
-    const resp = await axios.get<Retriever[]>(
-      'http://localhost:7000/retrievers'
-    );
-
-    setRetreivers(resp.data);
+    dataService
+      .getRetrievers()
+      .then((response: AxiosResponse<Retriever[]>) =>
+        setRetreivers(response.data)
+      );
   }, []);
 
   useEffect(() => {

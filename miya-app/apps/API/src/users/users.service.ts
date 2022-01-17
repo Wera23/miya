@@ -8,7 +8,6 @@ export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
 
   async getUserByName(username: string): Promise<User> {
-    // return this.usersRepository.find((user) => user.username === username)
     return this.usersRepository.findOneUser({ username });
   }
 
