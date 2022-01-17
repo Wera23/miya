@@ -1,12 +1,12 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { Typography } from '@mui/material';
+import { ButtonForm, Input, Message } from '../common';
 
 import styles from './LoginForm.module.scss';
 import '../../../assets/styles/forms.scss';
-import { ButtonForm, Input, Message } from '../common';
 import { LoginFormTypes, LoginValues } from './LoginInitialValues';
 import {
   loginRegisteredUserForm,
@@ -24,6 +24,7 @@ interface LoginTypes {
 const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
   const { setLoggedIn } = useLoggedInActionsContext();
   const { loggedIn } = useLoggedInContext();
+  const [wrongData, setWrongData] = useState<boolean>(false);
 
   useEffect(() => {
     return () => {
@@ -48,7 +49,10 @@ const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
           setLoggedIn(true);
           formik.resetForm();
         })
-        .catch((error) => console.error(error));
+        .catch((error) => console.error(error))
+        .then(() => {
+          setWrongData(true);
+        });
     },
   });
 
@@ -101,14 +105,14 @@ const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
         </React.Fragment>
       )}
 
-      {loggedIn && (
-        <div className={styles.successMessage}>
+      <div className={styles.wrongData}>
+        {wrongData && (
           <Message
-            messageText="Twoje konto zostało dodane"
-            colorMessage="green"
+            colorMessage="error"
+            messageText="Nieprawidłowe hasło lub nazwa użytkownika"
           />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

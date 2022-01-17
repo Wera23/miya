@@ -1,9 +1,11 @@
 import ReactModal from 'react-modal';
-import { useModal } from 'react-modal-hook';
-import { Button, Typography } from '@mui/material';
 import classnames from 'classnames';
+import { useModal } from 'react-modal-hook';
+
+import { Button, Typography } from '@mui/material';
+import { DetailsModal } from '../common';
+
 import useNestUser from '../../services/dataHooks/useNestUser';
-import { useLoggedInContext } from '../../context/IsLoggedIn';
 
 interface UserProfileTypes {
   handleUserProfile?: () => void;
@@ -17,12 +19,10 @@ const UserProfileModal: React.FC<UserProfileTypes> = ({
   const [showModal, hideModal] = useModal(
     () => (
       <ReactModal isOpen ariaHideApp={false}>
-        <div>
-          <i className="icon-cancel" onClick={hideModal} />
+        <DetailsModal closeModal={hideModal} header={user?.username} icon="paw">
           {user?.username}
-          {user?.dateOfBirth}
           {user?.userDescription}
-        </div>
+        </DetailsModal>
       </ReactModal>
     ),
     [user]

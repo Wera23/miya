@@ -1,0 +1,28 @@
+@mixin centralize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailsModal {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsModalContent {
+  width: 40vw;
+  min-height: 25vw;
+  @include centralize;
+  flex-direction: column;
+}
+
+.detailsClose {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.detailsNameIcon {
+  opacity: 0.9;
+  font-size: 22px;
+}

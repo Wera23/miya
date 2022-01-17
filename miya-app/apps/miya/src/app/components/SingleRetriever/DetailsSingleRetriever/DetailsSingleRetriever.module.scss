@@ -4,34 +4,12 @@
   align-items: center;
 }
 
-.detailsRetriever {
-  display: flex;
-  flex-direction: column;
-}
-
 .detailsRetrieverLine {
   display: flex;
   margin: 0;
   margin-bottom: 5px;
 }
 
-.detailsRetrieverContent {
-  width: 40vw;
-  min-height: 25vw;
-  @include centralize;
-  flex-direction: column;
-}
-
-.detailsClose {
-  width: 100%;
-  display: flex;
-  justify-content: end;
-}
-
-.detailsNameIcon {
-  opacity: 0.9;
-  font-size: 22px;
-}
 .detailsSocialMedia {
   @include centralize;
   margin-top: 25px;
