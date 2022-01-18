@@ -2,7 +2,16 @@ import { useEffect } from 'react';
 
 import { ModalProvider } from 'react-modal-hook';
 import { ThemeProvider } from '@emotion/react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  BrowserRouter,
+  Link,
+  useNavigate,
+  useLocation,
+  Navigate,
+  Outlet,
+} from 'react-router-dom';
 import WebFont from 'webfontloader';
 
 import { Homepage, Login, PrivateRoute, Register } from './page';
@@ -30,10 +39,27 @@ export function App() {
               <Route path="/" element={<PrivateRoute />}>
                 <Route path="/" element={<Homepage />} />
               </Route>
-              <Route path="register" element={<Register />} />
-              <Route path="login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </BrowserRouter>
+
+          {/* <AuthProvider>
+<Routes>
+<Route element={<Layout />}>
+  <Route path="/" element={<PublicPage />} />
+  <Route path="/login" element={<LoginPage />} />
+  <Route
+    path="/protected"
+    element={
+      <RequireAuth>
+        <ProtectedPage />
+      </RequireAuth>
+    }
+  />
+</Route>
+</Routes>
+</AuthProvider> */}
         </ModalProvider>
       </ThemeProvider>
     </LoggedContextProvider>

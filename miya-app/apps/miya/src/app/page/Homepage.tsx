@@ -1,6 +1,7 @@
 import { Header, MapWithAllRetrievers } from "../components";
 
-export function Homepage() { 
+
+const Homepage = () => { 
   return (
     <>
       <Header />

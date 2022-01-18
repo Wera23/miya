@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Typography } from '@mui/material';
 import { ButtonForm, Input, Message } from '../common';
@@ -23,6 +24,7 @@ interface LoginTypes {
 
 const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
   const { setLoggedIn } = useLoggedInActionsContext();
+  const navigate = useNavigate();
   const { loggedIn } = useLoggedInContext();
   const [wrongData, setWrongData] = useState<boolean>(false);
 
@@ -48,6 +50,7 @@ const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
           localStorage.setItem('token', response.access_token);
           setLoggedIn(true);
           formik.resetForm();
+          navigate('/', { replace: true });
         })
         .catch((error) => console.error(error))
         .then(() => {
@@ -104,6 +107,14 @@ const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
           </form>
         </React.Fragment>
       )}
+
+      <div>
+        <Message
+          colorMessage="error"
+          messageText="Jeśli nie posiadasz konta, zarejestruj się"
+        />{' '}
+        <Link to="/register">Rejestracja</Link>
+      </div>
 
       <div className={styles.wrongData}>
         {wrongData && (

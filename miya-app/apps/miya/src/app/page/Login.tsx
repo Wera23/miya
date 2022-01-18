@@ -7,7 +7,8 @@ import styles from './pages.module.scss';
 import { initialValues } from '../components/Register/RegisterInitialValues';
 import { registerBackground } from '../../assets/images';
 
-export function Login() {
+
+const Login = () => {
   const { loggedIn } = useLoggedInContext();
 
   return (
@@ -23,7 +24,14 @@ export function Login() {
         </div>
       )}
     </div>
+
+    // <div
+    //   className={styles.registerPage}
+    //   style={{ backgroundImage: `url(${registerBackground})` }}
+    // >
+    //   <LoginForm initialValues={initialValues} />
+    // </div>
   );
-}
+};
 
 export default Login;

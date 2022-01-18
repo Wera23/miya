@@ -21,6 +21,16 @@ export class UsersController {
     return this.usersService.getUsers();
   }
 
+  @Post()
+  createUser(@Body() user: CreateUser) {
+    return this.usersService.createUser(
+      user.username,
+      user.dateOfBirth,
+      user.userPassword,
+      user.userDescription,
+    );
+  }
+
   @UseGuards(JwtAuthGuard)
   @Get('current')
   getProfile(@Request() req) {
@@ -30,15 +40,5 @@ export class UsersController {
   @Get(':username')
   async findUser(@Param('username') username: string): Promise<User> {
     return this.usersService.getUserByName(username);
-  }
-
-  @Post()
-  createUser(@Body() user: CreateUser) {
-    return this.usersService.createUser(
-      user.username,
-      user.dateOfBirth,
-      user.userPassword,
-      user.userDescription,
-    );
   }
 }

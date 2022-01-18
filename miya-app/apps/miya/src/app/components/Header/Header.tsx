@@ -5,16 +5,16 @@ import { AddRetrieverModal, UserProfileModal } from '..';
 
 import { retrieverMapPointPng } from '../../../assets/images';
 import styles from './Header.module.scss';
-import useNestUser from '../../services/dataHooks/useNestUser';
+import SingleRetrieverModal from '../SingleRetriever/SingleRetriever';
+import SingleRetrieverProfileModal from '../UserProfile/RetreiverProfile';
 
 const Header: FC = () => {
-  const { user } = useNestUser();
-
   return (
     <div className={styles.header}>
       <div className={styles.retrieverAction}>
         <AddRetrieverModal />
         <UserProfileModal />
+        <SingleRetrieverProfileModal />
       </div>
       <div className={styles.logo}>
         <img src={retrieverMapPointPng} alt="" />

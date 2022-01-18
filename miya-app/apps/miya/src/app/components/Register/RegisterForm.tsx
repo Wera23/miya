@@ -1,6 +1,7 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import {  useNavigate } from 'react-router-dom';
 
 import { Button, Typography } from '@mui/material';
 
@@ -23,6 +24,8 @@ interface RegisterTypes {
 const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
   const { setLoggedIn } = useLoggedInActionsContext();
   const { loggedIn } = useLoggedInContext();
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     return () => {
@@ -44,12 +47,12 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
     validationSchema: NewUserSchema,
 
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
       postNewUserForm(addNewUserForm(values))
         .then((response: { access_token: string }) => {
           localStorage.setItem('token', response.access_token);
           setLoggedIn(true);
           formik.resetForm();
+          navigate('/', { replace: true });
         })
         .catch((error) => console.error(error));
     },

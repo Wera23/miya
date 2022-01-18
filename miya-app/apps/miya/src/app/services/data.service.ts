@@ -26,7 +26,13 @@ class DataService {
       .get('users/current')
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
-  
+
+  getSpecificRetriever(): AxiosPromise {
+    return apiService
+      .get('/retrievers/your-retriever')
+      .catch((error: AxiosResponse) => Promise.reject(error));
+  }
+
   getRetrievers(): AxiosPromise {
     return apiService
       .get('retrievers')

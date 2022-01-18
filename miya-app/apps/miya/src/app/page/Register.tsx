@@ -6,7 +6,7 @@ import { initialValues } from '../components/Register/RegisterInitialValues';
 import { useLoggedInContext } from '../context/IsLoggedIn';
 import styles from './pages.module.scss';
 
-export function Register() {
+const Register = () => {
   const { loggedIn } = useLoggedInContext();
 
   return (

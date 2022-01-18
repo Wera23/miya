@@ -26,6 +26,7 @@ import { diskStorage } from 'multer';
 import { createReadStream } from 'fs';
 import { join } from 'path';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { LocalAuthGuard } from 'src/auth/guards/local-auth.guard';
 
 @Controller('retrievers')
 export class RetrieversController {
@@ -37,6 +38,7 @@ export class RetrieversController {
     return this.retrieversService.getRetrievers();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   async findRetriever(@Param('id') id: number): Promise<Retriever> {
     return this.retrieversService.getRetrieverById(id);
@@ -59,6 +61,7 @@ export class RetrieversController {
     );
   }
 
+  @UseGuards(LocalAuthGuard)
   @Patch(':id')
   async updateRetriever(
     @Param('id') id: number,
