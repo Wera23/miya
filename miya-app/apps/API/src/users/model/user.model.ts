@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { Retriever } from 'src/retrievers/schema/retriever.schema';
 
 export const RetrieverSchema = new mongoose.Schema({
   userId: { type: Number, required: false },
@@ -6,4 +7,6 @@ export const RetrieverSchema = new mongoose.Schema({
   dateOfBirth: { type: String, required: false },
   userPassword: { type: String, required: true },
   userDescription: { type: String, required: false },
+  userAddress: { type: String, required: false },
+  retriever: { type: Retriever, required: false }
 });

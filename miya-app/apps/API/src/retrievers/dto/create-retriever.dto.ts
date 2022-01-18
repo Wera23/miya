@@ -1,3 +1,5 @@
+import { User } from "src/users/schema/user.schema";
+
 export class CreateRetriever {
   name: string;
   age?: string;
@@ -11,4 +13,5 @@ export class CreateRetriever {
   long: number;
   instagram: string;
   facebook: string;
+  user: User;
 }

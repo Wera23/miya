@@ -9,6 +9,8 @@ function addNewUserForm(values: RegisterValues): User {
     userPassword: values.userPasswordId,
     dateOfBirth: values.dateOfBirthId,
     userDescription: values.userDescriptionId,
+    userAddress: values.userAddressId,
+    retriever: values.retrieverId
   };
   return newUser;
 }

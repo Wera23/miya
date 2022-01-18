@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import { Retriever } from 'src/retrievers/schema/retriever.schema';
 
 @Injectable()
 export class AuthService {
@@ -15,12 +16,16 @@ export class AuthService {
     dateOfBirth: string,
     userPassword: string,
     userDescription: string,
+    userAddress: string,
+    retriever: Retriever,
   ): Promise<any> {
     return await this.usersService.createUser(
       username,
       dateOfBirth,
       userPassword,
       userDescription,
+      userAddress,
+      retriever,
     );
   }
 
@@ -40,6 +45,8 @@ export class AuthService {
       sup: user._doc.userId,
       dateOfBirth: user._doc.dateOfBirth,
       userDescription: user._doc.userDescription,
+      userAddress: user._doc.userAddress,
+      retriever: user._doc.retriever,
     };
 
     return {

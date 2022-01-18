@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { User } from 'src/users/schema/user.schema';
 import { UpdateRetriever } from './dto/update-retriever.dto';
 import { RetrieversRepository } from './retrievers.repository';
 import { Retriever } from './schema/retriever.schema';
@@ -27,6 +28,7 @@ export class RetriversService {
     long: number,
     instagram: string,
     facebook: string,
+    user: User
   ): Promise<Retriever> {
     return this.retrieversRepository.createRetriever({
       id: Date.now(),
@@ -41,6 +43,7 @@ export class RetriversService {
       long,
       instagram,
       facebook,
+      user,
     });
   }
 

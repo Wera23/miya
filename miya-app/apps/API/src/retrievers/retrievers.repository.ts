@@ -19,7 +19,7 @@ export class RetrieversRepository {
   async findRetrievers(
     retrieversFilterQuery: FilterQuery<Retriever>,
   ): Promise<Retriever[]> {
-    return this.retrieverModel.find(retrieversFilterQuery);
+    return this.retrieverModel.find(retrieversFilterQuery, {relations: ["user"]});
   }
 
   async createRetriever(retriever: Retriever): Promise<Retriever> {

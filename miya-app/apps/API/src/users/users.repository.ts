@@ -15,7 +15,7 @@ export class UsersRepository {
   }
 
   async findUsers(usersFilterQuery: FilterQuery<User>): Promise<User[]> {
-    return this.userModel.find(usersFilterQuery);
+    return this.userModel.find(usersFilterQuery, { relations: ["retriever"] });
   }
 
   async createUser(user: User): Promise<User> {
