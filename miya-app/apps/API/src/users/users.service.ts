@@ -33,7 +33,8 @@ export class UsersService {
       userPassword: hashedPassword,
       userDescription,
       userAddress,
-      retriever
+      retriever,
+      '': {},
     });
   }
 }

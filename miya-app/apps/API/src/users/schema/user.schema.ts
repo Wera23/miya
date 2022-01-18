@@ -11,7 +11,7 @@ export type UserDokument = User & Document;
 export class User {
   // @Transform(({ value }) => value.toString())
   // _id: ObjectId;
-@PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn()
   @Prop()
   @IsOptional()
   userId?: number;
@@ -38,7 +38,7 @@ export class User {
   // @Type(()=> Retriever)
   // retriever: Retriever
 
-  @OneToMany(() => Retriever, retriever => retriever.user)
+  @OneToMany(() => Retriever, retriever => retriever.user, {cascade: true});
   retriever: Retriever;
 }
 

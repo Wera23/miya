@@ -1,7 +1,13 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { User } from 'src/users/schema/user.schema';
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 
 export type RetrieverDokument = Retriever & Document;
 
@@ -44,7 +50,8 @@ export class Retriever {
   @Prop()
   facebook: string;
 
-  @ManyToOne(() => User, user => user.retriever)
+  @ManyToOne(() => User, (user) => user.retriever)
+  @JoinColumn({ name: 'retriever_id' })
   user: User;
 }
 
