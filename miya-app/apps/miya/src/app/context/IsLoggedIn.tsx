@@ -36,16 +36,16 @@ export const LoggedContextProvider: React.FC = ({ children }) => {
     }
   }, [loggedIn]);
 
-  const getSpecificRetriever = useCallback(() => {
-    if (loggedIn) {
-      dataService
-        .getSpecificRetriever()
-        .then((response: AxiosResponse) => console.log(response));
-    }
-  }, [loggedIn]);
+  // const getSpecificRetriever = useCallback(() => {
+  //   if (loggedIn) {
+  //     dataService
+  //       .getSpecificRetriever()
+  //       .then((response: AxiosResponse) => console.log(response));
+  //   }
+  // }, [loggedIn]);
 
   useEffect(() => getCurrentUser(), [getCurrentUser]);
-  useEffect(() => getSpecificRetriever(), [getSpecificRetriever]);
+  // useEffect(() => getSpecificRetriever(), [getSpecificRetriever]);
 
   return (
     <LoggedInContext.Provider value={{ loggedIn }}>

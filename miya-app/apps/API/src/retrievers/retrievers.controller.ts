@@ -19,7 +19,7 @@ import { UpdateRetriever } from './dto/update-retriever.dto';
 import { RetriversService } from './retrievers.service';
 import { Retriever } from './schema/retriever.schema';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Observable, of } from 'rxjs';
+import {  of } from 'rxjs';
 
 import { Express } from 'express';
 import { diskStorage } from 'multer';

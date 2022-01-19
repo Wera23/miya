@@ -10,11 +10,13 @@ import {
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { CreateUser } from './dto/create-user.dto';
 import { User } from './schema/user.schema';
+// import { InjectRepository } from '@nestjs/typeorm';
 import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
+  //@InjectRepository(RetrieversRepository) private retrieverRepository: RetrieversRepository
 
   @Get()
   async findAllUsers(): Promise<User[]> {
@@ -28,6 +30,7 @@ export class UsersController {
       user.dateOfBirth,
       user.userPassword,
       user.userDescription,
+      user.userAddress
     );
   }
 

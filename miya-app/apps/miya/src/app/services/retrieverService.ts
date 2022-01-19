@@ -20,10 +20,37 @@ function addNewRetrieverForm(values: NewRetrieverValues): Retriever {
   return newRetriever;
 }
 
+function detailsOfTheSpecificRetriever(retriever: Retriever): Retriever {
+  const specificRetriever: Retriever = {
+    id: retriever.id,
+    name: retriever.name,
+    age: retriever.age,
+    city: retriever.city,
+    voivodeship: retriever.voivodeship,
+    gender: retriever.gender,
+    owner: retriever.owner,
+    description: retriever.description,
+    lat: retriever.lat,
+    long: retriever.long,
+    instagram: retriever.instagram,
+    facebook: retriever.facebook,
+  };
+  return specificRetriever;
+}
+
 // eslint-disable-next-line
 async function postNewRetrieverForm(newRetriever: Retriever) {
   // eslint-disable-next-line
   await dataService.postNewRetriever(newRetriever);
 }
 
-export { postNewRetrieverForm, addNewRetrieverForm };
+async function getSpecyficSingleRetriever(id: string): Promise<Retriever> {
+  const retiever = await dataService.getSpecificRetriever(id);
+  return detailsOfTheSpecificRetriever(retiever?.data);
+}
+
+export {
+  postNewRetrieverForm,
+  addNewRetrieverForm,
+  getSpecyficSingleRetriever,
+};

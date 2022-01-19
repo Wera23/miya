@@ -104,6 +104,16 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
             />
 
             <Input
+              inputId={RegisterFormTypes.userAddress}
+              label="Twoje miasto i województwo"
+              value={formik.values.userDescriptionId}
+              placeholder="Podaj swoje miasto i województwo"
+              onChange={formik.handleChange}
+              icon="paw"
+              size="small"
+            />
+
+            <Input
               inputId={RegisterFormTypes.userPassword}
               label="Hasło użytkownika"
               value={formik.values.userPasswordId}

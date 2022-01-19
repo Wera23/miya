@@ -1,29 +1,22 @@
+import { useEffect, useState } from 'react';
 import { Retriever } from '@miya-app/shared-types';
-import { AxiosResponse } from 'axios';
-import { useCallback, useEffect, useState } from 'react';
-import { useLoggedInContext } from '../../context/IsLoggedIn';
-import { dataService } from '../data.service';
+import { getSpecyficSingleRetriever } from '../retrieverService';
 
-const useNestSingleRetriever = () => {
-  const [singleRetriever, setSingleRetriever] = useState<Retriever>();
-  const { loggedIn } = useLoggedInContext();
+interface RetriverTypes {
+  retriever: Retriever | undefined;
+}
 
-  const token = localStorage.getItem('token');
+export default function useNestSingleRetriever(id: string): RetriverTypes {
+  const [retriever, setRetreiver] = useState<Retriever>();
 
-  const getSpecificRetriever = useCallback(() => {
-    if (loggedIn) {
-      dataService
-        .getSpecificRetriever()
-        .then((response: AxiosResponse) => setSingleRetriever(response.data));
-    }
-  }, [loggedIn]);
-
-  //TODO: token
   useEffect(() => {
-    !!token && getSpecificRetriever();
-  }, [getSpecificRetriever, token]);
+    const loadRetriever = async (): Promise<void> => {
+      const retriever = await getSpecyficSingleRetriever(id);
+      setRetreiver(retriever);
+    };
 
-  return { singleRetriever };
-};
+    loadRetriever();
+  }, [id]);
 
-export default useNestSingleRetriever;
+  return { retriever };
+}

@@ -5,8 +5,7 @@ import { AddRetrieverModal, UserProfileModal } from '..';
 
 import { retrieverMapPointPng } from '../../../assets/images';
 import styles from './Header.module.scss';
-import SingleRetrieverModal from '../SingleRetriever/SingleRetriever';
-import SingleRetrieverProfileModal from '../UserProfile/RetreiverProfile';
+import SingleRetrieverProfile from '../Profiles/RetreiverProfile';
 
 const Header: FC = () => {
   return (
@@ -14,7 +13,7 @@ const Header: FC = () => {
       <div className={styles.retrieverAction}>
         <AddRetrieverModal />
         <UserProfileModal />
-        <SingleRetrieverProfileModal />
+        <SingleRetrieverProfile />
       </div>
       <div className={styles.logo}>
         <img src={retrieverMapPointPng} alt="" />

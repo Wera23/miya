@@ -14,5 +14,6 @@ import { RetrieversRepository } from './retrievers.repository';
   ],
   providers: [RetriversService, RetrieversRepository],
   controllers: [RetrieversController],
+  exports: [RetriversService],
 })
 export class RetrieversModule {}

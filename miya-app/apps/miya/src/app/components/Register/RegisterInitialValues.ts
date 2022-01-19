@@ -1,9 +1,12 @@
+import { Retriever } from "@miya-app/shared-types";
+
 export interface RegisterValues {
   userId: number;
   usernameId: string;
   userPasswordId: string;
   dateOfBirthId: string;
   userDescriptionId: string;
+  userAddressId: string;
 }
 
 export const initialValues: RegisterValues = {
@@ -12,6 +15,7 @@ export const initialValues: RegisterValues = {
   userPasswordId: '',
   dateOfBirthId: '',
   userDescriptionId: '',
+  userAddressId: '',  
 };
 
 export enum RegisterFormTypes {
@@ -20,4 +24,5 @@ export enum RegisterFormTypes {
   userPassword = 'userPasswordId',
   dateOfBirth = 'dateOfBirthId',
   userDescription = 'userDescriptionId',
+  userAddress = 'userAddressId'
 }

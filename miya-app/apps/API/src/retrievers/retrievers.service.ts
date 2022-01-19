@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { User } from 'src/users/schema/user.schema';
 import { UpdateRetriever } from './dto/update-retriever.dto';
 import { RetrieversRepository } from './retrievers.repository';
 import { Retriever } from './schema/retriever.schema';
@@ -7,12 +8,12 @@ import { Retriever } from './schema/retriever.schema';
 export class RetriversService {
   constructor(private readonly retrieversRepository: RetrieversRepository) {}
 
-  async getRetrieverById(id: number): Promise<Retriever> {
-    return this.retrieversRepository.findOneRetriever({ id });
-  }
-
   async getRetrievers(): Promise<Retriever[]> {
     return this.retrieversRepository.findRetrievers({});
+  }
+
+  async getRetrieverById(id: number): Promise<Retriever> {
+    return this.retrieversRepository.findOneRetriever({ id });
   }
 
   async createRetriever(

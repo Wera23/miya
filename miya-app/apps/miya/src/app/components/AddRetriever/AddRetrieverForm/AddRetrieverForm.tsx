@@ -1,16 +1,15 @@
 import { FC, useState } from 'react';
-import classnames from 'classnames';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { Button, Typography } from '@mui/material';
-import { Input, Message } from '../../common';
+import { Button } from '@mui/material';
+import { DetailsModal, Input, Message } from '../../common';
 
 import { NewRetrieverValues, RetrieverFormTypes } from './FormInitialValues';
 import {
   postNewRetrieverForm,
   addNewRetrieverForm,
-} from '../../../services/addRetriever';
+} from '../../../services/retrieverService';
 import styles from './AddRetrieverForm.module.scss';
 
 interface AddRetrieverTypes {
@@ -38,6 +37,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
     longId: Yup.number().required('To pole jest wymagane'),
     instagramId: Yup.string(),
     facebookId: Yup.string(),
+    userId: Yup.string(),
   });
 
   const formik = useFormik({
@@ -56,16 +56,11 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
   const instagramCorrectName = formik.values.instagramId;
 
   return (
-    <div className={styles.addRetriever}>
-      <i
-        className={classnames('icon-cancel', styles.addRetrieverClose)}
-        onClick={closeModal}
-      />
-
-      <Typography variant="h2" mb={4}>
-        Dodaj Golden Retrievera <i className="icon-paw" />
-      </Typography>
-
+    <DetailsModal
+      closeModal={closeModal}
+      header="Dodaj Golden Retrievera"
+      icon="paw"
+    >
       {!showSuccessMessage && (
         <form
           className={styles.addRetrieverForm}
@@ -238,7 +233,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
           <Message messageText="Twój pies został dodany" colorMessage="green" />
         </div>
       )}
-    </div>
+    </DetailsModal>
   );
 };
 

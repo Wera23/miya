@@ -19,7 +19,7 @@ const DetailsModal: FC<ModalTypes> = ({
   children,
 }) => {
   return (
-    <div onClick={closeModal} className={styles.detailsModal}>
+    <div className={styles.detailsModal}>
       <i
         className={classnames('icon-cancel', styles.detailsClose)}
         onClick={closeModal}

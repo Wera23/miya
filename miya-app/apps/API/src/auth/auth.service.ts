@@ -16,12 +16,13 @@ export class AuthService {
     dateOfBirth: string,
     userPassword: string,
     userDescription: string,
+    userAddress: string,
   ): Promise<any> {
     return await this.usersService
-      .createUser(username, dateOfBirth, userPassword, userDescription)
+      .createUser(username, dateOfBirth, userPassword, userDescription, userAddress)
       .then(() => {
         return this.jwtService.sign(User);
-      });
+      });    
   }
 
   async validateUser(username: string, pass: string): Promise<any> {
@@ -40,6 +41,7 @@ export class AuthService {
       sup: user._doc.userId,
       dateOfBirth: user._doc.dateOfBirth,
       userDescription: user._doc.userDescription,
+      userAddress: user._doc.userAddress,
     };
 
     return {

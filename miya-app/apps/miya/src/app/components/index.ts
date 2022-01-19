@@ -5,6 +5,6 @@ export { default as MapWithAllRetrievers } from './AllRetrievers/MapWithAllRetri
 export { default as AddRetrieverModal } from './AddRetriever/AddRetrieverModal';
 export { default as AddRetrieverForm } from './AddRetriever/AddRetrieverForm/AddRetrieverForm';
 export { default as RegisterForm } from './Register/RegisterForm';
-export { default as UserProfileModal } from './UserProfile/UserProfileModal';
+export { default as UserProfileModal } from './Profiles/UserProfileModal';
 
 export { default as UploadImage } from './UploadImage/UploadImage';

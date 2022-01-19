@@ -27,9 +27,9 @@ class DataService {
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 
-  getSpecificRetriever(): AxiosPromise {
+  getSpecificRetriever(id: string): AxiosPromise {
     return apiService
-      .get('/retrievers/your-retriever')
+      .get(`/retrievers/${id}`)
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 

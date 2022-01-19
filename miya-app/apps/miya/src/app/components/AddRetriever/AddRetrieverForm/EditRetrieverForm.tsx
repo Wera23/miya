@@ -10,7 +10,7 @@ import { NewRetrieverValues, RetrieverFormTypes } from './FormInitialValues';
 import {
   postNewRetrieverForm,
   addNewRetrieverForm,
-} from '../../../services/addRetriever';
+} from '../../../services/retrieverService';
 import styles from './AddRetrieverForm.module.scss';
 
 interface AddRetrieverTypes {
