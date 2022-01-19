@@ -8,7 +8,7 @@ import { DetailsModal, Input, Message } from '../../common';
 import { NewRetrieverValues, RetrieverFormTypes } from './FormInitialValues';
 import {
   postNewRetrieverForm,
-  addNewRetrieverForm,
+  retrieverForm,
 } from '../../../services/retrieverService';
 import styles from './AddRetrieverForm.module.scss';
 
@@ -47,7 +47,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
 
-      postNewRetrieverForm(addNewRetrieverForm(values));
+      postNewRetrieverForm(retrieverForm(values));
       setShowSuccessMessage(true);
       formik.resetForm();
     },

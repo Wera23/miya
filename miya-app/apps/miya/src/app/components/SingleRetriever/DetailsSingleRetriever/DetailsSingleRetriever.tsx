@@ -6,7 +6,6 @@ import { Typography } from '@mui/material';
 import { DetailsModal } from '../../common';
 
 import styles from './DetailsSingleRetriever.module.scss';
-
 interface SingleRetrieverTypes {
   singleRetriever: Retriever;
   closeModal: () => void;

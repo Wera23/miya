@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Button, Typography } from '@mui/material';
 
@@ -9,13 +9,16 @@ import styles from './RegisterForm.module.scss';
 import '../../../assets/styles/forms.scss';
 
 import { Input, Message } from '../common';
-import { addNewUserForm, postNewUserForm } from '../../services/registerUser';
 import { RegisterFormTypes, RegisterValues } from './RegisterInitialValues';
 import {
   useLoggedInActionsContext,
   useLoggedInContext,
 } from '../../context/IsLoggedIn';
 import React from 'react';
+import {
+  addNewUserForm,
+  postNewUserForm,
+} from '../../services/registerService';
 
 interface RegisterTypes {
   initialValues: RegisterValues;
@@ -25,7 +28,6 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
   const { setLoggedIn } = useLoggedInActionsContext();
   const { loggedIn } = useLoggedInContext();
   const navigate = useNavigate();
-
 
   useEffect(() => {
     return () => {

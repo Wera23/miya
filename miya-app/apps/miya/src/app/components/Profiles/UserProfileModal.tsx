@@ -7,6 +7,7 @@ import { DetailsModal } from '../common';
 
 import styles from './UserProfileModal.module.scss';
 import useNestUser from '../../services/dataHooks/useNestUser';
+import EditRetrieverModal from '../EditRetriever/EditRetrieverModal';
 
 interface UserProfileTypes {
   handleUserProfile?: () => void;
@@ -53,6 +54,7 @@ const UserProfileModal: React.FC<UserProfileTypes> = ({
             </div>
           )}
         </DetailsModal>
+        <EditRetrieverModal />
       </ReactModal>
     ),
     [user]

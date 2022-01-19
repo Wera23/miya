@@ -3,16 +3,15 @@ export interface NewRetrieverValues {
   idId: number;
   nameId: string;
   ageId: string;
-  genderId: string;
+  genderId?: string;
   cityId: string;
   voivodeshipId: string;
   ownerId: string;
   descriptionId: string;
   latId: number;
   longId: number;
-  instagramId: string;
-  facebookId: string;
-  userId: string;
+  instagramId?: string;
+  facebookId?: string;
 }
 
 export const initialValues: NewRetrieverValues = {
@@ -28,7 +27,6 @@ export const initialValues: NewRetrieverValues = {
   longId: 0,
   instagramId: '',
   facebookId: '',
-  userId: '',
 };
 
 export enum RetrieverFormTypes {
@@ -43,5 +41,4 @@ export enum RetrieverFormTypes {
   long = 'longId',
   instagram = 'instagramId',
   facebook = 'facebookId',
-  userId = 'userId'
 }

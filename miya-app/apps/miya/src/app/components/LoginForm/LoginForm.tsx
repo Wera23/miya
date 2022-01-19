@@ -12,7 +12,7 @@ import { LoginFormTypes, LoginValues } from './LoginInitialValues';
 import {
   loginRegisteredUserForm,
   postLoginUserForm,
-} from '../../services/loginUser';
+} from '../../services/loginService';
 import {
   useLoggedInActionsContext,
   useLoggedInContext,

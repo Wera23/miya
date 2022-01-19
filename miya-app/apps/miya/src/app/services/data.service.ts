@@ -33,6 +33,12 @@ class DataService {
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 
+  editSpecificRetriever(id: string, retriever: Retriever): AxiosPromise {
+    return apiService
+      .patch(`/retrievers/${id}`, retriever)
+      .catch((error: AxiosResponse) => Promise.reject(error));
+  }
+
   getRetrievers(): AxiosPromise {
     return apiService
       .get('retrievers')

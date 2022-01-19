@@ -43,23 +43,6 @@ export function App() {
               <Route path="/login" element={<Login />} />
             </Routes>
           </BrowserRouter>
-
-          {/* <AuthProvider>
-<Routes>
-<Route element={<Layout />}>
-  <Route path="/" element={<PublicPage />} />
-  <Route path="/login" element={<LoginPage />} />
-  <Route
-    path="/protected"
-    element={
-      <RequireAuth>
-        <ProtectedPage />
-      </RequireAuth>
-    }
-  />
-</Route>
-</Routes>
-</AuthProvider> */}
         </ModalProvider>
       </ThemeProvider>
     </LoggedContextProvider>
