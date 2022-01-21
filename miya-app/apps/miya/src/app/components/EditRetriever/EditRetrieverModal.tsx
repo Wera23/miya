@@ -1,7 +1,6 @@
 import ReactModal from 'react-modal';
 import { useModal } from 'react-modal-hook';
 import { Button, Typography } from '@mui/material';
-import { editValues } from './EditRetrieverForm/FormEditValues';
 import classnames from 'classnames';
 import EditRetrieverForm from './EditRetrieverForm/EditRetrieverForm';
 
@@ -20,7 +19,6 @@ const EditRetrieverModal: React.FC<EditRetrieverTypes> = ({
         <EditRetrieverForm
           onSubmit={() => alert('onSubmit')}
           closeModal={hideModal}
-          editValues={editValues}
         />
       </ReactModal>
     );

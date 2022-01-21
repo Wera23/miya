@@ -3,15 +3,15 @@ export interface NewRetrieverValues {
   idId: number;
   nameId: string;
   ageId: string;
-  genderId?: string;
+  genderId: string;
   cityId: string;
   voivodeshipId: string;
   ownerId: string;
   descriptionId: string;
   latId: number;
   longId: number;
-  instagramId?: string;
-  facebookId?: string;
+  instagramId: string;
+  facebookId: string;
 }
 
 export const initialValues: NewRetrieverValues = {

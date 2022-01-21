@@ -11,7 +11,8 @@
 
 .detailsModalContent {
   width: 40vw;
-  min-height: 25vw;
+  height: 90vh;
+  // overflow: scroll;
   @include centralize;
   flex-direction: column;
 }

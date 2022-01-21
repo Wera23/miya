@@ -1,13 +1,20 @@
 import { Retriever } from '@miya-app/shared-types';
 import React, { useState, createContext, useContext } from 'react';
+import { useCallback } from 'react';
+import useNestSingleRetriever from '../services/dataHooks/useNestSingleRetriever';
+import { getSpecyficSingleRetriever } from '../services/retrieverService';
+
+const dog = '1640698241110';
 
 interface RetrieverContextProps {
-  retriever: string | undefined;
+  retriever: Retriever | undefined;
 }
 
 interface RetrieverActionsContextProps {
-  setRetriever: React.Dispatch<React.SetStateAction<string | undefined>>;
+  getRetriever: TGetRetriever;
 }
+
+type TGetRetriever = (id: string) => void;
 
 const RetrieverContext = createContext<RetrieverContextProps>(
   {} as RetrieverContextProps
@@ -21,11 +28,20 @@ export const useRetrieverActionsContext = () =>
   useContext(RetrieverActionsContext);
 
 export const RetrieverContextProvider: React.FC = ({ children }) => {
-  const [retriever, setRetriever] = useState<string>();
+  const [retriever, setRetreiver] = useState<Retriever>();
+
+  const getRetriever: TGetRetriever = useCallback((id) => {
+    const loadRetriever = async (): Promise<void> => {
+      const retriever = await getSpecyficSingleRetriever(id);
+      setRetreiver(retriever);
+    };
+
+    loadRetriever();
+  }, []);
 
   return (
     <RetrieverContext.Provider value={{ retriever }}>
-      <RetrieverActionsContext.Provider value={{ setRetriever }}>
+      <RetrieverActionsContext.Provider value={{ getRetriever }}>
         {children}
       </RetrieverActionsContext.Provider>
     </RetrieverContext.Provider>

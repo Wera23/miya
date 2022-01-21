@@ -20,6 +20,7 @@ import '../assets/fontello/css/fontello.css';
 import './app.module.scss';
 import { appTheme } from '../assets/theme';
 import { LoggedContextProvider } from './context/IsLoggedIn';
+import { RetrieverContextProvider } from './context/RetrieverContext';
 
 export function App() {
   useEffect(() => {
@@ -32,19 +33,21 @@ export function App() {
 
   return (
     <LoggedContextProvider>
-      <ThemeProvider theme={appTheme}>
-        <ModalProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<PrivateRoute />}>
-                <Route path="/" element={<Homepage />} />
-              </Route>
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-          </BrowserRouter>
-        </ModalProvider>
-      </ThemeProvider>
+      <RetrieverContextProvider>
+        <ThemeProvider theme={appTheme}>
+          <ModalProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<PrivateRoute />}>
+                  <Route path="/" element={<Homepage />} />
+                </Route>
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+              </Routes>
+            </BrowserRouter>
+          </ModalProvider>
+        </ThemeProvider>
+      </RetrieverContextProvider>
     </LoggedContextProvider>
   );
 }

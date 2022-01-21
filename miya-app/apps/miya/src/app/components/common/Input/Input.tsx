@@ -7,13 +7,13 @@ import './Input.scss';
 
 interface InputTypes {
   inputId: string;
-  label: string;
-  placeholder: string;
+  label: string | number;
+  placeholder: any;
   icon?: string;
   iconClassName?: string;
   inputClassName?: string;
   containerClassName?: string;
-  value: string | number;
+  value: string | number | undefined;
   size: any;
   error?: any;
   onChange: React.EventHandler<React.ChangeEvent<HTMLInputElement>>;

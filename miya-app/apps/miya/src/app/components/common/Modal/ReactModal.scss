@@ -6,12 +6,21 @@
 }
 
 .ReactModal__Content {
-  border-radius: 0;
-  inset-block: auto !important;
-  inset-inline: auto !important;
+  // border-radius: 0;
+  // inset-block: auto !important;
+  // inset-inline: auto !important;
+  // display: flex;
+  // justify-content: center !important;
+  // align-items: center !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+
   display: flex;
   justify-content: center !important;
   align-items: center !important;
+  border-radius: 0;
 }
 
 @media (max-width: 1375px) {

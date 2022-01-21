@@ -1,5 +1,6 @@
-import { Retriever } from '@miya-app/shared-types';
+import { EditRetriever, Retriever } from '@miya-app/shared-types';
 import { NewRetrieverValues } from '../components/AddRetriever/AddRetrieverForm/FormInitialValues';
+import { EditRetrieverValues } from '../components/EditRetriever/EditRetrieverForm/FormEditValues';
 import { dataService } from './data.service';
 
 function retrieverForm(values: NewRetrieverValues): Retriever {
@@ -20,20 +21,17 @@ function retrieverForm(values: NewRetrieverValues): Retriever {
   return retrieverForm;
 }
 
-function edtiTetrieverForm(values: NewRetrieverValues): Retriever {
-  const retrieverForm: Retriever = {
-    id: values.idId,
-    name: values.nameId,
-    age: values.ageId,
-    city: values.cityId,
-    voivodeship: values.voivodeshipId,
-    gender: values.genderId,
-    owner: values.ownerId,
-    description: values.descriptionId,
-    lat: values.latId,
-    long: values.longId,
-    instagram: values.instagramId,
-    facebook: values.facebookId,
+function edtiRetrieverForm(values: EditRetrieverValues): EditRetriever {
+  const retrieverForm: EditRetriever = {
+    name: values?.nameId,
+    age: values?.ageId,
+    city: values?.cityId,
+    voivodeship: values?.voivodeshipId,
+    description: values?.descriptionId,
+    lat: values?.latId,
+    long: values?.longId,
+    instagram: values?.instagramId,
+    facebook: values?.facebookId,
   };
   return retrieverForm;
 }
@@ -62,7 +60,7 @@ async function postNewRetrieverForm(newRetriever: Retriever) {
 
 async function editSpecificRetrieverForm(
   id: string,
-  updateRetriever: Retriever
+  updateRetriever: EditRetriever
 ) {
   await dataService.editSpecificRetriever(id, updateRetriever);
 }
@@ -78,4 +76,5 @@ export {
   getSpecyficSingleRetriever,
   editSpecificRetrieverForm,
   detailsOfTheSpecificRetriever,
+  edtiRetrieverForm,
 };

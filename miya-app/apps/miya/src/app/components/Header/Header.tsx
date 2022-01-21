@@ -1,19 +1,18 @@
 import { FC } from 'react';
 
 import { Typography } from '@mui/material';
-import { AddRetrieverModal, UserProfileModal } from '..';
+import { AddRetrieverModal, UserProfile, RetrieverProfile } from '..';
 
 import { retrieverMapPointPng } from '../../../assets/images';
 import styles from './Header.module.scss';
-import SingleRetrieverProfile from '../Profiles/RetreiverProfile';
 
 const Header: FC = () => {
   return (
     <div className={styles.header}>
       <div className={styles.retrieverAction}>
         <AddRetrieverModal />
-        <UserProfileModal />
-        <SingleRetrieverProfile />
+        <UserProfile />
+        <RetrieverProfile />
       </div>
       <div className={styles.logo}>
         <img src={retrieverMapPointPng} alt="" />

@@ -1,4 +1,4 @@
-import { Retriever, User, UserLogin } from '@miya-app/shared-types';
+import { Retriever, User, UserLogin, EditRetriever } from '@miya-app/shared-types';
 import { AxiosPromise, AxiosResponse } from 'axios';
 import { apiService } from './api.service';
 
@@ -33,7 +33,7 @@ class DataService {
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 
-  editSpecificRetriever(id: string, retriever: Retriever): AxiosPromise {
+  editSpecificRetriever(id: string, retriever: EditRetriever): AxiosPromise {
     return apiService
       .patch(`/retrievers/${id}`, retriever)
       .catch((error: AxiosResponse) => Promise.reject(error));
