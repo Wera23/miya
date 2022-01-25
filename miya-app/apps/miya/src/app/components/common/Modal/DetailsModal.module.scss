@@ -1,26 +1,24 @@
-@mixin centralize {
+@mixin centralizeColumn {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  width: 100%;
 }
 
-.detailsModal {
-  display: flex;
-  flex-direction: column;
+.detailsModal,
+.detailsModalContent,
+.detailsModalForm,
+.detailsClose {
+  @include centralizeColumn;
 }
 
-.detailsModalContent {
-  width: 40vw;
-  height: 90vh;
-  // overflow: scroll;
-  @include centralize;
-  flex-direction: column;
+.detailsModalForm {
+  min-height: 45vh;
 }
 
 .detailsClose {
-  width: 100%;
-  display: flex;
-  justify-content: end;
+  align-items: end;
 }
 
 .detailsNameIcon {

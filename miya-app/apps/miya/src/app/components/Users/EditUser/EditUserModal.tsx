@@ -2,22 +2,19 @@ import ReactModal from 'react-modal';
 import { useModal } from 'react-modal-hook';
 import { Button, Typography } from '@mui/material';
 import classnames from 'classnames';
-import EditRetrieverForm from './EditRetrieverForm/EditRetrieverForm';
+import EditUserForm from './EditUserForm/EditUserForm';
 
-interface EditRetrieverTypes {
-  handleAddRetriever?: () => void;
+interface EditUserTypes {
+  handleEditUser?: () => void;
 }
 
-
-
-const EditRetrieverModal: React.FC<EditRetrieverTypes> = ({
-  handleAddRetriever,
+const EditUserModal: React.FC<EditUserTypes> = ({
+    handleEditUser,
 }) => {
   const [showModal, hideModal] = useModal(() => {
     return (
       <ReactModal isOpen ariaHideApp={false}>
-        <EditRetrieverForm
-          onSubmit={() => alert('onSubmit')}
+        <EditUserForm
           closeModal={hideModal}
         />
       </ReactModal>
@@ -26,17 +23,17 @@ const EditRetrieverModal: React.FC<EditRetrieverTypes> = ({
 
   const handleClick = (): void => {
     showModal();
-    handleAddRetriever && handleAddRetriever();
+    handleEditUser && handleEditUser();
   };
 
   return (
     <div>
       <Button onClick={handleClick}>
         <i className={classnames('icon-paw')} />
-        <Typography> Edytuj psa</Typography>
+        <Typography> Edytuj Użytkownika</Typography>
       </Button>
     </div>
   );
 };
 
-export default EditRetrieverModal;
+export default EditUserModal;

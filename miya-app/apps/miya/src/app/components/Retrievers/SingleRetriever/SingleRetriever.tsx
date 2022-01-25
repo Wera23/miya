@@ -3,7 +3,7 @@ import { useModal } from 'react-modal-hook';
 import { Button, Typography } from '@mui/material';
 
 import styles from './SingleRetriever.module.scss';
-import { DetailsSingleRetriever } from '..';
+import { DetailsSingleRetriever } from '../..';
 
 import { Retriever } from '@miya-app/shared-types';
 

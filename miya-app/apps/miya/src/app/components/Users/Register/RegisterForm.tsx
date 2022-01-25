@@ -5,20 +5,19 @@ import { useNavigate } from 'react-router-dom';
 
 import { Button, Typography } from '@mui/material';
 
-import styles from './RegisterForm.module.scss';
-import '../../../assets/styles/forms.scss';
+import '../../../../assets/styles/forms.scss';
 
-import { Input, Message } from '../common';
+import { Input, Message } from '../../common';
 import { RegisterFormTypes, RegisterValues } from './RegisterInitialValues';
 import {
   useLoggedInActionsContext,
   useLoggedInContext,
-} from '../../context/IsLoggedIn';
+} from '../../../context/IsLoggedIn';
 import React from 'react';
 import {
   addNewUserForm,
   postNewUserForm,
-} from '../../services/registerService';
+} from '../../../services/registerService';
 
 interface RegisterTypes {
   initialValues: RegisterValues;
@@ -146,7 +145,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
           <Typography variant="h2" mb={4}>
             Witamy!
           </Typography>
-          <div className={styles.successMessage}>
+          <div>
             <Message
               messageText="Twoje konto zostało dodane"
               colorMessage="green"

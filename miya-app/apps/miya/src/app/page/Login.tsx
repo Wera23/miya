@@ -1,10 +1,10 @@
 import { useLoggedInContext } from '../context/IsLoggedIn';
 
 import { Homepage } from '.';
-import LoginForm from '../components/LoginForm/LoginForm';
+import LoginForm from '../components/Users/LoginForm/LoginForm';
 
 import styles from './pages.module.scss';
-import { initialValues } from '../components/Register/RegisterInitialValues';
+import { initialValues } from '../components/Users/Register/RegisterInitialValues';
 import { registerBackground } from '../../assets/images';
 
 

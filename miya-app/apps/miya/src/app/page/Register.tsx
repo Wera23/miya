@@ -2,7 +2,7 @@ import { Homepage } from '.';
 import { registerBackground } from '../../assets/images';
 import { RegisterForm } from '../components';
 
-import { initialValues } from '../components/Register/RegisterInitialValues';
+import { initialValues } from '../components/Users/Register/RegisterInitialValues';
 import { useLoggedInContext } from '../context/IsLoggedIn';
 import styles from './pages.module.scss';
 

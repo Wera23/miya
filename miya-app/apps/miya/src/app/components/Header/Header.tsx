@@ -14,10 +14,10 @@ const Header: FC = () => {
         <UserProfile />
         <RetrieverProfile />
       </div>
-      <div className={styles.logo}>
+      {/* <div className={styles.logo}>
         <img src={retrieverMapPointPng} alt="" />
         <Typography variant="h1">Retrievers</Typography>
-      </div>
+      </div> */}
     </div>
   );
 };

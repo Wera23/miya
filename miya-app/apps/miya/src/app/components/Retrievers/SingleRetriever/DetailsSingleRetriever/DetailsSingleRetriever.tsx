@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { Retriever } from '@miya-app/shared-types';
 
 import { Typography } from '@mui/material';
-import { DetailsModal } from '../../common';
+import { DetailsModal } from '../../../common';
 
 import styles from './DetailsSingleRetriever.module.scss';
 interface SingleRetrieverTypes {

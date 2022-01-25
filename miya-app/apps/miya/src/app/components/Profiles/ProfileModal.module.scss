@@ -1,0 +1,22 @@
+.detailsProfileLine {
+  display: flex;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.userProfileLine {
+  flex-direction: column;
+}
+
+.descriptionLine {
+  flex-direction: column;
+}
+
+.profileContent {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 30px;
+  width: 80%;
+}

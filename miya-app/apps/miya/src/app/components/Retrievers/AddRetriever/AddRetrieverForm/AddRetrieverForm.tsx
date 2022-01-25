@@ -3,13 +3,13 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { Button } from '@mui/material';
-import { DetailsModal, Input, Message } from '../../common';
+import { DetailsModal, Input, Message } from '../../../common';
 
 import { NewRetrieverValues, RetrieverFormTypes } from './FormInitialValues';
 import {
   postNewRetrieverForm,
   retrieverForm,
-} from '../../../services/retrieverService';
+} from '../../../../services/retrieverService';
 import styles from './AddRetrieverForm.module.scss';
 
 interface AddRetrieverTypes {
@@ -63,7 +63,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
     >
       {!showSuccessMessage && (
         <form
-          className={styles.addRetrieverForm}
+          className={styles.retrieverForm}
           onSubmit={formik.handleSubmit}
         >
           <Input
@@ -171,7 +171,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             size="small"
           />
 
-          <div className={styles.addRetrieverCoordinates}>
+          <div className={styles.retrieverCoordinates}>
             <Input
               inputId={RetrieverFormTypes.lat}
               label="Lat"
@@ -220,7 +220,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             size="small"
           />
 
-          <div className={styles.addRetrieverButton}>
+          <div className={styles.retrieverButton}>
             <Button variant="contained" color="success" type="submit">
               Dodaj Goldena
             </Button>

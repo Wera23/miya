@@ -1,4 +1,31 @@
+.homepage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 
+.homepageMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 55;
+  // background-color: #ffcb3d
+
+  background-color: #ffd587;
+}
+
+.homepageLogo {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  z-index: 55;
+}
+
+.homepageMap {
+  box-sizing: border-box;
+}
 
 .registerPage {
   display: flex;

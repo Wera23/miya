@@ -1,5 +1,5 @@
 import { UserLogin } from '@miya-app/shared-types';
-import { LoginValues } from '../components/LoginForm/LoginInitialValues';
+import { LoginValues } from '../components/Users/LoginForm/LoginInitialValues';
 import { dataService } from './data.service';
 
 function loginRegisteredUserForm(values: LoginValues): UserLogin {

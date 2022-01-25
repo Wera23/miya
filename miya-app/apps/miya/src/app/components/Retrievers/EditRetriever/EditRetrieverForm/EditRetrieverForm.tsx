@@ -3,21 +3,20 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { Button } from '@mui/material';
-import { DetailsModal, Input, Message } from '../../common';
+import { DetailsModal, Input, Message } from '../../../common';
 import styles from './EditRetrieverForm.module.scss';
 
-import {  RetrieverFormTypes } from './FormEditValues';
+import { RetrieverFormTypes } from './FormEditValues';
 import {
   edtiRetrieverForm,
   editSpecificRetrieverForm,
-} from '../../../services/retrieverService';
+} from '../../../../services/retrieverService';
 import {
   useRetrieverActionsContext,
   useRetrieverContext,
-} from '../../../context/RetrieverContext';
+} from '../../../../context/RetrieverContext';
 
 interface EditRetrieverTypes {
-  onSubmit: () => void;
   closeModal: () => void;
 }
 
@@ -69,12 +68,8 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
       header="Edytuj Golden Retrievera"
       icon="paw"
     >
-      <h1>AAA {retriever?.city} </h1>
       {!showSuccessMessage && retriever && (
-        <form
-          className={styles.addRetrieverForm}
-          onSubmit={formik.handleSubmit}
-        >
+        <form className={styles.retrieverForm} onSubmit={formik.handleSubmit}>
           <Input
             inputId={RetrieverFormTypes.name}
             placeholder="Imię psa"
@@ -125,7 +120,7 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
             size="small"
           />
 
-          <div className={styles.addRetrieverCoordinates}>
+          <div className={styles.retrieverCoordinates}>
             <Input
               inputId={RetrieverFormTypes.lat}
               placeholder="Podaj współrzędną lat"
@@ -167,7 +162,7 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
             size="small"
           />
 
-          <div className={styles.addRetrieverButton}>
+          <div className={styles.retrieverButton}>
             <Button variant="contained" color="success" type="submit">
               Edytuj Goldena
             </Button>

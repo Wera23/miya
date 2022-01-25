@@ -20,10 +20,10 @@ const DetailsModal: FC<ModalTypes> = ({
 }) => {
   return (
     <div className={styles.detailsModal}>
-      <i
-        className={classnames('icon-cancel', styles.detailsClose)}
+    <div className={styles.detailsClose}>  <i
+        className={classnames('icon-cancel', styles.detailsIconClose)}
         onClick={closeModal}
-      />
+      /></div>
 
       <div className={styles.detailsModalContent}>
         <Typography variant="h2" mb={3}>
@@ -31,7 +31,7 @@ const DetailsModal: FC<ModalTypes> = ({
           <i className={classnames(`icon-${icon}`, styles.detailsNameIcon)} />
         </Typography>
 
-        {children}
+        <div className={styles.detailsModalForm}>{children}</div>
       </div>
     </div>
   );

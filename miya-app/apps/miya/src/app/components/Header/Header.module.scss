@@ -2,7 +2,6 @@
 .header{
   display: flex;
   flex-direction: column; 
-  margin: 40px 0;
 
 }
 .logo {
@@ -13,6 +12,6 @@
 
 .retrieverAction{
   display: flex;
-  justify-content: end;
   margin-right: 50px;
+  flex-direction: column;
 }

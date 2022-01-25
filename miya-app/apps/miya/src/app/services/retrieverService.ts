@@ -1,10 +1,10 @@
 import { EditRetriever, Retriever } from '@miya-app/shared-types';
-import { NewRetrieverValues } from '../components/AddRetriever/AddRetrieverForm/FormInitialValues';
-import { EditRetrieverValues } from '../components/EditRetriever/EditRetrieverForm/FormEditValues';
+import { NewRetrieverValues } from '../components/Retrievers/AddRetriever/AddRetrieverForm/FormInitialValues';
+import { EditRetrieverValues } from '../components/Retrievers/EditRetriever/EditRetrieverForm/FormEditValues';
 import { dataService } from './data.service';
 
 function retrieverForm(values: NewRetrieverValues): Retriever {
-  const retrieverForm: Retriever = {
+  const newRetriever: Retriever = {
     id: values.idId,
     name: values.nameId,
     age: values.ageId,
@@ -18,11 +18,11 @@ function retrieverForm(values: NewRetrieverValues): Retriever {
     instagram: values.instagramId,
     facebook: values.facebookId,
   };
-  return retrieverForm;
+  return newRetriever;
 }
 
 function edtiRetrieverForm(values: EditRetrieverValues): EditRetriever {
-  const retrieverForm: EditRetriever = {
+  const updateRetriever: EditRetriever = {
     name: values?.nameId,
     age: values?.ageId,
     city: values?.cityId,
@@ -33,7 +33,7 @@ function edtiRetrieverForm(values: EditRetrieverValues): EditRetriever {
     instagram: values?.instagramId,
     facebook: values?.facebookId,
   };
-  return retrieverForm;
+  return updateRetriever;
 }
 
 function detailsOfTheSpecificRetriever(retriever: Retriever): Retriever {

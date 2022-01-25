@@ -1,7 +1,6 @@
 import { Retriever } from '@miya-app/shared-types';
 import React, { useState, createContext, useContext } from 'react';
 import { useCallback } from 'react';
-import useNestSingleRetriever from '../services/dataHooks/useNestSingleRetriever';
 import { getSpecyficSingleRetriever } from '../services/retrieverService';
 
 const dog = '1640698241110';

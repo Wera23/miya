@@ -1,4 +1,4 @@
-import { Retriever, User, UserLogin, EditRetriever } from '@miya-app/shared-types';
+import { Retriever, User, UserLogin, EditRetriever, EditUser } from '@miya-app/shared-types';
 import { AxiosPromise, AxiosResponse } from 'axios';
 import { apiService } from './api.service';
 
@@ -18,6 +18,12 @@ class DataService {
   postLoginUser(userLogin: UserLogin): AxiosPromise {
     return apiService
       .post(`auth/login`, userLogin)
+      .catch((error: AxiosResponse) => Promise.reject(error));
+  }
+
+  editUser(user: EditUser): AxiosPromise {
+    return apiService
+      .patch(`users/current`, user)
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 

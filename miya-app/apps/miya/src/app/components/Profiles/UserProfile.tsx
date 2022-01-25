@@ -4,63 +4,43 @@ import { useModal } from 'react-modal-hook';
 
 import { Button, Typography } from '@mui/material';
 import { DetailsModal } from '../common';
+import { EditUserModal, RetrieverProfile } from '..';
 
-import styles from './UserProfileModal.module.scss';
+import styles from './ProfileModal.module.scss';
 import useNestUser from '../../services/dataHooks/useNestUser';
-import EditRetrieverModal from '../EditRetriever/EditRetrieverModal';
+import { ProfileTypes, userProfile } from './ProfileData';
+import { User } from '@miya-app/shared-types';
 
 interface UserProfileTypes {
   handleUserProfile?: () => void;
 }
 
-const UserProfile: React.FC<UserProfileTypes> = ({
-  handleUserProfile,
-}) => {
+const UserProfile: React.FC<UserProfileTypes> = ({ handleUserProfile }) => {
   const { user } = useNestUser();
 
   const [showModal, hideModal] = useModal(
     () => (
       <ReactModal isOpen ariaHideApp={false}>
         <DetailsModal closeModal={hideModal} header="Twoje konto" icon="cog">
-          <div className={styles.userProfileContent}>
-            {user?.userDescription && (
+          <div className={styles.profileContent}>
+            {userProfile.map((userSimpleData: ProfileTypes) => (
               <div
                 className={classnames(
-                  styles.detailsUserLine,
-                  styles.userDescriptionLine
+                  styles.detailsProfileLine,
+                  styles.userProfileLine
                 )}
               >
                 <Typography variant="body2" pr={1}>
-                  O mnie:
+                  {userSimpleData.name}
                 </Typography>
-                <Typography variant="body1">{user.userDescription}</Typography>
-              </div>
-            )}
-            <div className={styles.detailsUserLine}>
-              <Typography variant="body2" pr={1}>
-                Mój pies:
-              </Typography>
-              <Typography variant="body1">Miya</Typography>
-            </div>
-            {user?.dateOfBirth && (
-              <div className={styles.detailsUserLine}>
-                <Typography variant="body2" pr={1}>
-                  Data moich urodzin:
+                <Typography variant="body1">
+                  {user?.[userSimpleData.value as keyof User]}
                 </Typography>
-                <Typography variant="body1">{user.dateOfBirth}</Typography>
               </div>
-            )}
-
-            {user?.userAddress && (
-              <div className={styles.detailsUserLine}>
-                <Typography variant="body2" pr={1}>
-                  Moje miasto:
-                </Typography>
-                <Typography variant="body1">{user.userAddress}</Typography>
-              </div>
-            )}
-            <EditRetrieverModal />
+            ))}
           </div>
+          <RetrieverProfile />
+          <EditUserModal />
         </DetailsModal>
       </ReactModal>
     ),

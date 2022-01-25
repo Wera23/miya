@@ -1,5 +1,3 @@
-import { Retriever } from "@miya-app/shared-types";
-
 export interface RegisterValues {
   userId: number;
   usernameId: string;

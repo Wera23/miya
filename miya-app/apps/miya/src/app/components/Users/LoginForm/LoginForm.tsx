@@ -4,19 +4,19 @@ import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Typography } from '@mui/material';
-import { ButtonForm, Input, Message } from '../common';
+import { ButtonForm, Input, Message } from '../../common';
 
 import styles from './LoginForm.module.scss';
-import '../../../assets/styles/forms.scss';
+import '../../../../assets/styles/forms.scss';
 import { LoginFormTypes, LoginValues } from './LoginInitialValues';
 import {
   loginRegisteredUserForm,
   postLoginUserForm,
-} from '../../services/loginService';
+} from '../../../services/loginService';
 import {
   useLoggedInActionsContext,
   useLoggedInContext,
-} from '../../context/IsLoggedIn';
+} from '../../../context/IsLoggedIn';
 
 interface LoginTypes {
   initialValues: LoginValues;

@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.addRetriever {
+.retriever {
   @include centralize;
   flex-direction: column;
   width: 40vw;
@@ -15,27 +15,27 @@
   }
 }
 
-.addRetrieverForm {
+.retrieverForm {
   display: flex;
   flex-direction: column;
   width: 75%;
 }
 
-.addRetrieverButton {
+.retrieverButton {
   @include centralize;
   margin-top: 40px;
 }
 
-.addRetrieverClose {
+.retrieverClose {
   width: 100%;
   display: flex;
   justify-content: end;
 }
 
-.addRetrieverCoordinates {
+.retrieverCoordinates {
   display: flex;
 }
 
-.successMessage{
+.successMessage {
   margin-top: 20px;
 }
