@@ -15,7 +15,10 @@
   align-items: center !important;
   border-radius: 0;
   width: 40vw !important;
-  border: 1px solid orange;
+}
+
+.ReactModal__Overlay--after-open{
+  background-color: rgba(31, 128, 39, 0.37) !important;
 }
 
 @media (max-width: 1375px) {

@@ -4,6 +4,11 @@
   align-items: center;
 }
 
+@mixin centralizeColumn {
+  @include centralize;
+  flex-direction: column;
+}
+
 @mixin shadow {
   -webkit-box-shadow: 2px 2px 15px 0px rgba(66, 68, 90, 0.19);
   -moz-box-shadow: 2px 2px 15px 0px rgba(66, 68, 90, 0.19);

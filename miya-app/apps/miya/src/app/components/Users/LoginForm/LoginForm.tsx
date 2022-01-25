@@ -108,13 +108,17 @@ const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
         </React.Fragment>
       )}
 
-      <div>
-        <Message
-          colorMessage="error"
-          messageText="Jeśli nie posiadasz konta, zarejestruj się"
-        />{' '}
-        <Link to="/register">Rejestracja</Link>
-      </div>
+      <Typography
+        variant="body1"
+        color="primary"
+        className={styles.registerMessage}
+      >
+        Jeśli nie posiadasz konta,
+        <Link to="/register" className={styles.registerLink}>
+          <Typography variant="body2" />
+          zarejestruj się
+        </Link>
+      </Typography>
 
       <div className={styles.wrongData}>
         {wrongData && (

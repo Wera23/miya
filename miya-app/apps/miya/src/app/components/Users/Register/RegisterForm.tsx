@@ -1,19 +1,18 @@
+import React from 'react';
 import { FC, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
 import { Button, Typography } from '@mui/material';
+import { Input, Message } from '../../common';
 
 import '../../../../assets/styles/forms.scss';
-
-import { Input, Message } from '../../common';
 import { RegisterFormTypes, RegisterValues } from './RegisterInitialValues';
 import {
   useLoggedInActionsContext,
   useLoggedInContext,
 } from '../../../context/IsLoggedIn';
-import React from 'react';
 import {
   addNewUserForm,
   postNewUserForm,
@@ -41,6 +40,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
     userPasswordId: Yup.string().required('To pole jest wymagane'),
     dateOfBirthId: Yup.string(),
     userDescriptionId: Yup.string(),
+    userAddressId: Yup.string(),
   });
 
   const formik = useFormik({
@@ -107,7 +107,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
             <Input
               inputId={RegisterFormTypes.userAddress}
               label="Twoje miasto i województwo"
-              value={formik.values.userDescriptionId}
+              value={formik.values.userAddressId}
               placeholder="Podaj swoje miasto i województwo"
               onChange={formik.handleChange}
               icon="paw"
@@ -148,7 +148,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
           <div>
             <Message
               messageText="Twoje konto zostało dodane"
-              colorMessage="green"
+              colorMessage="success"
             />
           </div>
         </div>

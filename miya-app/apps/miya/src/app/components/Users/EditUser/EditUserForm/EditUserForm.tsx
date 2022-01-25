@@ -82,7 +82,7 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
           <Input
             inputId={EditUserFormTypes.userAddress}
             label="Twoje miasto i województwo"
-            value={formik.values.userDescriptionId}
+            value={formik.values.userAddressId}
             placeholder="Podaj swoje miasto i województwo"
             onChange={formik.handleChange}
             icon="paw"

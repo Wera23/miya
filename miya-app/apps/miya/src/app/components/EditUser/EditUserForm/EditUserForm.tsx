@@ -3,11 +3,14 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { Button } from '@mui/material';
+import { DetailsModal, Input, Message } from '../../common';
 
 import '../../../../assets/styles/forms.scss';
 import useNestUser from '../../../services/dataHooks/useNestUser';
-import { editUserForm, updateUserForm } from '../../../services/registerService';
-import { DetailsModal, Input, Message } from '../../common';
+import {
+  editUserForm,
+  updateUserForm,
+} from '../../../services/registerService';
 import { EditUserFormTypes } from '../../Users/EditUser/EditUserForm/FormEditValues';
 
 interface EditUserTypes {
@@ -39,7 +42,6 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
 
     onSubmit: (values) => {
       updateUserForm(editUserForm(values));
-      console.log('user', user);
       setShowSuccessMessage(true);
       formik.resetForm();
     },
@@ -77,7 +79,7 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
           <Input
             inputId={EditUserFormTypes.userAddress}
             label="Twoje miasto i województwo"
-            value={formik.values.userDescriptionId}
+            value={formik.values.userAddressId}
             placeholder="Podaj swoje miasto i województwo"
             onChange={formik.handleChange}
             icon="paw"
@@ -100,9 +102,9 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
       )}
 
       {showSuccessMessage && (
-        <div>
+        <div className="actionFormMessage">
           <Message
-            messageText="Dane Twojego psa zostały zedytowane"
+            messageText="Twojego dane zostały zedytowane"
             colorMessage="green"
           />
           <Button

@@ -1,6 +1,7 @@
 import ReactModal from 'react-modal';
-import classnames from 'classnames';
+import { useEffect } from 'react';
 import { useModal } from 'react-modal-hook';
+import classnames from 'classnames';
 
 import { Button, Typography } from '@mui/material';
 import { DetailsModal } from '../common';
@@ -10,18 +11,30 @@ import styles from './ProfileModal.module.scss';
 import useNestUser from '../../services/dataHooks/useNestUser';
 import { ProfileTypes, userProfile } from './ProfileData';
 import { User } from '@miya-app/shared-types';
+import {
+  useIsTransparentActionsContext,
+  useIsTransparentContext,
+} from '../../context/IsTransparent';
 
-interface UserProfileTypes {
-  handleUserProfile?: () => void;
-}
-
-const UserProfile: React.FC<UserProfileTypes> = ({ handleUserProfile }) => {
+const UserProfile: React.FC = () => {
   const { user } = useNestUser();
+  const { isTransparent } = useIsTransparentContext();
+  const { setIsTransparent } = useIsTransparentActionsContext();
 
-  const [showModal, hideModal] = useModal(
-    () => (
+  useEffect(() => {
+    return () => {
+      setIsTransparent(false);
+    };
+  }, [setIsTransparent]);
+
+  const [showModal, hideModal] = useModal(() => {
+    const actionsModal = () => {
+      hideModal && hideModal();
+      setIsTransparent(false);
+    };
+    return (
       <ReactModal isOpen ariaHideApp={false}>
-        <DetailsModal closeModal={hideModal} header="Twoje konto" icon="cog">
+        <DetailsModal closeModal={actionsModal} header="Twoje konto" icon="cog">
           <div className={styles.profileContent}>
             {userProfile.map((userSimpleData: ProfileTypes) => (
               <div
@@ -43,13 +56,12 @@ const UserProfile: React.FC<UserProfileTypes> = ({ handleUserProfile }) => {
           <EditUserModal />
         </DetailsModal>
       </ReactModal>
-    ),
-    [user]
-  );
+    );
+  }, [user]);
 
   const handleClick = (): void => {
     showModal();
-    handleUserProfile && handleUserProfile();
+    setIsTransparent(true);
   };
 
   return (

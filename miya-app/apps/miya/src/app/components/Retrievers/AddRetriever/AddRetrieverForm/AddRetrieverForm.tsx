@@ -12,8 +12,7 @@ import {
 } from '../../../../services/retrieverService';
 import styles from './AddRetrieverForm.module.scss';
 
-interface AddRetrieverTypes {
-  onSubmit: () => void;
+interface AddRetrieverTypes {  
   closeModal: () => void;
   initialValues: NewRetrieverValues;
 }
@@ -62,10 +61,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
       icon="paw"
     >
       {!showSuccessMessage && (
-        <form
-          className={styles.retrieverForm}
-          onSubmit={formik.handleSubmit}
-        >
+        <form className={styles.retrieverForm} onSubmit={formik.handleSubmit}>
           <Input
             inputId={RetrieverFormTypes.name}
             label="Imię"

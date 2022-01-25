@@ -125,7 +125,7 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
               inputId={RetrieverFormTypes.lat}
               placeholder="Podaj współrzędną lat"
               value={formik.values.latId}
-              label={retriever.lat}
+              label="Lat"
               onChange={formik.handleChange}
               icon="paw"
               size="small"
@@ -135,7 +135,7 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
               inputId={RetrieverFormTypes.long}
               placeholder="Podaj współrzędną long"
               value={formik.values.longId}
-              label={retriever.long}
+              label="Long"
               onChange={formik.handleChange}
               icon="paw"
               size="small"
@@ -171,12 +171,13 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
       )}
 
       {showSuccessMessage && (
-        <div className={styles.successMessage}>
+        <div className="actionFormMessage">
           <Message
             messageText="Dane Twojego psa zostały zedytowane"
             colorMessage="green"
           />
           <Button
+            className="actionFormButton"
             onClick={closeModal}
             variant="contained"
             color="success"

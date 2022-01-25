@@ -21,6 +21,7 @@ import './app.module.scss';
 import { appTheme } from '../assets/theme';
 import { LoggedContextProvider } from './context/IsLoggedIn';
 import { RetrieverContextProvider } from './context/RetrieverContext';
+import { TransparentContextProvider } from './context/IsTransparent';
 
 export function App() {
   useEffect(() => {
@@ -34,19 +35,21 @@ export function App() {
   return (
     <LoggedContextProvider>
       <RetrieverContextProvider>
-        <ThemeProvider theme={appTheme}>
-          <ModalProvider>
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<PrivateRoute />}>
-                  <Route path="/" element={<Homepage />} />
-                </Route>
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-              </Routes>
-            </BrowserRouter>
-          </ModalProvider>
-        </ThemeProvider>
+        <TransparentContextProvider>
+          <ThemeProvider theme={appTheme}>
+            <ModalProvider>
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<PrivateRoute />}>
+                    <Route path="/" element={<Homepage />} />
+                  </Route>
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/login" element={<Login />} />
+                </Routes>
+              </BrowserRouter>
+            </ModalProvider>
+          </ThemeProvider>
+        </TransparentContextProvider>
       </RetrieverContextProvider>
     </LoggedContextProvider>
   );

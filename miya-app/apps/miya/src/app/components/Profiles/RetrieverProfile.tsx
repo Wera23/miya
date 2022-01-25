@@ -14,25 +14,39 @@ import {
 } from '../../context/RetrieverContext';
 import { retrieverProfile, ProfileTypes } from './ProfileData';
 import { Retriever } from '@miya-app/shared-types';
+import {
+  useIsTransparentActionsContext,
+  useIsTransparentContext,
+} from '../../context/IsTransparent';
 
-interface UserProfileTypes {
-  handleRetrieverProfile?: () => void;
-}
-
-const RetrieverProfile: React.FC<UserProfileTypes> = ({
-  handleRetrieverProfile,
-}) => {
+const RetrieverProfile: React.FC = () => {
   const { retriever } = useRetrieverContext();
   const { getRetriever } = useRetrieverActionsContext();
+  const { isTransparent } = useIsTransparentContext();
+  const { setIsTransparent } = useIsTransparentActionsContext();
+
+  useEffect(() => {
+    return () => {
+      setIsTransparent(false);
+    };
+  }, [setIsTransparent]);
 
   useEffect(() => {
     getRetriever('1640698241110');
   }, [getRetriever]);
 
-  const [showModal, hideModal] = useModal(
-    () => (
+  const [showModal, hideModal] = useModal(() => {
+    const actionsModal = () => {
+      hideModal && hideModal();
+      setIsTransparent(false);
+    };
+    return (
       <ReactModal isOpen ariaHideApp={false}>
-        <DetailsModal closeModal={hideModal} header="Twój Retriever" icon="cog">
+        <DetailsModal
+          closeModal={actionsModal}
+          header="Twój Retriever"
+          icon="cog"
+        >
           <div className={styles.profileContent}>
             {retrieverProfile.map((retrieverSimpleData: ProfileTypes) => (
               <div className={styles.detailsProfileLine}>
@@ -48,13 +62,12 @@ const RetrieverProfile: React.FC<UserProfileTypes> = ({
           <EditRetrieverModal />
         </DetailsModal>
       </ReactModal>
-    ),
-    [retriever]
-  );
+    );
+  }, [retriever]);
 
   const handleClick = (): void => {
     showModal();
-    handleRetrieverProfile && handleRetrieverProfile();
+    setIsTransparent(true);
   };
 
   return (

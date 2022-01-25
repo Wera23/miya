@@ -3,13 +3,11 @@
 @import './mixins.scss';
 
 .actionForm {
-  width: 40vw;
-  height: 40vw;
-  @include centralize;
-  flex-direction: column;
-  background-color: $white;
-  background-color: #f7d276;
-  margin-left: 6vw;
+  padding: 4rem;
+  min-width: 22vw;
+  @include centralizeColumn;
+  background-size: cover;
+  background-color: $primary;
   @include shadow;
 }
 
@@ -19,7 +17,25 @@
   width: 75%;
 }
 
+.actionFormMessage {
+  @include centralizeColumn;
+}
+
 .actionFormButton {
   @include centralize;
   margin-top: 40px;
+}
+
+
+@media (max-width: 1375px) {
+  .actionForm {
+    width: 35vw;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .actionForm {
+    width: 85vw;
+  }
 }

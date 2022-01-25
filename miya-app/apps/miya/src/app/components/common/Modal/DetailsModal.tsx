@@ -10,6 +10,7 @@ interface ModalTypes {
   closeModal: () => void;
   icon?: string;
   header?: string;
+  handleActionModal?: () => void;
 }
 
 const DetailsModal: FC<ModalTypes> = ({
@@ -18,12 +19,18 @@ const DetailsModal: FC<ModalTypes> = ({
   header,
   children,
 }) => {
+  const clickActionModal = () => {
+    closeModal && closeModal();    
+  };
+
   return (
     <div className={styles.detailsModal}>
-    <div className={styles.detailsClose}>  <i
-        className={classnames('icon-cancel', styles.detailsIconClose)}
-        onClick={closeModal}
-      /></div>
+      <div className={styles.detailsClose}>
+        <i
+          className={classnames('icon-cancel', styles.detailsIconClose)}
+          onClick={clickActionModal}
+        />
+      </div>
 
       <div className={styles.detailsModalContent}>
         <Typography variant="h2" mb={3}>

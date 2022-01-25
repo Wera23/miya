@@ -1,9 +1,6 @@
 import { FC } from 'react';
 
-import { Typography } from '@mui/material';
 import { AddRetrieverModal, UserProfile, RetrieverProfile } from '..';
-
-import { retrieverMapPointPng } from '../../../assets/images';
 import styles from './Header.module.scss';
 
 const Header: FC = () => {
@@ -14,10 +11,6 @@ const Header: FC = () => {
         <UserProfile />
         <RetrieverProfile />
       </div>
-      {/* <div className={styles.logo}>
-        <img src={retrieverMapPointPng} alt="" />
-        <Typography variant="h1">Retrievers</Typography>
-      </div> */}
     </div>
   );
 };

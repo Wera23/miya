@@ -1,23 +1,38 @@
-import ReactModal from 'react-modal';
+import { useEffect } from 'react';
 import { useModal } from 'react-modal-hook';
-import { Button, Typography } from '@mui/material';
-import { AddRetrieverForm } from '../..';
-import { initialValues } from "./AddRetrieverForm/FormInitialValues"
 import classnames from 'classnames';
 
-interface AddRetrieverTypes {
-  handleAddRetriever?: () => void;
-}
+import ReactModal from 'react-modal';
+import { Button, Typography } from '@mui/material';
 
-const AddRetrieverModal: React.FC<AddRetrieverTypes> = ({
-  handleAddRetriever,
-}) => {
+import { initialValues } from './AddRetrieverForm/FormInitialValues';
+import { AddRetrieverForm } from '../..';
+import {
+  useIsTransparentActionsContext,
+  useIsTransparentContext,
+} from '../../../context/IsTransparent';
+import styles from './AddRetrieverModel.module.scss';
+
+const AddRetrieverModal: React.FC = () => {
+  const { isTransparent } = useIsTransparentContext();
+  const { setIsTransparent } = useIsTransparentActionsContext();
+
+  useEffect(() => {
+    return () => {
+      setIsTransparent(false);
+    };
+  }, [setIsTransparent]);
+
   const [showModal, hideModal] = useModal(() => {
+    const actionsModal = () => {
+      hideModal && hideModal();
+      setIsTransparent(false);
+    };
+
     return (
       <ReactModal isOpen ariaHideApp={false}>
         <AddRetrieverForm
-          onSubmit={() => alert('onSubmit')}
-          closeModal={hideModal}
+          closeModal={actionsModal}
           initialValues={initialValues}
         />
       </ReactModal>
@@ -26,16 +41,18 @@ const AddRetrieverModal: React.FC<AddRetrieverTypes> = ({
 
   const handleClick = (): void => {
     showModal();
-    handleAddRetriever && handleAddRetriever();
+    setIsTransparent(true);
   };
 
   return (
-    <div>
-      <Button onClick={handleClick}>
-        <i className={classnames('icon-paw')} />
-        <Typography> Dodaj psa</Typography>
-      </Button>
-    </div>
+    <Button onClick={handleClick}>
+      <i className={classnames('icon-paw')} />
+      <Typography
+        className={classnames(isTransparent && styles.isTransparentColor)}
+      >
+        Dodaj psa
+      </Typography>
+    </Button>
   );
 };
 
