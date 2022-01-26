@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import { TextField } from '@mui/material';
+import { makeStyles, TextField } from '@mui/material';
 
 import './Input.scss';
 
@@ -45,6 +45,7 @@ const TextInput: React.FC<InputTypes> = ({
         size={size}
         error={error}
         fullWidth
+        color="success"
       />
     </div>
   );

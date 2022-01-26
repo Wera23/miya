@@ -21,9 +21,15 @@
   @include centralizeColumn;
 }
 
-.actionFormButton {
+.buttonOverlay {
   @include centralize;
-  margin-top: 40px;
+  margin: 30px 0;
+}
+
+.basicButtonOveraly {
+  width: 100%;
+  margin: 30px 0;
+  @include centralize;
 }
 
 

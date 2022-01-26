@@ -1,20 +1,14 @@
+import ReactModal from 'react-modal';
 import { useEffect } from 'react';
 import { useModal } from 'react-modal-hook';
-import classnames from 'classnames';
 
-import ReactModal from 'react-modal';
-import { Button, Typography } from '@mui/material';
+import { MenuButton } from '../../common';
+import { AddRetrieverForm } from '../..';
 
 import { initialValues } from './AddRetrieverForm/FormInitialValues';
-import { AddRetrieverForm } from '../..';
-import {
-  useIsTransparentActionsContext,
-  useIsTransparentContext,
-} from '../../../context/IsTransparent';
-import styles from './AddRetrieverModel.module.scss';
+import { useIsTransparentActionsContext } from '../../../context/IsTransparent';
 
 const AddRetrieverModal: React.FC = () => {
-  const { isTransparent } = useIsTransparentContext();
   const { setIsTransparent } = useIsTransparentActionsContext();
 
   useEffect(() => {
@@ -45,14 +39,11 @@ const AddRetrieverModal: React.FC = () => {
   };
 
   return (
-    <Button onClick={handleClick}>
-      <i className={classnames('icon-paw')} />
-      <Typography
-        className={classnames(isTransparent && styles.isTransparentColor)}
-      >
-        Dodaj psa
-      </Typography>
-    </Button>
+    <MenuButton
+      handleClickButton={handleClick}
+      buttonText="Dodaj psa"
+      buttonIcon="paw"
+    />
   );
 };
 

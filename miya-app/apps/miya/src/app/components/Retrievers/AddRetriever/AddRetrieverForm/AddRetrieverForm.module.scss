@@ -15,16 +15,6 @@
   }
 }
 
-.retrieverForm {
-  display: flex;
-  flex-direction: column;
-  width: 75%;
-}
-
-.retrieverButton {
-  @include centralize;
-  margin-top: 40px;
-}
 
 .retrieverClose {
   width: 100%;

@@ -1,7 +1,6 @@
 import ReactModal from 'react-modal';
 import { useModal } from 'react-modal-hook';
-import { Button, Typography } from '@mui/material';
-import classnames from 'classnames';
+import { BasicButton } from '../../common';
 import EditRetrieverForm from './EditRetrieverForm/EditRetrieverForm';
 
 interface EditRetrieverTypes {
@@ -14,9 +13,7 @@ const EditRetrieverModal: React.FC<EditRetrieverTypes> = ({
   const [showModal, hideModal] = useModal(() => {
     return (
       <ReactModal isOpen ariaHideApp={false}>
-        <EditRetrieverForm
-          closeModal={hideModal}
-        />
+        <EditRetrieverForm closeModal={hideModal} />
       </ReactModal>
     );
   });
@@ -27,12 +24,11 @@ const EditRetrieverModal: React.FC<EditRetrieverTypes> = ({
   };
 
   return (
-    <div>
-      <Button onClick={handleClick}>
-        <i className={classnames('icon-paw')} />
-        <Typography> Edytuj psa</Typography>
-      </Button>
-    </div>
+    <BasicButton
+      onClick={handleClick}
+      buttonText="Edytuj psa"
+      buttonIcon="paw"
+    />
   );
 };
 

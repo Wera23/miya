@@ -2,6 +2,12 @@
 .icon-cog:before { content: '\e800'; } /* '' */
 .icon-mail:before { content: '\e801'; } /* '' */
 .icon-cancel:before { content: '\e802'; } /* '' */
+.icon-guidedog:before { content: '\e803'; } /* '' */
+.icon-user:before { content: '\e804'; } /* '' */
+.icon-emo-happy:before { content: '\e805'; } /* '' */
+.icon-heart-empty:before { content: '\e806'; } /* '' */
 .icon-facebook-circled:before { content: '\f051'; } /* '' */
 .icon-instagram:before { content: '\f16d'; } /* '' */
 .icon-paw:before { content: '\f1b0'; } /* '' */
+.icon-paper-plane-empty:before { content: '\f1d9'; } /* '' */
+.icon-user-circle:before { content: '\f2bd'; } /* '' */

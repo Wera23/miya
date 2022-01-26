@@ -1,42 +1,24 @@
 @mixin centralize {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.retriever {
+  @include centralize;
+  flex-direction: column;
+  width: 40vw;
+
+  i {
+    font-size: 22px;
+    margin-right: 10px;
   }
-  
-  .retriever {
-    @include centralize;
-    flex-direction: column;
-    width: 40vw;
-  
-    i {
-      font-size: 22px;
-      margin-right: 10px;
-    }
-  }
-  
-  .retrieverForm {
-    display: flex;
-    flex-direction: column;
-    width: 75%;
-  }
-  
-  .retrieverButton {
-    @include centralize;
-    margin-top: 40px;
-  }
-  
-  .retrieverClose {
-    width: 100%;
-    display: flex;
-    justify-content: end;
-  }
-  
-  .retrieverCoordinates {
-    display: flex;
-  }
-  
-  .successMessage {
-    margin-top: 20px;
-  }
-  
+}
+
+.retrieverCoordinates {
+  display: flex;
+}
+
+.successMessage {
+  margin-top: 20px;
+}

@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
 import { Button, Typography } from '@mui/material';
-import { Input, Message } from '../../common';
+import { BasicButton, Input, Message } from '../../common';
 
 import '../../../../assets/styles/forms.scss';
 import { RegisterFormTypes, RegisterValues } from './RegisterInitialValues';
@@ -131,10 +131,8 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               />
             )}
 
-            <div className="actionFormButton">
-              <Button variant="contained" color="success" type="submit">
-                Zarejestruj się
-              </Button>
+            <div className="buttonOverlay">
+              <BasicButton buttonText="Zarejestruj się" buttonIcon="cog" />
             </div>
           </form>
         </React.Fragment>

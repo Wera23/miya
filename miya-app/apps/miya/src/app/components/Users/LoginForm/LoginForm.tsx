@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Typography } from '@mui/material';
-import { ButtonForm, Input, Message } from '../../common';
+import { BasicButton, ButtonForm, Input, Message } from '../../common';
 
 import styles from './LoginForm.module.scss';
 import '../../../../assets/styles/forms.scss';
@@ -101,8 +101,8 @@ const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
               />
             )}
 
-            <div className="actionFormButton">
-              <ButtonForm message="Zaloguj się" />
+            <div className="buttonOverlay">
+              <BasicButton buttonText="Zaloguj się" buttonIcon="cog" />
             </div>
           </form>
         </React.Fragment>

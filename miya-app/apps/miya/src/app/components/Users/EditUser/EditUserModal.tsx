@@ -29,7 +29,7 @@ const EditUserModal: React.FC<EditUserTypes> = ({
   return (
     <div>
       <Button onClick={handleClick}>
-        <i className={classnames('icon-paw')} />
+        <i className={classnames('icon-cog')} />
         <Typography> Edytuj Użytkownika</Typography>
       </Button>
     </div>

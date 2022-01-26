@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { Button } from '@mui/material';
-import { DetailsModal, Input, Message } from '../../common';
+import { BasicButton, DetailsModal, Input, Message } from '../../common';
 
 import '../../../../assets/styles/forms.scss';
 import useNestUser from '../../../services/dataHooks/useNestUser';
@@ -93,10 +93,8 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
             />
           )}
 
-          <div className="actionFormButton">
-            <Button variant="contained" color="success" type="submit">
-              Edytuj użytkownika
-            </Button>
+          <div className="buttonOverlay">
+            <BasicButton buttonText="Edytuj użytkownika" buttonIcon="cog" />
           </div>
         </form>
       )}

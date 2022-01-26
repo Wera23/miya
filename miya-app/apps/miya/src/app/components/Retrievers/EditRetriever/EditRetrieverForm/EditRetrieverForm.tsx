@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { Button } from '@mui/material';
-import { DetailsModal, Input, Message } from '../../../common';
+import { BasicButton, DetailsModal, Input, Message } from '../../../common';
 import styles from './EditRetrieverForm.module.scss';
 
 import { RetrieverFormTypes } from './FormEditValues';
@@ -69,7 +69,7 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
       icon="paw"
     >
       {!showSuccessMessage && retriever && (
-        <form className={styles.retrieverForm} onSubmit={formik.handleSubmit}>
+        <form className="actionFormContent" onSubmit={formik.handleSubmit}>
           <Input
             inputId={RetrieverFormTypes.name}
             placeholder="Imię psa"
@@ -162,10 +162,13 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
             size="small"
           />
 
-          <div className={styles.retrieverButton}>
-            <Button variant="contained" color="success" type="submit">
-              Edytuj Goldena
-            </Button>
+          {/* Onclick */}
+          <div className="buttonOverlay">
+            <BasicButton
+              onClick={closeModal}
+              buttonText="Zapisz zmiany"
+              buttonIcon="paw"
+            />
           </div>
         </form>
       )}
@@ -176,15 +179,8 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
             messageText="Dane Twojego psa zostały zedytowane"
             colorMessage="green"
           />
-          <Button
-            className="actionFormButton"
-            onClick={closeModal}
-            variant="contained"
-            color="success"
-            type="submit"
-          >
-            OK
-          </Button>
+
+          <BasicButton buttonText="OK" buttonIcon="cog" onClick={closeModal} />
         </div>
       )}
     </DetailsModal>

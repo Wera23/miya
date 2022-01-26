@@ -1,26 +1,40 @@
 import ReactModal from 'react-modal';
 import { useModal } from 'react-modal-hook';
-import { Button, Typography } from '@mui/material';
-
-import styles from './SingleRetriever.module.scss';
-import { DetailsSingleRetriever } from '../..';
+import { useEffect } from 'react';
 
 import { Retriever } from '@miya-app/shared-types';
 
+import { Button, Typography } from '@mui/material';
+import { DetailsSingleRetriever } from '../..';
+
+import styles from './SingleRetriever.module.scss';
+import { useIsTransparentActionsContext } from '../../../context/IsTransparent';
+
 interface SingleRetrieverTypes {
-  handleModalSeeDetails?: () => void;
   singleRetriever: Retriever;
 }
 
 const SingleRetrieverModal: React.FC<SingleRetrieverTypes> = ({
-  handleModalSeeDetails,
   singleRetriever,
 }) => {
+  const { setIsTransparent } = useIsTransparentActionsContext();
+
+  useEffect(() => {
+    return () => {
+      setIsTransparent(false);
+    };
+  }, [setIsTransparent]);
+
   const [showModal, hideModal] = useModal(() => {
+    const actionsModal = () => {
+      hideModal && hideModal();
+      setIsTransparent(false);
+    };
+
     return (
       <ReactModal isOpen ariaHideApp={false}>
         <DetailsSingleRetriever
-          closeModal={hideModal}
+          closeModal={actionsModal}
           singleRetriever={singleRetriever}
         />
       </ReactModal>
@@ -29,7 +43,7 @@ const SingleRetrieverModal: React.FC<SingleRetrieverTypes> = ({
 
   const handleClick = (): void => {
     showModal();
-    handleModalSeeDetails && handleModalSeeDetails();
+    setIsTransparent(true);
   };
 
   return (

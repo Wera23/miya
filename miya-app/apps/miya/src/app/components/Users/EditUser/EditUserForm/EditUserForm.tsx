@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { Button } from '@mui/material';
-import { DetailsModal, Input, Message } from '../../../common';
+import { BasicButton, DetailsModal, Input, Message } from '../../../common';
 
 import '../../../../../assets/styles/forms.scss';
 import {
@@ -54,9 +54,8 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
     <DetailsModal
       closeModal={closeModal}
       header="Edytuj użytkownika"
-      icon="cog"
+      icon="user"
     >
-      <h1>{user?.username} aaaa</h1>
       {!showSuccessMessage && user && (
         <form className="actionFormContent" onSubmit={formik.handleSubmit}>
           <Input
@@ -96,10 +95,12 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
             />
           )}
 
-          <div className="actionFormButton">
-            <Button variant="contained" color="success" type="submit">
-              Edytuj użytkownika
-            </Button>
+          <div className="buttonOverlay">
+            <BasicButton
+              buttonText="Edytuj użytkownika"
+              buttonIcon="cog"
+              onClick={closeModal}
+            />
           </div>
         </form>
       )}
@@ -110,14 +111,7 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
             messageText="Dane Twojego psa zostały zedytowane"
             colorMessage="green"
           />
-          <Button
-            onClick={closeModal}
-            variant="contained"
-            color="success"
-            type="submit"
-          >
-            OK
-          </Button>
+          <BasicButton buttonText="OK" buttonIcon="paw" onClick={closeModal} />
         </div>
       )}
     </DetailsModal>

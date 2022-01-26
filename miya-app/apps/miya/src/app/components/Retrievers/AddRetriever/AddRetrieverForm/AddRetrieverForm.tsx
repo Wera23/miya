@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { Button } from '@mui/material';
-import { DetailsModal, Input, Message } from '../../../common';
+import { BasicButton, DetailsModal, Input, Message } from '../../../common';
 
 import { NewRetrieverValues, RetrieverFormTypes } from './FormInitialValues';
 import {
@@ -12,7 +12,7 @@ import {
 } from '../../../../services/retrieverService';
 import styles from './AddRetrieverForm.module.scss';
 
-interface AddRetrieverTypes {  
+interface AddRetrieverTypes {
   closeModal: () => void;
   initialValues: NewRetrieverValues;
 }
@@ -61,7 +61,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
       icon="paw"
     >
       {!showSuccessMessage && (
-        <form className={styles.retrieverForm} onSubmit={formik.handleSubmit}>
+        <form className="actionFormContent" onSubmit={formik.handleSubmit}>
           <Input
             inputId={RetrieverFormTypes.name}
             label="Imię"
@@ -216,10 +216,8 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             size="small"
           />
 
-          <div className={styles.retrieverButton}>
-            <Button variant="contained" color="success" type="submit">
-              Dodaj Goldena
-            </Button>
+          <div className="buttonOverlay">
+            <BasicButton buttonText="Dodaj Retrievera" buttonIcon="paw" />
           </div>
         </form>
       )}
