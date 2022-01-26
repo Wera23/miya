@@ -12,6 +12,7 @@ import styles from './ProfileModal.module.scss';
 import { ProfileTypes, userProfile } from './ProfileData';
 import useNestUser from '../../services/dataHooks/useNestUser';
 import { useIsTransparentActionsContext } from '../../context/IsTransparent';
+import CirclePhoto from '../common/Photo/CirclePhoto';
 
 const UserProfile: React.FC = () => {
   const { user } = useNestUser();
@@ -36,12 +37,7 @@ const UserProfile: React.FC = () => {
           icon="user"
         >
           <div className={styles.profileDialog}>
-            <div
-              className={styles.profileImage}
-              style={{
-                backgroundImage: `url(https://scontent.fpoz4-1.fna.fbcdn.net/v/t39.30808-6/248946323_3111159129164218_6658650979357560016_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=0debeb&_nc_ohc=Mxq5PWfil7wAX-HcPmF&tn=GYuTEocvppeCHzo3&_nc_ht=scontent.fpoz4-1.fna&oh=00_AT_MpMQVOX5MnA7b8BoGrILSThA_IeW6B9q-PrcpmJHX7w&oe=61F61A44)`,
-              }}
-            />
+            {user?.userImage && <CirclePhoto image={user.userImage} />}
 
             <div className={styles.profileContent}>
               {userProfile.map((userSimpleData: ProfileTypes) => (

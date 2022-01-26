@@ -9,8 +9,8 @@ import styles from './DetailsSingleRetriever.module.scss';
 import {
   DetailsRetrieverTypes,
   detailsSingleRetrieverData,
-  socialMediaRetriever,
 } from './DetailsSingleRetrieverData';
+import CirclePhoto from '../../../common/Photo/CirclePhoto';
 interface SingleRetrieverTypes {
   singleRetriever: Retriever;
   closeModal: () => void;
@@ -26,63 +26,62 @@ const DetailsSingleRetriever: FC<SingleRetrieverTypes> = ({
       header={singleRetriever.name}
       icon="paw"
     >
-      <div className={styles.detailsContent}>
-        {detailsSingleRetrieverData.map(
-          (retrieverSimpleData: DetailsRetrieverTypes) => (
-            <LineData value="description" data={retrieverSimpleData.value}>
-              <Typography variant="body2" pr={1}>
-                {retrieverSimpleData.name}
-              </Typography>
-
-              <Typography variant="body1">
-                {
-                  singleRetriever?.[
-                    retrieverSimpleData.value as keyof Retriever
-                  ]
-                }
-              </Typography>
-            </LineData>
-          )
+      <div className={styles.detailsDialog}>
+        {singleRetriever?.image && (
+          <CirclePhoto image={singleRetriever.image} />
         )}
 
-        {socialMediaRetriever.map(
-          (singleSocialMedia: DetailsRetrieverTypes) => (
-            <a href={singleSocialMedia?.value} target="_blank" rel="noreferrer">
-              <i
-                className={classnames(
-                  `icon-${singleSocialMedia.icon}`,
-                  styles.detailsNameIcon
-                )}
-              />
-            </a>
-          )
-        )}
+        <div className={styles.detailsContent}>
+          {detailsSingleRetrieverData.map(
+            (retrieverSimpleData: DetailsRetrieverTypes) => (
+              <LineData value="description" data={retrieverSimpleData.value}>
+                <Typography variant="body2" pr={1}>
+                  {retrieverSimpleData.name}
+                </Typography>
+
+                <Typography variant="body1">
+                  {
+                    singleRetriever?.[
+                      retrieverSimpleData.value as keyof Retriever
+                    ]
+                  }
+                </Typography>
+              </LineData>
+            )
+          )}
+          <div className={styles.detailsSocialMedia}>
+            {singleRetriever?.facebook && (
+              <a
+                href={singleRetriever.facebook}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i
+                  className={classnames(
+                    'icon-facebook-circled',
+                    styles.detailsNameIcon
+                  )}
+                />
+              </a>
+            )}
+            {singleRetriever?.instagram && (
+              <a
+                href={`https://www.instagram.com/${singleRetriever.instagram}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i
+                  className={classnames(
+                    'icon-instagram',
+                    styles.detailsNameIcon
+                  )}
+                />
+                @{singleRetriever.instagram}
+              </a>
+            )}
+          </div>
+        </div>
       </div>
-
-      {/* <div className={styles.detailsSocialMedia}>
-        {singleRetriever?.facebook && (
-          <a href={singleRetriever.facebook} target="_blank" rel="noreferrer">
-            <i
-              className={classnames(
-                'icon-facebook-circled',
-                styles.detailsNameIcon
-              )}
-            />
-          </a>
-        )}
-        {singleRetriever?.instagram && (
-          <a
-            href={`https://www.instagram.com/${singleRetriever.instagram}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <i
-              className={classnames('icon-instagram', styles.detailsNameIcon)}
-            />
-            @{singleRetriever.instagram}
-          </a>
-        )}
-      </div> */}
     </DetailsModal>
   );
 };

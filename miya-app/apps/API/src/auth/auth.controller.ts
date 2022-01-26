@@ -1,6 +1,5 @@
 import { Controller, Post, Req, Request, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 
 @Controller('auth')
@@ -16,6 +15,7 @@ export class AuthController {
       req.body.userPassword,
       req.body.userDescription,
       req.body.userAddress,
+      req.body.userImage,
     );
   }
 

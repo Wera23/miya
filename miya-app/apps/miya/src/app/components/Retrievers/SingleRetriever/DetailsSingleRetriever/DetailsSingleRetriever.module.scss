@@ -1,23 +1,27 @@
-@mixin centralize {
+.detailsDialog,
+.detailsContent {
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.detailsDialog {
+  align-items: center;
+  width: 90%;
+
 }
 
 .detailsContent {
-  align-self: start;
+  align-items: start;
 }
 
 .detailsSocialMedia {
-  @include centralize;
-
   margin-top: 25px;
 
   a {
     text-decoration: none;
     color: black;
     font-family: 'Dosis';
-    @include centralize;
   }
 
   i {

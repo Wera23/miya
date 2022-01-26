@@ -28,6 +28,7 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
     dateOfBirthId: Yup.string(),
     userDescriptionId: Yup.string(),
     userAddress: Yup.string(),
+    userImage: Yup.string(),
   });
 
   const formik = useFormik({
@@ -38,6 +39,7 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
       dateOfBirthId: (user && user.dateOfBirth) ?? '',
       userDescriptionId: (user && user.userDescription) ?? '',
       userAddressId: (user && user.userAddress) ?? '',
+      userImageId: (user && user.userImage) ?? '',
     },
     validationSchema: EditUserSchema,
 
@@ -93,6 +95,16 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
               messageText="* To pole jest wymagane"
             />
           )}
+
+          <Input
+            inputId={EditUserFormTypes.userImage}
+            label="Twoje zdjęcie"
+            value={formik.values.userAddressId}
+            placeholder="Dodaj swoje zdjęcie"
+            onChange={formik.handleChange}
+            icon="paw"
+            size="small"
+          />
 
           <div className="buttonOverlay">
             <BasicButton

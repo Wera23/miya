@@ -41,6 +41,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
     dateOfBirthId: Yup.string(),
     userDescriptionId: Yup.string(),
     userAddressId: Yup.string(),
+    userImageId: Yup.string(),
   });
 
   const formik = useFormik({
@@ -109,6 +110,16 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               label="Twoje miasto i województwo"
               value={formik.values.userAddressId}
               placeholder="Podaj swoje miasto i województwo"
+              onChange={formik.handleChange}
+              icon="paw"
+              size="small"
+            />
+
+            <Input
+              inputId={RegisterFormTypes.userImage}
+              label="Twoje zdjęcie"
+              value={formik.values.userImageId}
+              placeholder="Dodaj swoje zdjęcie"
               onChange={formik.handleChange}
               icon="paw"
               size="small"

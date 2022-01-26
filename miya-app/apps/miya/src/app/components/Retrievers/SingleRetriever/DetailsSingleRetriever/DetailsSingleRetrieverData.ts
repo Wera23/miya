@@ -6,10 +6,6 @@ export interface DetailsRetrieverTypes {
 
 export const detailsSingleRetrieverData: DetailsRetrieverTypes[] = [
   {
-    name: 'Imię psa',
-    value: 'name',
-  },
-  {
     name: 'Wiek',
     value: 'age',
   },
@@ -26,16 +22,16 @@ export const detailsSingleRetrieverData: DetailsRetrieverTypes[] = [
     value: 'voivodeship',
   },
   {
-    name: 'Właściciel',
-    value: 'owner',
-  },
-  {
     name: 'Charakter psa',
     value: 'description',
   },
+  {
+    name: 'Właściciel',
+    value: 'owner',
+  },
 ];
 
-export const socialMediaRetriever: DetailsRetrieverTypes[] = [
-  { name: 'Instagram', value: 'instagram', icon: 'instagram' },
-  { name: 'Facebook', value: 'facebook', icon: 'facebook-circled' },
-];
+// export const socialMediaRetriever: DetailsRetrieverTypes[] = [
+//   { name: 'Instagram', value: 'instagram', icon: 'instagram' },
+//   { name: 'Facebook', value: 'facebook', icon: 'facebook-circled' },
+// ];

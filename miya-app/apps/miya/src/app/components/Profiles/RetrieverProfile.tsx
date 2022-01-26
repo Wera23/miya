@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import { useModal } from 'react-modal-hook';
 import ReactModal from 'react-modal';
-import classnames from 'classnames';
 
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { EditRetrieverModal } from '..';
-import { BasicButton, DetailsModal, LineData, MenuButton } from '../common';
+import { DetailsModal, LineData, MenuButton } from '../common';
 
 import styles from './ProfileModal.module.scss';
 import {
@@ -15,6 +14,7 @@ import {
 import { retrieverProfile, ProfileTypes } from './ProfileData';
 import { Retriever } from '@miya-app/shared-types';
 import { useIsTransparentActionsContext } from '../../context/IsTransparent';
+import CirclePhoto from '../common/Photo/CirclePhoto';
 
 const RetrieverProfile: React.FC = () => {
   const { retriever } = useRetrieverContext();
@@ -43,17 +43,10 @@ const RetrieverProfile: React.FC = () => {
         <DetailsModal
           closeModal={actionsModal}
           header="Twój Retriever"
-          icon="cog"
+          icon="paw"
         >
           <div className={styles.profileDialog}>
-            {retriever?.image && (
-              <div
-                className={styles.profileImage}
-                style={{
-                  backgroundImage: `url(${retriever.image})`,
-                }}
-              />
-            )}
+            {retriever?.image && <CirclePhoto image={retriever.image} />}
 
             <div className={styles.profileContent}>
               {retrieverProfile.map((retrieverSimpleData: ProfileTypes) => (

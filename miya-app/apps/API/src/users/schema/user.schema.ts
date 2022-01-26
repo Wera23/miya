@@ -28,6 +28,9 @@ export class User {
   @Prop()
   @IsOptional()
   userAddress?: string;
+  @Prop()
+  @IsOptional()
+  userImage: string;
   // @Prop({type: RetrieverSchema})
   // @Type(()=> Retriever)
   // retriever: Retriever

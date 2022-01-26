@@ -45,6 +45,6 @@ export const userProfile: ProfileTypes[] = [
   },
   {
     name: 'Mój pies',
-    value: 'Miya',
+    value: 'username',
   },
 ];

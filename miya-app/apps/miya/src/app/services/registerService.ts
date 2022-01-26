@@ -11,6 +11,7 @@ function addNewUserForm(values: RegisterValues): User {
     dateOfBirth: values.dateOfBirthId,
     userDescription: values.userDescriptionId,
     userAddress: values.userAddressId,
+    userImage: values.userImageId,
   };
   return newUser;
 }
@@ -20,6 +21,7 @@ function editUserForm(values: EditUserValues): EditUser {
     dateOfBirth: values?.dateOfBirthId,
     userDescription: values?.userDescriptionId,
     userAddress: values?.userAddressId,
+    userImage: values?.userImageId,
   };
   return updateUser;
 }

@@ -30,7 +30,8 @@ export class UsersController {
       user.dateOfBirth,
       user.userPassword,
       user.userDescription,
-      user.userAddress
+      user.userAddress,
+      user.userImage,
     );
   }
 

@@ -5,6 +5,7 @@ export interface RegisterValues {
   dateOfBirthId: string;
   userDescriptionId: string;
   userAddressId: string;
+  userImageId: string;
 }
 
 export const initialValues: RegisterValues = {
@@ -13,7 +14,8 @@ export const initialValues: RegisterValues = {
   userPasswordId: '',
   dateOfBirthId: '',
   userDescriptionId: '',
-  userAddressId: '',  
+  userAddressId: '',
+  userImageId: '',
 };
 
 export enum RegisterFormTypes {
@@ -22,5 +24,6 @@ export enum RegisterFormTypes {
   userPassword = 'userPasswordId',
   dateOfBirth = 'dateOfBirthId',
   userDescription = 'userDescriptionId',
-  userAddress = 'userAddressId'
+  userAddress = 'userAddressId',
+  userImage = 'userImageId',
 }

@@ -12,4 +12,5 @@ export class CreateUser {
   userPassword: string;
   userDescription?: string;
   userAddress?: string;
+  userImage?: string;
 }
