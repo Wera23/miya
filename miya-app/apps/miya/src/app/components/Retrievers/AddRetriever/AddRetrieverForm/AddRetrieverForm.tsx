@@ -2,7 +2,6 @@ import { FC, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { Button } from '@mui/material';
 import { BasicButton, DetailsModal, Input, Message } from '../../../common';
 
 import { NewRetrieverValues, RetrieverFormTypes } from './FormInitialValues';
@@ -36,7 +35,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
     longId: Yup.number().required('To pole jest wymagane'),
     instagramId: Yup.string(),
     facebookId: Yup.string(),
-    userId: Yup.string(),
+    imageId: Yup.string(),
   });
 
   const formik = useFormik({
@@ -216,6 +215,16 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             size="small"
           />
 
+          <Input
+            inputId={RetrieverFormTypes.image}
+            label="Zdjęcie psa"
+            value={formik.values.imageId}
+            placeholder="Dodaj zdjęcie swojego psa"
+            onChange={formik.handleChange}
+            icon="paw"
+            size="small"
+          />
+
           <div className="buttonOverlay">
             <BasicButton buttonText="Dodaj Retrievera" buttonIcon="paw" />
           </div>
@@ -223,8 +232,9 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
       )}
 
       {showSuccessMessage && (
-        <div className={styles.successMessage}>
+        <div className="actionFormMessage">
           <Message messageText="Twój pies został dodany" colorMessage="green" />
+          <BasicButton buttonText="OK" buttonIcon="cog" onClick={closeModal} />
         </div>
       )}
     </DetailsModal>

@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { BasicButton, Input, Message } from '../../common';
 
 import '../../../../assets/styles/forms.scss';

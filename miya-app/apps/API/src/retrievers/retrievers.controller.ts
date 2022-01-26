@@ -58,6 +58,7 @@ export class RetrieversController {
       retriever.long,
       retriever.instagram,
       retriever.facebook,
+      retriever.image,
     );
   }
 

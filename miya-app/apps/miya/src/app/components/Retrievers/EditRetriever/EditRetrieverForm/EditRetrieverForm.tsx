@@ -2,7 +2,6 @@ import { FC, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { Button } from '@mui/material';
 import { BasicButton, DetailsModal, Input, Message } from '../../../common';
 import styles from './EditRetrieverForm.module.scss';
 
@@ -21,7 +20,7 @@ interface EditRetrieverTypes {
 }
 
 const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
-  const dog = '1640698241110';
+  const dog = 'c';
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const { retriever } = useRetrieverContext();
@@ -37,6 +36,7 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
     longId: Yup.number(),
     instagramId: Yup.string(),
     facebookId: Yup.string(),
+    imageId: Yup.string(),
   });
 
   const formik = useFormik({
@@ -52,6 +52,7 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
       longId: (retriever && retriever.long) ?? 0,
       instagramId: (retriever && retriever.instagram) ?? '',
       facebookId: (retriever && retriever.facebook) ?? '',
+      imageId: (retriever && retriever.image) ?? '',
     },
     validationSchema: EditRetrieverSchema,
     onSubmit: (values) => {
@@ -162,7 +163,16 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
             size="small"
           />
 
-          {/* Onclick */}
+          <Input
+            inputId={RetrieverFormTypes.image}
+            placeholder="Dodaj zdjęcie swojego psa"
+            value={formik.values.imageId}
+            label={retriever.image}
+            onChange={formik.handleChange}
+            icon="paw"
+            size="small"
+          />
+
           <div className="buttonOverlay">
             <BasicButton
               onClick={closeModal}

@@ -1,28 +1,14 @@
-.detailsProfileLine {
-  display: flex;
-  margin: 0;
-  margin-bottom: 8px;
-}
-
-.userProfileLine {
-  flex-direction: column;
-}
-
-.descriptionLine {
-  flex-direction: column;
-}
-
 .profileContent,
 .profileDialog {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 20px;
-  width: 90%;
 }
 
 .profileDialog {
   align-items: center;
+  margin-bottom: 20px;
+  width: 90%;
 }
 
 .profileContent {

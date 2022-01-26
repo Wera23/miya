@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Typography } from '@mui/material';
-import { BasicButton, ButtonForm, Input, Message } from '../../common';
+import { BasicButton, Input, Message } from '../../common';
 
 import styles from './LoginForm.module.scss';
 import '../../../../assets/styles/forms.scss';

@@ -1,4 +1,3 @@
-
 export interface NewRetrieverValues {
   idId: number;
   nameId: string;
@@ -12,6 +11,7 @@ export interface NewRetrieverValues {
   longId: number;
   instagramId: string;
   facebookId: string;
+  imageId: string;
 }
 
 export const initialValues: NewRetrieverValues = {
@@ -27,6 +27,7 @@ export const initialValues: NewRetrieverValues = {
   longId: 0,
   instagramId: '',
   facebookId: '',
+  imageId: '',
 };
 
 export enum RetrieverFormTypes {
@@ -41,4 +42,5 @@ export enum RetrieverFormTypes {
   long = 'longId',
   instagram = 'instagramId',
   facebook = 'facebookId',
+  image = 'imageId',
 }

@@ -17,6 +17,7 @@ function retrieverForm(values: NewRetrieverValues): Retriever {
     long: values.longId,
     instagram: values.instagramId,
     facebook: values.facebookId,
+    image: values.imageId,
   };
   return newRetriever;
 }
@@ -32,6 +33,7 @@ function edtiRetrieverForm(values: EditRetrieverValues): EditRetriever {
     long: values?.longId,
     instagram: values?.instagramId,
     facebook: values?.facebookId,
+    image: values?.imageId,
   };
   return updateRetriever;
 }
@@ -50,6 +52,7 @@ function detailsOfTheSpecificRetriever(retriever: Retriever): Retriever {
     long: retriever.long,
     instagram: retriever.instagram,
     facebook: retriever.facebook,
+    image: retriever.image,
   };
   return specificRetriever;
 }

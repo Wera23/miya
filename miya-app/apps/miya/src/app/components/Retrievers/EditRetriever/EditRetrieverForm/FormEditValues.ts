@@ -9,6 +9,7 @@ export interface EditRetrieverValues {
   longId: number;
   instagramId: string;
   facebookId: string;
+  imageId: string;
 }
 
 export enum RetrieverFormTypes {
@@ -22,4 +23,5 @@ export enum RetrieverFormTypes {
   long = 'longId',
   instagram = 'instagramId',
   facebook = 'facebookId',
+  image = 'imageId',
 }

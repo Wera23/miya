@@ -1,22 +1,41 @@
-export const DetailsSingleRetrieverData = [
+export interface DetailsRetrieverTypes {
+  name: string;
+  value: string;
+  icon?: string;
+}
+
+export const detailsSingleRetrieverData: DetailsRetrieverTypes[] = [
   {
-    name: 'imię',
+    name: 'Imię psa',
     value: 'name',
   },
   {
-    name: 'wiek',
+    name: 'Wiek',
     value: 'age',
   },
   {
-    name: 'skąd',
+    name: 'Płeć',
+    value: 'gender',
+  },
+  {
+    name: 'Miasto',
     value: 'city',
   },
   {
-    name: 'właściciel',
+    name: 'Województwo',
+    value: 'voivodeship',
+  },
+  {
+    name: 'Właściciel',
     value: 'owner',
   },
   {
-    name: 'charakter',
+    name: 'Charakter psa',
     value: 'description',
   },
+];
+
+export const socialMediaRetriever: DetailsRetrieverTypes[] = [
+  { name: 'Instagram', value: 'instagram', icon: 'instagram' },
+  { name: 'Facebook', value: 'facebook', icon: 'facebook-circled' },
 ];

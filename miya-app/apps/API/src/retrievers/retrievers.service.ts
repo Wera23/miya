@@ -28,6 +28,7 @@ export class RetriversService {
     long: number,
     instagram: string,
     facebook: string,
+    image: string,
   ): Promise<Retriever> {
     return this.retrieversRepository.createRetriever({
       id: Date.now(),
@@ -42,6 +43,7 @@ export class RetriversService {
       long,
       instagram,
       facebook,
+      image,
     });
   }
 

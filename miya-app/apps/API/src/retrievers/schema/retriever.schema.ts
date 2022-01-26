@@ -48,6 +48,8 @@ export class Retriever {
   // @Column()
   @Prop()
   facebook: string;
+  @Prop()
+  image: string;
 
   // @ManyToOne(() => User, (user) => user.retriever)
   // @JoinColumn({ name: 'retriever_id' })

@@ -11,4 +11,5 @@ export class CreateRetriever {
   long: number;
   instagram: string;
   facebook: string;
+  image: string;
 }

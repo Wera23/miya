@@ -4,14 +4,13 @@
   align-items: center;
 }
 
-.detailsRetrieverLine {
-  display: flex;
-  margin: 0;
-  margin-bottom: 5px;
+.detailsContent {
+  align-self: start;
 }
 
 .detailsSocialMedia {
   @include centralize;
+
   margin-top: 25px;
 
   a {

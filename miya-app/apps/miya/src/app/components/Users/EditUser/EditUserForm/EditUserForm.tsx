@@ -2,7 +2,6 @@ import { FC, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { Button } from '@mui/material';
 import { BasicButton, DetailsModal, Input, Message } from '../../../common';
 
 import '../../../../../assets/styles/forms.scss';

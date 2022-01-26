@@ -1,24 +1,20 @@
 import ReactModal from 'react-modal';
 import { useEffect } from 'react';
 import { useModal } from 'react-modal-hook';
-import classnames from 'classnames';
 
-import { Button, Typography } from '@mui/material';
-import { DetailsModal, MenuButton } from '../common';
-import { EditUserModal, RetrieverProfile } from '..';
+import { User } from '@miya-app/shared-types';
+
+import { Typography } from '@mui/material';
+import { DetailsModal, LineData, MenuButton } from '../common';
+import { EditUserModal } from '..';
 
 import styles from './ProfileModal.module.scss';
-import useNestUser from '../../services/dataHooks/useNestUser';
 import { ProfileTypes, userProfile } from './ProfileData';
-import { User } from '@miya-app/shared-types';
-import {
-  useIsTransparentActionsContext,
-  useIsTransparentContext,
-} from '../../context/IsTransparent';
+import useNestUser from '../../services/dataHooks/useNestUser';
+import { useIsTransparentActionsContext } from '../../context/IsTransparent';
 
 const UserProfile: React.FC = () => {
   const { user } = useNestUser();
-  const { isTransparent } = useIsTransparentContext();
   const { setIsTransparent } = useIsTransparentActionsContext();
 
   useEffect(() => {
@@ -49,19 +45,14 @@ const UserProfile: React.FC = () => {
 
             <div className={styles.profileContent}>
               {userProfile.map((userSimpleData: ProfileTypes) => (
-                <div
-                  className={classnames(
-                    styles.detailsProfileLine,
-                    styles.userProfileLine
-                  )}
-                >
+                <LineData value="userDescription" data={userSimpleData.value}>
                   <Typography variant="body2" pr={1}>
                     {userSimpleData.name}
                   </Typography>
                   <Typography variant="body1">
                     {user?.[userSimpleData.value as keyof User]}
                   </Typography>
-                </div>
+                </LineData>
               ))}
             </div>
           </div>
