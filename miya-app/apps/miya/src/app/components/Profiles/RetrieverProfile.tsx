@@ -54,6 +54,7 @@ const RetrieverProfile: React.FC = () => {
                   <Typography variant="body2" pr={1}>
                     {retrieverSimpleData.name}
                   </Typography>
+
                   <Typography variant="body1">
                     {retriever?.[retrieverSimpleData.value as keyof Retriever]}
                   </Typography>

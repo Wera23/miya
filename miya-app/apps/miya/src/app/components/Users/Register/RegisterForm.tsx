@@ -17,11 +17,7 @@ import {
   addNewUserForm,
   postNewUserForm,
 } from '../../../services/registerService';
-import DatePicker from '@mui/lab/DatePicker/DatePicker';
-import {
-  SelectOptions,
-  voivodeshipsData,
-} from '../../common/Input/SelectOption';
+import { DatePicker } from '@mui/lab';
 
 interface RegisterTypes {
   initialValues: RegisterValues;
@@ -31,7 +27,6 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
   const { setLoggedIn } = useLoggedInActionsContext();
   const { loggedIn } = useLoggedInContext();
   const navigate = useNavigate();
-  const [value, setValue] = React.useState<Date | null>(null);
 
   useEffect(() => {
     return () => {
@@ -74,21 +69,6 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
             Zarejestruj się
           </Typography>
           <form className="actionFormContent" onSubmit={formik.handleSubmit}>
-            {/* <DatePicker
-              label="Basic example"
-              value={formik.values.dateOfBirthId}
-              onChange={formik.handleChange}
-              renderInput={(params) => <TextField {...params} />}
-            /> */}
-
-            {/* <SelectInput
-              onChange={(value: SelectOptions) =>
-                formik.setFieldValue('userAddressId', value.value)
-              }
-              value={formik.values.userAddressId}
-              options={voivodeshipsData}
-            /> */}
-
             <Input
               inputId={RegisterFormTypes.username}
               label="Nazwa użytkownika"
@@ -106,14 +86,22 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               />
             )}
 
-            <Input
-              inputId={RegisterFormTypes.dateOfBirth}
-              label="Data Twoich urodzin"
+            <DatePicker
+              label="Basic example"
               value={formik.values.dateOfBirthId}
-              placeholder="Podaj datę swoich urodzin"
-              onChange={formik.handleChange}
-              icon="paw"
-              size="small"
+              onChange={(value) => formik.setFieldValue('dateOfBirthId', value)}
+              renderInput={(params) => (
+                <Input
+                  {...params}
+                  inputId={RegisterFormTypes.dateOfBirth}
+                  label="Data Twoich urodzin"
+                  value={formik.values.dateOfBirthId}
+                  placeholder="Podaj datę swoich urodzin"
+                  onChange={formik.handleChange}
+                  icon="paw"
+                  size="small"
+                />
+              )}
             />
 
             <Input
@@ -126,7 +114,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               size="small"
             />
 
-            {/* <Input
+            <Input
               inputId={RegisterFormTypes.userAddress}
               label="Twoje miasto i województwo"
               value={formik.values.userAddressId}
@@ -134,7 +122,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               onChange={formik.handleChange}
               icon="paw"
               size="small"
-            /> */}
+            />
 
             <Input
               inputId={RegisterFormTypes.userImage}

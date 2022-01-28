@@ -2,7 +2,13 @@ import { FC, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { BasicButton, DetailsModal, Input, Message } from '../../../common';
+import {
+  BasicButton,
+  DetailsModal,
+  Input,
+  Message,
+  SelectInput,
+} from '../../../common';
 
 import { NewRetrieverValues, RetrieverFormTypes } from './FormInitialValues';
 import {
@@ -10,6 +16,11 @@ import {
   retrieverForm,
 } from '../../../../services/retrieverService';
 import styles from './AddRetrieverForm.module.scss';
+import {
+  genderData,
+  SelectOptions,
+  voivodeshipsData,
+} from '../../../common/Input/SelectOption';
 
 interface AddRetrieverTypes {
   closeModal: () => void;
@@ -95,14 +106,15 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             />
           )}
 
-          <Input
-            inputId={RetrieverFormTypes.gender}
-            label="Płeć"
+          <SelectInput
+            onChange={(value: SelectOptions) =>
+              formik.setFieldValue('genderId', value.value)
+            }
             value={formik.values.genderId}
-            placeholder="Podaj płeć swojego retrievera"
-            onChange={formik.handleChange}
+            options={genderData}
             icon="paw"
-            size="small"
+            label="Płeć psa"
+            placeholder="Wybierz płeć swojego psa"
           />
 
           {formik.errors.genderId && (
@@ -129,14 +141,15 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             />
           )}
 
-          <Input
-            inputId={RetrieverFormTypes.voivodeship}
-            label="Województwo"
+          <SelectInput
+            onChange={(value: SelectOptions) =>
+              formik.setFieldValue('voivodeshipId', value.value)
+            }
             value={formik.values.voivodeshipId}
-            placeholder="Podaj swoje województwo"
-            onChange={formik.handleChange}
+            options={voivodeshipsData}
             icon="paw"
-            size="small"
+            label="Województwo"
+            placeholder="Wybierz swoje województwo"
           />
 
           {formik.errors.voivodeshipId && (

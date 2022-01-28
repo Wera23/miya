@@ -129,7 +129,7 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
             options={voivodeshipsData}
             icon="paw"
             label="Wojewódzwo"
-            placeholder=''
+            placeholder="Wojewódzwo"
           />
 
           <Input
@@ -177,9 +177,9 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
 
           <Input
             inputId={RetrieverFormTypes.facebook}
-            placeholder="Podaj Instagrama"
+            placeholder="Podaj Facebooka"
             value={formik.values.facebookId}
-            label="Podaj Instagrama"
+            label="Podaj Facebooka"
             onChange={formik.handleChange}
             icon="paw"
             size="small"
