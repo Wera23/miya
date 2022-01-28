@@ -4,8 +4,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
-import { Typography } from '@mui/material';
-import { BasicButton, Input, Message } from '../../common';
+import { TextField, Typography } from '@mui/material';
+import { BasicButton, Input, Message, SelectInput } from '../../common';
 
 import '../../../../assets/styles/forms.scss';
 import { RegisterFormTypes, RegisterValues } from './RegisterInitialValues';
@@ -17,6 +17,11 @@ import {
   addNewUserForm,
   postNewUserForm,
 } from '../../../services/registerService';
+import DatePicker from '@mui/lab/DatePicker/DatePicker';
+import {
+  SelectOptions,
+  voivodeshipsData,
+} from '../../common/Input/SelectOption';
 
 interface RegisterTypes {
   initialValues: RegisterValues;
@@ -26,6 +31,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
   const { setLoggedIn } = useLoggedInActionsContext();
   const { loggedIn } = useLoggedInContext();
   const navigate = useNavigate();
+  const [value, setValue] = React.useState<Date | null>(null);
 
   useEffect(() => {
     return () => {
@@ -38,7 +44,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
     userId: Yup.number(),
     usernameId: Yup.string().required('To pole jest wymagane'),
     userPasswordId: Yup.string().required('To pole jest wymagane'),
-    dateOfBirthId: Yup.string(),
+    dateOfBirthId: Yup.date(),
     userDescriptionId: Yup.string(),
     userAddressId: Yup.string(),
     userImageId: Yup.string(),
@@ -68,6 +74,21 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
             Zarejestruj się
           </Typography>
           <form className="actionFormContent" onSubmit={formik.handleSubmit}>
+            {/* <DatePicker
+              label="Basic example"
+              value={formik.values.dateOfBirthId}
+              onChange={formik.handleChange}
+              renderInput={(params) => <TextField {...params} />}
+            /> */}
+
+            {/* <SelectInput
+              onChange={(value: SelectOptions) =>
+                formik.setFieldValue('userAddressId', value.value)
+              }
+              value={formik.values.userAddressId}
+              options={voivodeshipsData}
+            /> */}
+
             <Input
               inputId={RegisterFormTypes.username}
               label="Nazwa użytkownika"
@@ -105,7 +126,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               size="small"
             />
 
-            <Input
+            {/* <Input
               inputId={RegisterFormTypes.userAddress}
               label="Twoje miasto i województwo"
               value={formik.values.userAddressId}
@@ -113,7 +134,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               onChange={formik.handleChange}
               icon="paw"
               size="small"
-            />
+            /> */}
 
             <Input
               inputId={RegisterFormTypes.userImage}

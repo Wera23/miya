@@ -2,16 +2,7 @@ import { useEffect } from 'react';
 
 import { ModalProvider } from 'react-modal-hook';
 import { ThemeProvider } from '@emotion/react';
-import {
-  Routes,
-  Route,
-  BrowserRouter,
-  Link,
-  useNavigate,
-  useLocation,
-  Navigate,
-  Outlet,
-} from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import WebFont from 'webfontloader';
 
 import { Homepage, Login, PrivateRoute, Register } from './page';
@@ -22,6 +13,9 @@ import { appTheme } from '../assets/theme';
 import { LoggedContextProvider } from './context/IsLoggedIn';
 import { RetrieverContextProvider } from './context/RetrieverContext';
 import { TransparentContextProvider } from './context/IsTransparent';
+import DateAdapter from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+
 
 export function App() {
   useEffect(() => {
@@ -34,23 +28,25 @@ export function App() {
 
   return (
     <LoggedContextProvider>
-      <RetrieverContextProvider>
-        <TransparentContextProvider>
-          <ThemeProvider theme={appTheme}>
-            <ModalProvider>
-              <BrowserRouter>
-                <Routes>
-                  <Route path="/" element={<PrivateRoute />}>
-                    <Route path="/" element={<Homepage />} />
-                  </Route>
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/login" element={<Login />} />
-                </Routes>
-              </BrowserRouter>
-            </ModalProvider>
-          </ThemeProvider>
-        </TransparentContextProvider>
-      </RetrieverContextProvider>
+      <LocalizationProvider dateAdapter={DateAdapter as any}>
+        <RetrieverContextProvider>
+          <TransparentContextProvider>
+            <ThemeProvider theme={appTheme}>
+              <ModalProvider>
+                <BrowserRouter>
+                  <Routes>
+                    <Route path="/" element={<PrivateRoute />}>
+                      <Route path="/" element={<Homepage />} />
+                    </Route>
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
+                  </Routes>
+                </BrowserRouter>
+              </ModalProvider>
+            </ThemeProvider>
+          </TransparentContextProvider>
+        </RetrieverContextProvider>
+      </LocalizationProvider>
     </LoggedContextProvider>
   );
 }

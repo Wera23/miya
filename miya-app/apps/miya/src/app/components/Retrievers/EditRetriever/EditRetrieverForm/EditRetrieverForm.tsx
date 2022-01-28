@@ -2,7 +2,13 @@ import { FC, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { BasicButton, DetailsModal, Input, Message } from '../../../common';
+import {
+  BasicButton,
+  DetailsModal,
+  Input,
+  Message,
+  SelectInput,
+} from '../../../common';
 import styles from './EditRetrieverForm.module.scss';
 
 import { RetrieverFormTypes } from './FormEditValues';
@@ -14,13 +20,17 @@ import {
   useRetrieverActionsContext,
   useRetrieverContext,
 } from '../../../../context/RetrieverContext';
+import {
+  SelectOptions,
+  voivodeshipsData,
+} from '../../../common/Input/SelectOption';
 
 interface EditRetrieverTypes {
   closeModal: () => void;
 }
 
 const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
-  const dog = 'c';
+  const dog = '1643208284237';
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const { retriever } = useRetrieverContext();
@@ -75,7 +85,7 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
             inputId={RetrieverFormTypes.name}
             placeholder="Imię psa"
             value={formik.values.nameId}
-            label={retriever.name}
+            label="Imię psa"
             onChange={formik.handleChange}
             icon="paw"
             size="small"
@@ -85,7 +95,7 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
             inputId={RetrieverFormTypes.age}
             placeholder="Wiek psa"
             value={formik.values.ageId}
-            label={retriever.age}
+            label="Wiek psa"
             onChange={formik.handleChange}
             icon="paw"
             size="small"
@@ -95,30 +105,42 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
             inputId={RetrieverFormTypes.city}
             placeholder="Podaj swoje miasto"
             value={formik.values.cityId}
-            label={retriever.city}
+            label="Podaj swoje miasto"
             onChange={formik.handleChange}
             icon="paw"
             size="small"
           />
 
-          <Input
+          {/* <Input
             inputId={RetrieverFormTypes.voivodeship}
             placeholder="Województwo"
             value={formik.values.voivodeshipId}
-            label={retriever.voivodeship}
+            label="Województwo"
             onChange={formik.handleChange}
             icon="paw"
             size="small"
+          /> */}
+
+          <SelectInput
+            onChange={(value: SelectOptions) =>
+              formik.setFieldValue('voivodeshipId', value.value)
+            }
+            value={formik.values.voivodeshipId}
+            options={voivodeshipsData}
+            icon="paw"
+            label="Wojewódzwo"
+            placeholder=''
           />
 
           <Input
             inputId={RetrieverFormTypes.description}
             placeholder="Charakter psa"
             value={formik.values.descriptionId}
-            label={retriever.description}
+            label="Charakter psa"
             onChange={formik.handleChange}
             icon="paw"
             size="small"
+            containerClassName={styles.longInput}
           />
 
           <div className={styles.retrieverCoordinates}>
@@ -147,7 +169,7 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
             inputId={RetrieverFormTypes.instagram}
             placeholder="Podaj Instagrama"
             value={formik.values.instagramId}
-            label={retriever.instagram}
+            label="Podaj Instagrama"
             onChange={formik.handleChange}
             icon="paw"
             size="small"
@@ -155,9 +177,9 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
 
           <Input
             inputId={RetrieverFormTypes.facebook}
-            placeholder="Podaj swojego facebooka"
+            placeholder="Podaj Instagrama"
             value={formik.values.facebookId}
-            label={retriever.facebook}
+            label="Podaj Instagrama"
             onChange={formik.handleChange}
             icon="paw"
             size="small"
@@ -165,20 +187,17 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
 
           <Input
             inputId={RetrieverFormTypes.image}
-            placeholder="Dodaj zdjęcie swojego psa"
+            placeholder="Dodaj nowe zdjęcie swojego psa"
             value={formik.values.imageId}
-            label={retriever.image}
+            label="Dodaj nowe zdjęcie swojego psa"
             onChange={formik.handleChange}
             icon="paw"
             size="small"
+            containerClassName={styles.longInput}
           />
 
           <div className="buttonOverlay">
-            <BasicButton
-              onClick={closeModal}
-              buttonText="Zapisz zmiany"
-              buttonIcon="paw"
-            />
+            <BasicButton buttonText="Zapisz zmiany" buttonIcon="paw" />
           </div>
         </form>
       )}

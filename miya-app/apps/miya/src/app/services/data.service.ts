@@ -1,4 +1,10 @@
-import { Retriever, User, UserLogin, EditRetriever, EditUser } from '@miya-app/shared-types';
+import {
+  Retriever,
+  User,
+  UserLogin,
+  EditRetriever,
+  EditUser,
+} from '@miya-app/shared-types';
 import { AxiosPromise, AxiosResponse } from 'axios';
 import { apiService } from './api.service';
 

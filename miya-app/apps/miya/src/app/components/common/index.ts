@@ -1,4 +1,5 @@
 export { default as Input } from './Input/Input';
+export { default as SelectInput } from './Input/SelectInput';
 export { default as Message } from './Message/Message';
 export { default as DetailsModal } from './Modal/DetailsModal';
 
