@@ -4,7 +4,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
-import { TextField, Typography } from '@mui/material';
+import { DatePicker } from '@mui/lab';
+import { Typography } from '@mui/material';
 import { BasicButton, Input, Message, SelectInput } from '../../common';
 
 import '../../../../assets/styles/forms.scss';
@@ -17,7 +18,6 @@ import {
   addNewUserForm,
   postNewUserForm,
 } from '../../../services/registerService';
-import { DatePicker } from '@mui/lab';
 
 interface RegisterTypes {
   initialValues: RegisterValues;

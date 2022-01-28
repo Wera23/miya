@@ -16,9 +16,14 @@
   border-radius: 0;
   width: 40vw !important;
   padding-bottom: 40px !important;
+  border: rgb(219 237 215 / 100%) !important;
+  background: rgb(219 237 215 / 100%) !important;
+  -webkit-box-shadow: 2px 2px 10px 1px rgba(117, 117, 117, 0.26) !important;
+  -moz-box-shadow: 2px 2px 10px 1px rgba(117, 117, 117, 0.26) !important;
+  box-shadow: 2px 2px 10px 1px rgba(117, 117, 117, 0.26) !important;
 }
 
-.ReactModal__Overlay--after-open{
+.ReactModal__Overlay--after-open {
   background-color: rgba(31, 128, 39, 0.37) !important;
 }
 

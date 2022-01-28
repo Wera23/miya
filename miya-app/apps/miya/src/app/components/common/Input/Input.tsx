@@ -1,9 +1,10 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import { makeStyles, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 
 import './Input.scss';
+
 
 interface InputTypes {
   inputId: string;
@@ -35,18 +36,19 @@ const TextInput: React.FC<InputTypes> = ({
     <div className={classnames(containerClassName, 'inputContainer')}>
       <i className={classnames(`icon-${icon}`, 'inputIcon', iconClassName)} />
 
-      <TextField
-        id={inputId}
-        label={label}
-        placeholder={placeholder}
-        margin="normal"
-        {...props}
-        className={inputClassName}
-        size={size}
-        error={error}
-        fullWidth
-        color="success"
-      />
+
+        <TextField
+          id={inputId}
+          label={label}
+          placeholder={placeholder}
+          margin="normal"
+          {...props}
+          className={inputClassName}
+          size={size}
+          error={error}
+          fullWidth
+          color="success"
+        />
     </div>
   );
 };

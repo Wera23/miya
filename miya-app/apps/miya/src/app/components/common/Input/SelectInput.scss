@@ -1,6 +1,7 @@
-$inputColorPrimary: rgb(0, 122, 65);
+$inputColorDark: rgb(0, 122, 65);
+$inputSelected: #c7dcc2;
 $borderWidth: 1px;
-$inputBorderPrimary: rgba(133, 133, 133, 0.897);
+$inputColorLight: rgba(133, 133, 133, 0.897);
 $inputBg: rgb(255, 255, 255);
 
 .selectInput {
@@ -21,7 +22,7 @@ $inputBg: rgb(255, 255, 255);
   font-weight: 200;
   display: inline-block;
   letter-spacing: 1px;
-  color: $inputBorderPrimary;
+  color: $inputColorLight;
   background-color: $inputBg;
 }
 
@@ -38,21 +39,25 @@ $inputBg: rgb(255, 255, 255);
 
   .react-select-custom__option {
     background-color: $inputBg;
-    padding: 14px;
+    color: black;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
 
     &:hover {
-      background-color: rgba(13, 197, 111, 0.2);
+      background-color: #e8f9e485;
     }
   }
 
   .react-select-custom__option--is-selected {
-    background-color: $inputColorPrimary !important;
+    background-color: $inputSelected !important;
   }
 
   .react-select-custom__control {
     height: 100%;
     min-height: 40px;
-    border: $borderWidth solid $inputBorderPrimary;
+    border: $borderWidth solid $inputColorLight;
     box-shadow: none;
     outline: none;
     padding: 5px;
@@ -62,7 +67,7 @@ $inputBg: rgb(255, 255, 255);
   .react-select-custom__control--is-active {
     &,
     &:hover {
-      border: $borderWidth solid $inputColorPrimary;
+      border: $borderWidth solid $inputColorDark;
     }
   }
 }

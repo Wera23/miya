@@ -7,7 +7,7 @@
   @include centralize;
 }
 
-.inputWhole{
+.inputWhole {
   display: flex;
   flex-direction: column;
 }
@@ -22,3 +22,9 @@
   width: 100%;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:active,
+input:-webkit-autofill:focus {
+  background-color: #dbedd7 !important;
+  -webkit-box-shadow: 0 0 0 1000px #dbedd7 inset !important;
+}

@@ -11,6 +11,8 @@ import {
 } from '../../../../services/registerService';
 import { EditUserFormTypes } from './FormEditValues';
 import useNestUser from '../../../../services/dataHooks/useNestUser';
+import { DatePicker } from '@mui/lab';
+import { RegisterFormTypes } from '../../Register/RegisterInitialValues';
 
 interface EditUserTypes {
   closeModal: () => void;
@@ -59,14 +61,24 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
     >
       {!showSuccessMessage && user && (
         <form className="actionFormContent" onSubmit={formik.handleSubmit}>
-          <Input
-            inputId={EditUserFormTypes.dateOfBirth}
-            label="Data Twoich urodzin"
+          
+
+          <DatePicker
+            label="Basic example"
             value={formik.values.dateOfBirthId}
-            placeholder="Podaj datę swoich urodzin"
-            onChange={formik.handleChange}
-            icon="paw"
-            size="small"
+            onChange={(value) => formik.setFieldValue('dateOfBirthId', value)}
+            renderInput={(params) => (
+              <Input
+                {...params}
+                inputId={RegisterFormTypes.dateOfBirth}
+                label="Data Twoich urodzin"
+                value={formik.values.dateOfBirthId}
+                placeholder="Podaj datę swoich urodzin"
+                onChange={formik.handleChange}
+                icon="paw"
+                size="small"
+              />
+            )}
           />
 
           <Input
