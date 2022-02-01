@@ -51,6 +51,12 @@ class DataService {
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 
+  deleteSpecificRetriever(id: string): AxiosPromise {
+    return apiService
+      .delete(`/retrievers/${id}`)
+      .catch((error: AxiosResponse) => Promise.reject(error));
+  }
+
   getRetrievers(): AxiosPromise {
     return apiService
       .get('retrievers')

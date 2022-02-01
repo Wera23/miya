@@ -6,12 +6,11 @@ const axiosInstance: AxiosInstance = axios.create({
 
 export const apiService = axiosInstance;
 
-const getToken = () => localStorage.getItem("token");
+const getToken = () => localStorage.getItem('token');
 
-axiosInstance.interceptors.request.use(
-  function (config: AxiosRequestConfig) {
-    const token: string | null = getToken();
-    if (token && config.headers) config.headers["Authorization"] = `Bearer ${token}`;
-    return config;
-  }
-)
+axiosInstance.interceptors.request.use(function (config: AxiosRequestConfig) {
+  const token: string | null = getToken();
+  if (token && config.headers)
+    config.headers['Authorization'] = `Bearer ${token}`;
+  return config;
+});

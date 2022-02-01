@@ -57,7 +57,7 @@ export class RetriversService {
     );
   }
 
-  async deleteRetriever(id: number): Promise<Retriever> {
-    return await this.retrieversRepository.deleteOneRetriever(id);
-  }
+  // async deleteRetriever(id: number): Promise<Retriever> {
+  //   return await this.retrieversRepository.deleteOneRetriever({id});
+  // }
 }

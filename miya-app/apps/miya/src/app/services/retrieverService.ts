@@ -61,6 +61,10 @@ async function postNewRetrieverForm(newRetriever: Retriever) {
   await dataService.postNewRetriever(newRetriever);
 }
 
+async function deleteSpecificRetriever(id: string) {
+  await dataService.deleteSpecificRetriever(id);
+}
+
 async function editSpecificRetrieverForm(
   id: string,
   updateRetriever: EditRetriever
@@ -80,4 +84,5 @@ export {
   editSpecificRetrieverForm,
   detailsOfTheSpecificRetriever,
   edtiRetrieverForm,
+  deleteSpecificRetriever
 };

@@ -24,14 +24,13 @@ import {
   SelectOptions,
   voivodeshipsData,
 } from '../../../common/Input/SelectOption';
+import { RETRIEVER_ID } from 'apps/miya/src/app/constans';
 
 interface EditRetrieverTypes {
   closeModal: () => void;
 }
 
 const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
-  const dog = '1643208284237';
-
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const { retriever } = useRetrieverContext();
   const { getRetriever } = useRetrieverActionsContext();
@@ -66,8 +65,8 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
     },
     validationSchema: EditRetrieverSchema,
     onSubmit: (values) => {
-      editSpecificRetrieverForm(dog, edtiRetrieverForm(values));
-      getRetriever(dog);
+      editSpecificRetrieverForm(RETRIEVER_ID, edtiRetrieverForm(values));
+      getRetriever(RETRIEVER_ID);
       setShowSuccessMessage(true);
       formik.resetForm();
     },
@@ -110,16 +109,6 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
             icon="paw"
             size="small"
           />
-
-          {/* <Input
-            inputId={RetrieverFormTypes.voivodeship}
-            placeholder="Województwo"
-            value={formik.values.voivodeshipId}
-            label="Województwo"
-            onChange={formik.handleChange}
-            icon="paw"
-            size="small"
-          /> */}
 
           <SelectInput
             onChange={(value: SelectOptions) =>

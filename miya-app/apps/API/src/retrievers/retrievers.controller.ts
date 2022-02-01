@@ -8,9 +8,7 @@ import {
   Post,
   UploadedFile,
   UseInterceptors,
-  UploadedFiles,
   Res,
-  Response,
   StreamableFile,
   UseGuards,
 } from '@nestjs/common';
@@ -21,12 +19,10 @@ import { Retriever } from './schema/retriever.schema';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { of } from 'rxjs';
 
-import { Express } from 'express';
 import { diskStorage } from 'multer';
 import { createReadStream } from 'fs';
 import { join } from 'path';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { LocalAuthGuard } from 'src/auth/guards/local-auth.guard';
 
 @Controller('retrievers')
 export class RetrieversController {

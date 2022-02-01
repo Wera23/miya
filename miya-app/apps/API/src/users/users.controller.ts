@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Param,
+  Patch,
   Post,
   Request,
   UseGuards,
@@ -40,6 +41,13 @@ export class UsersController {
   getProfile(@Request() req) {
     return req.user;
   }
+
+  
+  // @UseGuards(JwtAuthGuard)
+  // @Patch('current')
+  // editProfile(@Request() req) {
+  //   return req.user;
+  // }
 
   @Get(':username')
   async findUser(@Param('username') username: string): Promise<User> {

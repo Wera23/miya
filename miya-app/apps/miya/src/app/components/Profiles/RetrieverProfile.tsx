@@ -3,7 +3,11 @@ import { useModal } from 'react-modal-hook';
 import ReactModal from 'react-modal';
 
 import { Typography } from '@mui/material';
-import { EditRetrieverModal } from '..';
+import {
+  AddRetrieverModal,
+  DeleteRetrieverModal,
+  EditRetrieverModal,
+} from '..';
 import { DetailsModal, LineData, MenuButton } from '../common';
 
 import styles from './ProfileModal.module.scss';
@@ -15,11 +19,14 @@ import { retrieverProfile, ProfileTypes } from './ProfileData';
 import { Retriever } from '@miya-app/shared-types';
 import { useIsTransparentActionsContext } from '../../context/IsTransparent';
 import CirclePhoto from '../common/Photo/CirclePhoto';
+import { RETRIEVER_ID } from '../../constans';
+import { useIsDeleteRetrieverContext } from '../../context';
 
 const RetrieverProfile: React.FC = () => {
   const { retriever } = useRetrieverContext();
   const { getRetriever } = useRetrieverActionsContext();
   const { setIsTransparent } = useIsTransparentActionsContext();
+  const { isDeleteRetriever } = useIsDeleteRetrieverContext();
 
   useEffect(() => {
     return () => {
@@ -27,10 +34,8 @@ const RetrieverProfile: React.FC = () => {
     };
   }, [setIsTransparent]);
 
-  const dog = '1643208284237';
-
   useEffect(() => {
-    getRetriever(dog);
+    getRetriever(RETRIEVER_ID);
   }, [getRetriever]);
 
   const [showModal, hideModal] = useModal(() => {
@@ -38,6 +43,7 @@ const RetrieverProfile: React.FC = () => {
       hideModal && hideModal();
       setIsTransparent(false);
     };
+
     return (
       <ReactModal isOpen ariaHideApp={false}>
         <DetailsModal
@@ -45,24 +51,40 @@ const RetrieverProfile: React.FC = () => {
           header="Twój Retriever"
           icon="paw"
         >
-          <div className={styles.profileDialog}>
-            {retriever?.image && <CirclePhoto image={retriever.image} />}
+          {isDeleteRetriever ? (
+            <>
+              <div className={styles.profileDialog}>
+                {retriever?.image && <CirclePhoto image={retriever.image} />}
 
-            <div className={styles.profileContent}>
-              {retrieverProfile.map((retrieverSimpleData: ProfileTypes) => (
-                <LineData value="description" data={retrieverSimpleData.value}>
-                  <Typography variant="body2" pr={1}>
-                    {retrieverSimpleData.name}
-                  </Typography>
+                <div className={styles.profileContent}>
+                  {retrieverProfile.map((retrieverSimpleData: ProfileTypes) => (
+                    <LineData
+                      value="description"
+                      data={retrieverSimpleData.value}
+                    >
+                      <Typography variant="body2" pr={1}>
+                        {retrieverSimpleData.name}
+                      </Typography>
 
-                  <Typography variant="body1">
-                    {retriever?.[retrieverSimpleData.value as keyof Retriever]}
-                  </Typography>
-                </LineData>
-              ))}
+                      <Typography variant="body1">
+                        {
+                          retriever?.[
+                            retrieverSimpleData.value as keyof Retriever
+                          ]
+                        }
+                      </Typography>
+                    </LineData>
+                  ))}
+                </div>
+              </div>
+              <EditRetrieverModal />
+              <DeleteRetrieverModal />
+            </>
+          ) : (
+            <div>
+              <AddRetrieverModal />
             </div>
-          </div>
-          <EditRetrieverModal />
+          )}
         </DetailsModal>
       </ReactModal>
     );

@@ -6,6 +6,7 @@ import LoginForm from '../components/Users/LoginForm/LoginForm';
 import styles from './pages.module.scss';
 import { initialValues } from '../components/Users/Register/RegisterInitialValues';
 import { registerBackground } from '../../assets/images';
+import { Navigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -14,7 +15,7 @@ const Login = () => {
   return (
     <div>
       {loggedIn ? (
-        <Homepage />
+        <Navigate to="/home"  />
       ) : (
         <div
           className={styles.registerPage}

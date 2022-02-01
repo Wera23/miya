@@ -61,8 +61,6 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
     >
       {!showSuccessMessage && user && (
         <form className="actionFormContent" onSubmit={formik.handleSubmit}>
-          
-
           <DatePicker
             label="Basic example"
             value={formik.values.dateOfBirthId}
@@ -122,7 +120,6 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
             <BasicButton
               buttonText="Edytuj użytkownika"
               buttonIcon="cog"
-              onClick={closeModal}
             />
           </div>
         </form>

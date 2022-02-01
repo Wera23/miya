@@ -1,4 +1,4 @@
-import { Homepage } from '.';
+import { Navigate } from 'react-router-dom';
 import { registerBackground } from '../../assets/images';
 import { RegisterForm } from '../components';
 
@@ -12,7 +12,7 @@ const Register = () => {
   return (
     <div>
       {loggedIn ? (
-        <Homepage />
+        <Navigate to="/home"  />
       ) : (
         <div
           className={styles.registerPage}
