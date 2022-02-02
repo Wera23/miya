@@ -18,6 +18,7 @@ import {
   RetrieverContextProvider,
   TransparentContextProvider,
 } from './context';
+import { UserContextProvider } from './context/UserContext';
 
 export function App() {
   useEffect(() => {
@@ -30,32 +31,34 @@ export function App() {
 
   return (
     <LoggedContextProvider>
-      <LocalizationProvider dateAdapter={DateAdapter as any}>
-        <RetrieverContextProvider>
-          <DeleteRetrieverContextProvider>
-            <TransparentContextProvider>
-              <ThemeProvider theme={appTheme}>
-                <ModalProvider>
-                  <BrowserRouter>
-                    <Routes>
-                      <Route
-                        path="/home"
-                        element={<PrivateRoute component={Homepage} />}
-                      />
-                      <Route path="/login" element={<Login />} />
-                      <Route path="/register" element={<Register />} />
-                      <Route
-                        path="*"
-                        element={<Navigate to="/home" replace />}
-                      />
-                    </Routes>
-                  </BrowserRouter>
-                </ModalProvider>
-              </ThemeProvider>
-            </TransparentContextProvider>
-          </DeleteRetrieverContextProvider>
-        </RetrieverContextProvider>
-      </LocalizationProvider>
+      <UserContextProvider>
+        <LocalizationProvider dateAdapter={DateAdapter as any}>
+          <RetrieverContextProvider>
+            <DeleteRetrieverContextProvider>
+              <TransparentContextProvider>
+                <ThemeProvider theme={appTheme}>
+                  <ModalProvider>
+                    <BrowserRouter>
+                      <Routes>
+                        <Route
+                          path="/home"
+                          element={<PrivateRoute component={Homepage} />}
+                        />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route
+                          path="*"
+                          element={<Navigate to="/home" replace />}
+                        />
+                      </Routes>
+                    </BrowserRouter>
+                  </ModalProvider>
+                </ThemeProvider>
+              </TransparentContextProvider>
+            </DeleteRetrieverContextProvider>
+          </RetrieverContextProvider>
+        </LocalizationProvider>
+      </UserContextProvider>
     </LoggedContextProvider>
   );
 }

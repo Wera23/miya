@@ -6,10 +6,15 @@ import { MenuButton } from '../../common';
 import { AddRetrieverForm } from '../..';
 
 import { initialValues } from './AddRetrieverForm/FormInitialValues';
-import { useIsTransparentActionsContext } from '../../../context/IsTransparent';
+import {
+  useIsDeleteRetrieverActionsContext,
+  useIsTransparentActionsContext,
+} from '../../../context';
 
 const AddRetrieverModal: React.FC = () => {
   const { setIsTransparent } = useIsTransparentActionsContext();
+  // const { isDeleteRetriever } = useIsDeleteRetrieverContext();
+  const { setDeleteRetriever } = useIsDeleteRetrieverActionsContext();
 
   useEffect(() => {
     return () => {
@@ -36,9 +41,26 @@ const AddRetrieverModal: React.FC = () => {
   const handleClick = (): void => {
     showModal();
     setIsTransparent(true);
+    setDeleteRetriever(false);
   };
 
   return (
+    // <div>
+    //   {!isDeleteRetriever ? (
+    //     <MenuButton
+    //       handleClickButton={handleClick}
+    //       buttonText="Dodaj psa"
+    //       buttonIcon="paw"
+    //     />
+    //   ) : (
+    //     <BasicButton
+    //       onClick={handleClick}
+    //       buttonText="Dodaj psa"
+    //       buttonIcon="paw"
+    //     />
+    //   )}
+    // </div>
+
     <MenuButton
       handleClickButton={handleClick}
       buttonText="Dodaj psa"

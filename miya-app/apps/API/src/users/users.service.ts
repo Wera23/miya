@@ -3,6 +3,7 @@ import { User } from './schema/user.schema';
 import { UsersRepository } from './users.repository';
 import * as bcrypt from 'bcrypt';
 import { Retriever } from 'src/retrievers/schema/retriever.schema';
+import { UpdateUser } from './dto/update-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -35,5 +36,9 @@ export class UsersService {
       userAddress,
       userImage,
     });
+  }
+
+  async updateUser(id: number, userUpdates: UpdateUser): Promise<User> {
+    return this.usersRepository.findOneUserAndUpdate({ id }, userUpdates);
   }
 }

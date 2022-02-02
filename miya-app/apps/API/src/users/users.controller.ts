@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { CreateUser } from './dto/create-user.dto';
+import { UpdateUser } from './dto/update-user.dto';
 import { User } from './schema/user.schema';
 // import { InjectRepository } from '@nestjs/typeorm';
 import { UsersService } from './users.service';
@@ -19,6 +20,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
   //@InjectRepository(RetrieversRepository) private retrieverRepository: RetrieversRepository
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   async findAllUsers(): Promise<User[]> {
     return this.usersService.getUsers();
@@ -36,18 +38,19 @@ export class UsersController {
     );
   }
 
+  @Patch(':id')
+  async updateUser(
+    @Param('id') id: number,
+    @Body() user: UpdateUser,
+  ): Promise<User> {
+    return this.usersService.updateUser(id, user);
+  }
+
   @UseGuards(JwtAuthGuard)
   @Get('current')
   getProfile(@Request() req) {
     return req.user;
   }
-
-  
-  // @UseGuards(JwtAuthGuard)
-  // @Patch('current')
-  // editProfile(@Request() req) {
-  //   return req.user;
-  // }
 
   @Get(':username')
   async findUser(@Param('username') username: string): Promise<User> {

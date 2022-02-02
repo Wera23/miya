@@ -1,5 +1,6 @@
 .profileContent,
-.profileDialog {
+.profileDialog,
+.addNewRetriever {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -15,3 +16,8 @@
   align-items: flex-start;
 }
 
+.addNewRetrieverLink{
+&:hover{
+  opacity: 0.7;
+}
+}

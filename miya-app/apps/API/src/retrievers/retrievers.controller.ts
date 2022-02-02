@@ -66,36 +66,36 @@ export class RetrieversController {
     return this.retrieversService.updateRetriever(id, retriever);
   }
 
-  @Delete(':id')
-  async deleteRetriever(@Param('id') id: number): Promise<Retriever> {
-    return this.retrieversService.deleteRetriever(id);
-  }
+  // @Delete(':id')
+  // async deleteRetriever(@Param('id') id: number): Promise<Retriever> {
+  //   return this.retrieversService.deleteRetriever(id);
+  // }
 
-  @Post()
-  @UseInterceptors(
-    FileInterceptor('file', {
-      storage: diskStorage({
-        destination: 'files',
-      }),
-    }),
-  )
-  async uploadedFile(@UploadedFile() file) {
-    const response = {
-      originalname: file.originalname,
-      filename: file.filename,
-    };
-    console.log(response);
-    return response;
-  }
+  // @Post()
+  // @UseInterceptors(
+  //   FileInterceptor('file', {
+  //     storage: diskStorage({
+  //       destination: 'files',
+  //     }),
+  //   }),
+  // )
+  // async uploadedFile(@UploadedFile() file) {
+  //   const response = {
+  //     originalname: file.originalname,
+  //     filename: file.filename,
+  //   };
+  //   console.log(response);
+  //   return response;
+  // }
 
-  @Get('files/:imagename')
-  seeUploadedFile(@Param('imagename') imagename, @Res() res) {
-    return of(res.sendFile(join(process.cwd(), 'files/' + imagename)));
-  }
+  // @Get('files/:imagename')
+  // seeUploadedFile(@Param('imagename') imagename, @Res() res) {
+  //   return of(res.sendFile(join(process.cwd(), 'files/' + imagename)));
+  // }
 
-  @Get()
-  getFile(): StreamableFile {
-    const file = createReadStream(join(process.cwd(), 'package.json'));
-    return new StreamableFile(file);
-  }
+  // @Get()
+  // getFile(): StreamableFile {
+  //   const file = createReadStream(join(process.cwd(), 'package.json'));
+  //   return new StreamableFile(file);
+  // }
 }

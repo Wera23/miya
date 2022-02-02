@@ -39,7 +39,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
     userId: Yup.number(),
     usernameId: Yup.string().required('To pole jest wymagane'),
     userPasswordId: Yup.string().required('To pole jest wymagane'),
-    dateOfBirthId: Yup.date(),
+    dateOfBirthId: Yup.string(),
     userDescriptionId: Yup.string(),
     userAddressId: Yup.string(),
     userImageId: Yup.string(),
@@ -50,14 +50,15 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
     validationSchema: NewUserSchema,
 
     onSubmit: (values) => {
+      console.log('reg');
       postNewUserForm(addNewUserForm(values))
-        .then((response: { access_token: string }) => {
-          localStorage.setItem('token', response.access_token);
-          setLoggedIn(true);
-          formik.resetForm();
-          navigate('/', { replace: true });
-        })
-        .catch((error) => console.error(error));
+      .then((response: { access_token: string }) => {
+        localStorage.setItem('token', response.access_token);
+        setLoggedIn(true);
+        formik.resetForm();
+        navigate('/', { replace: true });
+      })
+      .catch((error) => console.error(error));
     },
   });
 
@@ -86,7 +87,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               />
             )}
 
-            <DatePicker
+            {/* <DatePicker
               label="Basic example"
               value={formik.values.dateOfBirthId}
               onChange={(value) => formik.setFieldValue('dateOfBirthId', value)}
@@ -102,12 +103,22 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
                   size="small"
                 />
               )}
-            />
+            /> */}
 
             <Input
               inputId={RegisterFormTypes.userDescription}
               label="Kilka słów o sobie"
               value={formik.values.userDescriptionId}
+              placeholder="Jeśli chcesz, napisz coś o sobie"
+              onChange={formik.handleChange}
+              icon="paw"
+              size="small"
+            />
+
+            <Input
+              inputId={RegisterFormTypes.dateOfBirth}
+              label="Urodziny"
+              value={formik.values.dateOfBirthId}
               placeholder="Jeśli chcesz, napisz coś o sobie"
               onChange={formik.handleChange}
               icon="paw"

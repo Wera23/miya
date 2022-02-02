@@ -24,7 +24,7 @@ import {
   SelectOptions,
   voivodeshipsData,
 } from '../../../common/Input/SelectOption';
-import { RETRIEVER_ID } from 'apps/miya/src/app/constans';
+import { RETRIEVER_ID } from '../../../../constans';
 
 interface EditRetrieverTypes {
   closeModal: () => void;

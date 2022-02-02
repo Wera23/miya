@@ -13,6 +13,10 @@ import { EditUserFormTypes } from './FormEditValues';
 import useNestUser from '../../../../services/dataHooks/useNestUser';
 import { DatePicker } from '@mui/lab';
 import { RegisterFormTypes } from '../../Register/RegisterInitialValues';
+import {
+  useUserActionsContext,
+  useUserContext,
+} from '../../../../context/UserContext';
 
 interface EditUserTypes {
   closeModal: () => void;
@@ -20,13 +24,15 @@ interface EditUserTypes {
 
 const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const { user } = useNestUser();
+  // const { user } = useNestUser();
+  const { user } = useUserContext();
+  const { getUser } = useUserActionsContext();
 
   console.log('user', user);
 
   const EditUserSchema = Yup.object().shape({
-    usernameId: Yup.string(),
-    userPasswordId: Yup.string(),
+    // usernameId: Yup.string(),
+    // userPasswordId: Yup.string(),
     dateOfBirthId: Yup.string(),
     userDescriptionId: Yup.string(),
     userAddress: Yup.string(),
@@ -36,8 +42,8 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      usernameId: (user && user.username) ?? '',
-      userPasswordId: (user && user.userPassword) ?? '',
+      // usernameId: (user && user.username) ?? '',
+      // userPasswordId: (user && user.userPassword) ?? '',
       dateOfBirthId: (user && user.dateOfBirth) ?? '',
       userDescriptionId: (user && user.userDescription) ?? '',
       userAddressId: (user && user.userAddress) ?? '',
@@ -47,6 +53,7 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
 
     onSubmit: (values) => {
       updateUserForm(editUserForm(values));
+      getUser();
       console.log('user', user);
       setShowSuccessMessage(true);
       formik.resetForm();
@@ -99,17 +106,10 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
             size="small"
           />
 
-          {formik.errors.userPasswordId && (
-            <Message
-              colorMessage="error"
-              messageText="* To pole jest wymagane"
-            />
-          )}
-
           <Input
             inputId={EditUserFormTypes.userImage}
             label="Twoje zdjęcie"
-            value={formik.values.userAddressId}
+            value={formik.values.userImageId}
             placeholder="Dodaj swoje zdjęcie"
             onChange={formik.handleChange}
             icon="paw"
@@ -117,10 +117,7 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
           />
 
           <div className="buttonOverlay">
-            <BasicButton
-              buttonText="Edytuj użytkownika"
-              buttonIcon="cog"
-            />
+            <BasicButton buttonText="Edytuj użytkownika" buttonIcon="cog" />
           </div>
         </form>
       )}

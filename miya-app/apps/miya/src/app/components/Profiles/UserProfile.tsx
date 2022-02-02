@@ -13,9 +13,10 @@ import { ProfileTypes, userProfile } from './ProfileData';
 import useNestUser from '../../services/dataHooks/useNestUser';
 import { useIsTransparentActionsContext } from '../../context/IsTransparent';
 import CirclePhoto from '../common/Photo/CirclePhoto';
+import { useUserContext } from '../../context/UserContext';
 
 const UserProfile: React.FC = () => {
-  const { user } = useNestUser();
+  const { user } = useUserContext();
   const { setIsTransparent } = useIsTransparentActionsContext();
 
   useEffect(() => {

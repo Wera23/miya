@@ -1,14 +1,18 @@
 import ReactModal from 'react-modal';
 import { useModal } from 'react-modal-hook';
+
+import { BasicButton } from '../../common';
+
 import { RETRIEVER_ID } from '../../../constans';
 import {
   useIsDeleteRetrieverActionsContext,
-  useIsDeleteRetrieverContext,
-  useIsTransparentActionsContext,
+  useRetrieverActionsContext,
 } from '../../../context';
-import { useRetrieverActionsContext } from '../../../context/RetrieverContext';
 import { deleteSpecificRetriever } from '../../../services/retrieverService';
-import { BasicButton } from '../../common';
+import styles from './DeleteRetrieverModal.module.scss';
+import { Typography } from '@mui/material';
+import classNames from 'classnames';
+import classnames from 'classnames';
 
 const DeleteRetrieverModal: React.FC = () => {
   const { getRetriever } = useRetrieverActionsContext();
@@ -23,10 +27,20 @@ const DeleteRetrieverModal: React.FC = () => {
 
     return (
       <ReactModal isOpen ariaHideApp={false}>
-        <h2>Potwierdź usunięcie swojego psa z bazy</h2>
-        <div>
-          <button onClick={handleDeleteRetriever}>OK</button>
-          <button onClick={hideModal}>Anuluj</button>
+        <div className={styles.deleteRetrieverConfirm}>
+          <Typography variant="body2" mb={4}>
+            Potwierdź usunięcie swojego psa z bazy
+          </Typography>
+          <div>
+            <i
+              className={classnames('icon-check', styles.deleteModalIcon)}
+              onClick={handleDeleteRetriever}
+            />
+            <i
+              className={classnames('icon-cancel', styles.deleteModalIcon)}
+              onClick={hideModal}
+            />
+          </div>
         </div>
       </ReactModal>
     );

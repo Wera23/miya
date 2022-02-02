@@ -28,7 +28,9 @@ export class RetrieversRepository {
     return newRetriever.save();
   }
 
-  async deleteOneRetriever(retrieverFilterQuery: FilterQuery<Retriever>,): Promise<Retriever> {
+  async deleteOneRetriever(
+    retrieverFilterQuery: FilterQuery<Retriever>,
+  ): Promise<Retriever> {
     return await this.retrieverModel.findOneAndDelete(retrieverFilterQuery);
   }
 

@@ -26,26 +26,27 @@ function editUserForm(values: EditUserValues): EditUser {
   return updateUser;
 }
 
-// function detailsOfTheCurrentUser(user: User): User {
-//   const currentUser: User = {
-//     userId: user.userId,
-//     username: user.username,
-//     userDescription: user.userDescription,
-//     dateOfBirth: user.dateOfBirth,
-//     userPassword: user.userPassword,
-//     userAddress: user.userAddress,
-//   };
-//   return currentUser;
-// }
+function detailsOfTheCurrentUser(user: User): User {
+  const currentUser: User = {
+    userId: user.userId,
+    username: user.username,
+    userDescription: user.userDescription,
+    dateOfBirth: user.dateOfBirth,
+    userPassword: user.userPassword,
+    userAddress: user.userAddress,
+    userImage: user.userImage,
+  };
+  return currentUser;
+}
 
 async function updateUserForm(updateUser: EditUser) {
   await dataService.editUser(updateUser);
 }
 
-// async function getSpecyficUser(): Promise<User> {
-//   const user = await dataService.getCurrentUser();
-//   return detailsOfTheCurrentUser(user?.data);
-// }
+async function getSpecyficUser(): Promise<User> {
+  const user = await dataService.getCurrentUser();
+  return detailsOfTheCurrentUser(user?.data);
+}
 
 // eslint-disable-next-line
 async function postNewUserForm(newUser: User) {
@@ -60,5 +61,6 @@ export {
   addNewUserForm,
   editUserForm,
   updateUserForm,
-  // getSpecyficUser,
+  getSpecyficUser,
+  detailsOfTheCurrentUser,
 };

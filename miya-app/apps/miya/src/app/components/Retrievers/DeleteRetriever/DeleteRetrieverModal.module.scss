@@ -1,0 +1,16 @@
+@mixin centralizeColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.deleteRetrieverConfirm {
+  @include centralizeColumn;
+  min-height: 25vh;
+}
+
+.deleteModalIcon {
+  margin: 0 10px;
+  font-size: 26px;
+}

@@ -21,6 +21,7 @@ import { useIsTransparentActionsContext } from '../../context/IsTransparent';
 import CirclePhoto from '../common/Photo/CirclePhoto';
 import { RETRIEVER_ID } from '../../constans';
 import { useIsDeleteRetrieverContext } from '../../context';
+import { retrieverGraphic } from '../../../assets/images';
 
 const RetrieverProfile: React.FC = () => {
   const { retriever } = useRetrieverContext();
@@ -51,7 +52,7 @@ const RetrieverProfile: React.FC = () => {
           header="Twój Retriever"
           icon="paw"
         >
-          {isDeleteRetriever ? (
+          {!isDeleteRetriever ? (
             <>
               <div className={styles.profileDialog}>
                 {retriever?.image && <CirclePhoto image={retriever.image} />}
@@ -81,8 +82,21 @@ const RetrieverProfile: React.FC = () => {
               <DeleteRetrieverModal />
             </>
           ) : (
-            <div>
+            <div className={styles.addNewRetriever}>
+              <img src={retrieverGraphic} alt="" />
+              <Typography variant="body2" mb={5}>
+                Nie posiadasz aktualnie w bazie żadnego psa.
+              </Typography>
               <AddRetrieverModal />
+              <Typography
+                onClick={hideModal}
+                variant="body1"
+                mt={3}
+                color="green"
+                className={styles.addNewRetrieverLink}
+              >
+                Lub wróc do przeglądania mapy z retieverami
+              </Typography>
             </div>
           )}
         </DetailsModal>

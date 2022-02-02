@@ -8,14 +8,13 @@ import { initialValues } from '../components/Users/Register/RegisterInitialValue
 import { registerBackground } from '../../assets/images';
 import { Navigate } from 'react-router-dom';
 
-
 const Login = () => {
   const { loggedIn } = useLoggedInContext();
 
   return (
     <div>
       {loggedIn ? (
-        <Navigate to="/home"  />
+        <Navigate to="/home" />
       ) : (
         <div
           className={styles.registerPage}
@@ -25,13 +24,6 @@ const Login = () => {
         </div>
       )}
     </div>
-
-    // <div
-    //   className={styles.registerPage}
-    //   style={{ backgroundImage: `url(${registerBackground})` }}
-    // >
-    //   <LoginForm initialValues={initialValues} />
-    // </div>
   );
 };
 

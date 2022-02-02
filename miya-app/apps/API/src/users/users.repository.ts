@@ -22,4 +22,13 @@ export class UsersRepository {
     const newUser = new this.userModel(user);
     return newUser.save();
   }
+
+  async findOneUserAndUpdate(
+    userFilterQuery: FilterQuery<User>,
+    retriever: Partial<User>,
+  ): Promise<User> {
+    return this.userModel.findOneAndUpdate(userFilterQuery, retriever, {
+      new: true,
+    });
+  }
 }
