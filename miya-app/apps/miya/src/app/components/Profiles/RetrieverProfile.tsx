@@ -78,8 +78,10 @@ const RetrieverProfile: React.FC = () => {
                   ))}
                 </div>
               </div>
-              <EditRetrieverModal />
-              <DeleteRetrieverModal />
+              <div className={styles.profileActions}>
+                <EditRetrieverModal />
+                <DeleteRetrieverModal />
+              </div>
             </>
           ) : (
             <div className={styles.addNewRetriever}>

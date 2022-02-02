@@ -1,6 +1,7 @@
 $inputColorDark: rgb(0, 122, 65);
 $inputSelected: #c7dcc2;
 $borderWidth: 1px;
+$backgroundInput: #dbedd7;
 $inputColorLight: rgba(133, 133, 133, 0.897);
 $inputBg: rgb(255, 255, 255);
 
@@ -9,6 +10,7 @@ $inputBg: rgb(255, 255, 255);
   margin-top: 15px;
   margin-bottom: 10px;
   position: relative;
+  
 }
 
 .selectInputLabel {
@@ -23,7 +25,7 @@ $inputBg: rgb(255, 255, 255);
   display: inline-block;
   letter-spacing: 1px;
   color: $inputColorLight;
-  background-color: $inputBg;
+  background-color: $backgroundInput;
 }
 
 .react-select-container {
@@ -61,6 +63,8 @@ $inputBg: rgb(255, 255, 255);
     box-shadow: none;
     outline: none;
     padding: 5px;
+
+    background-color: $backgroundInput !important;
   }
 
   .react-select-custom__control--is-focused,

@@ -84,5 +84,5 @@ export {
   editSpecificRetrieverForm,
   detailsOfTheSpecificRetriever,
   edtiRetrieverForm,
-  deleteSpecificRetriever
+  deleteSpecificRetriever,
 };

@@ -3,7 +3,6 @@ export interface EditRetrieverValues {
   ageId: string;
   cityId: string;
   voivodeshipId: string;
-  ownerId: string;
   descriptionId: string;
   latId: number;
   longId: number;
@@ -17,7 +16,6 @@ export enum RetrieverFormTypes {
   age = 'ageId',
   city = 'cityId',
   voivodeship = 'voivodeshipId',
-  owner = 'ownerId',
   description = 'descriptionId',
   lat = 'latId',
   long = 'longId',

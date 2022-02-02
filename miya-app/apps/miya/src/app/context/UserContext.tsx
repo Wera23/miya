@@ -1,7 +1,7 @@
 import { User } from '@miya-app/shared-types';
 import React, { useState, createContext, useContext } from 'react';
 import { useCallback } from 'react';
-import { getSpecyficUser } from '../services/registerService';
+import { getSpecyficUser } from '../services/loginService';
 
 interface UserContextProps {
   user: User | undefined;
@@ -32,11 +32,6 @@ export const UserContextProvider: React.FC = ({ children }) => {
 
     loadUser();
   }, []);
-
-  // const fetchCurrentUser = async () => {
-  //   const user = await dataService.getCurrentUser();
-  //   setUser(user);
-  // }
 
   return (
     <UserContext.Provider value={{ user }}>

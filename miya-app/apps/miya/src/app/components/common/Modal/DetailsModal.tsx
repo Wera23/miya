@@ -20,7 +20,7 @@ const DetailsModal: FC<ModalTypes> = ({
   children,
 }) => {
   const clickActionModal = () => {
-    closeModal && closeModal();    
+    closeModal && closeModal();
   };
 
   return (

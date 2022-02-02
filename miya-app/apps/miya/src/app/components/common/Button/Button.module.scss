@@ -1,5 +1,6 @@
-
 $transparent: rgb(255, 255, 255);
+$darkerBg: #006e3a;
+$brighterBg: #00783f;
 
 .isTransparentColor {
   color: $transparent;
@@ -13,6 +14,31 @@ $transparent: rgb(255, 255, 255);
   margin-left: 6px;
 }
 
-.basicButtonIcon{
-margin-right: 6px;
+.basicButtonIcon {
+  margin-right: 6px;
+}
+
+.buttonBasic {
+  box-shadow: none;
+  text-transform: none;
+  padding: 7px 12px;
+  border: 1px solid $brighterBg;
+  color: #fff;
+  line-height: 1;
+  outline: none;
+  background-color: $brighterBg;
+  font-family: 'Dosis';
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: $darkerBg;
+    border-color: $darkerBg;
+  }
+  &:active {
+    background-color: $darkerBg;
+    border-color: $darkerBg;
+    outline: none;
+  }
 }

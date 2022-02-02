@@ -13,7 +13,6 @@ import {
 
 const AddRetrieverModal: React.FC = () => {
   const { setIsTransparent } = useIsTransparentActionsContext();
-  // const { isDeleteRetriever } = useIsDeleteRetrieverContext();
   const { setDeleteRetriever } = useIsDeleteRetrieverActionsContext();
 
   useEffect(() => {

@@ -16,8 +16,12 @@
   align-items: flex-start;
 }
 
-.addNewRetrieverLink{
-&:hover{
-  opacity: 0.7;
+.addNewRetrieverLink {
+  &:hover {
+    opacity: 0.7;
+  }
 }
+
+.profileActions {
+  display: flex;
 }

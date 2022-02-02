@@ -55,7 +55,7 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
       nameId: (retriever && retriever.name) ?? '',
       cityId: (retriever && retriever.city) ?? '',
       voivodeshipId: (retriever && retriever.voivodeship) ?? '',
-      ownerId: (retriever && retriever.owner) ?? '',
+      // ownerId: (retriever && retriever.owner) ?? '',
       descriptionId: (retriever && retriever.description) ?? '',
       latId: (retriever && retriever.lat) ?? 0,
       longId: (retriever && retriever.long) ?? 0,

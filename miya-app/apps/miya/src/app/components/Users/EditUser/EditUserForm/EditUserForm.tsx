@@ -5,18 +5,18 @@ import * as Yup from 'yup';
 import { BasicButton, DetailsModal, Input, Message } from '../../../common';
 
 import '../../../../../assets/styles/forms.scss';
-import {
-  editUserForm,
-  updateUserForm,
-} from '../../../../services/registerService';
+
 import { EditUserFormTypes } from './FormEditValues';
-import useNestUser from '../../../../services/dataHooks/useNestUser';
 import { DatePicker } from '@mui/lab';
 import { RegisterFormTypes } from '../../Register/RegisterInitialValues';
 import {
   useUserActionsContext,
   useUserContext,
 } from '../../../../context/UserContext';
+import {
+  editUserForm,
+  updateUserForm,
+} from '../../../../services/loginService';
 
 interface EditUserTypes {
   closeModal: () => void;
@@ -24,11 +24,10 @@ interface EditUserTypes {
 
 const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  // const { user } = useNestUser();
   const { user } = useUserContext();
   const { getUser } = useUserActionsContext();
 
-  console.log('user', user);
+  console.log('user przed', user);
 
   const EditUserSchema = Yup.object().shape({
     // usernameId: Yup.string(),
@@ -52,9 +51,10 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
     validationSchema: EditUserSchema,
 
     onSubmit: (values) => {
+      console.log('user id', user?.userId);
       updateUserForm(editUserForm(values));
       getUser();
-      console.log('user', user);
+      console.log('user po', user);
       setShowSuccessMessage(true);
       formik.resetForm();
     },
@@ -85,6 +85,16 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
               />
             )}
           />
+
+          {/* <Input
+            inputId={EditUserFormTypes.dateOfBirth}
+            label="Data ur"
+            value={formik.values.dateOfBirthId}
+            placeholder="Jeśli chcesz, napisz coś o sobie"
+            onChange={formik.handleChange}
+            icon="paw"
+            size="small"
+          /> */}
 
           <Input
             inputId={EditUserFormTypes.userDescription}
@@ -125,10 +135,10 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
       {showSuccessMessage && (
         <div>
           <Message
-            messageText="Dane Twojego psa zostały zedytowane"
+            messageText="Twoje dane zostały zedytowane"
             colorMessage="green"
           />
-          <BasicButton buttonText="OK" buttonIcon="paw" onClick={closeModal} />
+          <BasicButton buttonText="OK" buttonIcon="cog" onClick={closeModal} />
         </div>
       )}
     </DetailsModal>

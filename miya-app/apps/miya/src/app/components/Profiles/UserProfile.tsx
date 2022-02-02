@@ -13,10 +13,14 @@ import { ProfileTypes, userProfile } from './ProfileData';
 import useNestUser from '../../services/dataHooks/useNestUser';
 import { useIsTransparentActionsContext } from '../../context/IsTransparent';
 import CirclePhoto from '../common/Photo/CirclePhoto';
-import { useUserContext } from '../../context/UserContext';
+import {
+  useUserActionsContext,
+  useUserContext,
+} from '../../context/UserContext';
 
 const UserProfile: React.FC = () => {
   const { user } = useUserContext();
+  const { getUser } = useUserActionsContext();
   const { setIsTransparent } = useIsTransparentActionsContext();
 
   useEffect(() => {
@@ -24,6 +28,10 @@ const UserProfile: React.FC = () => {
       setIsTransparent(false);
     };
   }, [setIsTransparent]);
+
+  useEffect(() => {
+    getUser();
+  }, [getUser]);
 
   const [showModal, hideModal] = useModal(() => {
     const actionsModal = () => {
