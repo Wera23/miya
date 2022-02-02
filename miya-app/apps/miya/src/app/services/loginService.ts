@@ -39,8 +39,8 @@ async function updateUserForm(updateUser: EditUser) {
   await dataService.editUser(updateUser);
 }
 
-async function getSpecyficUser(): Promise<User> {
-  const user = await dataService.getCurrentUser();
+async function getSpecyficUser(name: string): Promise<User> {
+  const user = await dataService.getSpecificUser(name);
   return detailsOfTheCurrentUser(user?.data);
 }
 

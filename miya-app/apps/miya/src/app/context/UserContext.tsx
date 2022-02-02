@@ -11,7 +11,7 @@ interface UserActionsContextProps {
   getUser: TGetUser;
 }
 
-type TGetUser = () => void;
+type TGetUser = (name: string) => void;
 
 const UserContext = createContext<UserContextProps>({} as UserContextProps);
 const UserActionsContext = createContext<UserActionsContextProps>(
@@ -24,13 +24,13 @@ export const useUserActionsContext = () => useContext(UserActionsContext);
 export const UserContextProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<User>();
 
-  const getUser: TGetUser = useCallback(() => {
-    const loadUser = async (): Promise<void> => {
-      const user = await getSpecyficUser();
+  const getUser: TGetUser =  useCallback(async (name) => {
+    // const loadUser =  (): Promise<void> => {
+      const user = await getSpecyficUser(name);
       setUser(user);
-    };
+    // };
 
-    loadUser();
+    // loadUser();
   }, []);
 
   return (

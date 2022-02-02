@@ -34,6 +34,12 @@ class DataService {
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 
+  getSpecificUser(name: string): AxiosPromise {
+    return apiService
+      .get(`users/${name}`)
+      .catch((error: AxiosResponse) => Promise.reject(error));
+  }
+
   editUser(user: EditUser): AxiosPromise {
     return apiService
       .patch(`users/current`, user)

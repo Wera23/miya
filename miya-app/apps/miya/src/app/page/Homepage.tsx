@@ -13,13 +13,9 @@ const Homepage = () => {
   const { user } = useUserContext();
   const { getUser } = useUserActionsContext();
 
-  useEffect(() => {
-    getUser();
-  }, [getUser]);
-
+  
   return (
     <div className={styles.homepage}>
-      <h1>AAAA{user?.userAddress} {user?.userId}</h1>
       <div
         className={classnames(
           styles.homepageMenu,

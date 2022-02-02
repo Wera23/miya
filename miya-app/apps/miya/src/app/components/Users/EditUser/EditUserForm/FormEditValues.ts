@@ -1,5 +1,5 @@
 export interface EditUserValues {
-  dateOfBirthId: string;
+  dateOfBirthId: number | Date;
   userDescriptionId: string;
   userAddressId: string;
   userImageId: string;

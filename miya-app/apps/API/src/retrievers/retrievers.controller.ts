@@ -5,23 +5,13 @@ import {
   Get,
   Param,
   Patch,
-  Post,
-  UploadedFile,
-  UseInterceptors,
-  Res,
-  StreamableFile,
+  Post, 
   UseGuards,
 } from '@nestjs/common';
 import { CreateRetriever } from './dto/create-retriever.dto';
 import { UpdateRetriever } from './dto/update-retriever.dto';
 import { RetriversService } from './retrievers.service';
 import { Retriever } from './schema/retriever.schema';
-import { FileInterceptor } from '@nestjs/platform-express';
-import { of } from 'rxjs';
-
-import { diskStorage } from 'multer';
-import { createReadStream } from 'fs';
-import { join } from 'path';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @Controller('retrievers')
@@ -66,10 +56,10 @@ export class RetrieversController {
     return this.retrieversService.updateRetriever(id, retriever);
   }
 
-  // @Delete(':id')
-  // async deleteRetriever(@Param('id') id: number): Promise<Retriever> {
-  //   return this.retrieversService.deleteRetriever(id);
-  // }
+  @Delete(':id')
+  async deleteRetriever(@Param('id') id: number): Promise<Retriever> {
+    return this.retrieversService.removeRetriever(id);
+  }
 
   // @Post()
   // @UseInterceptors(

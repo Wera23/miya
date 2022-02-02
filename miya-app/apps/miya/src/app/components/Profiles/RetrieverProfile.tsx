@@ -52,7 +52,7 @@ const RetrieverProfile: React.FC = () => {
           header="Twój Retriever"
           icon="paw"
         >
-          {!isDeleteRetriever ? (
+          {retriever ? (
             <>
               <div className={styles.profileDialog}>
                 {retriever?.image && <CirclePhoto image={retriever.image} />}

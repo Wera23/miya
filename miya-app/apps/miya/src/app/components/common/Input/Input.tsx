@@ -14,7 +14,7 @@ interface InputTypes {
   iconClassName?: string;
   inputClassName?: string;
   containerClassName?: string;
-  value: string | number | undefined;
+  value: string | number | undefined | Date;
   size: any;
   error?: any;
   onChange: React.EventHandler<React.ChangeEvent<HTMLInputElement>>;

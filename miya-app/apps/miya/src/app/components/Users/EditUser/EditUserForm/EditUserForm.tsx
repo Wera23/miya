@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { format } from 'date-fns';
 
 import { BasicButton, DetailsModal, Input, Message } from '../../../common';
 
@@ -27,12 +28,8 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
   const { user } = useUserContext();
   const { getUser } = useUserActionsContext();
 
-  console.log('user przed', user);
-
   const EditUserSchema = Yup.object().shape({
-    // usernameId: Yup.string(),
-    // userPasswordId: Yup.string(),
-    dateOfBirthId: Yup.string(),
+    dateOfBirthId: Yup.number() || Yup.date(),
     userDescriptionId: Yup.string(),
     userAddress: Yup.string(),
     userImage: Yup.string(),
@@ -41,22 +38,20 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      // usernameId: (user && user.username) ?? '',
-      // userPasswordId: (user && user.userPassword) ?? '',
-      dateOfBirthId: (user && user.dateOfBirth) ?? '',
+      dateOfBirthId: (user && user.dateOfBirth) ?? 0,
       userDescriptionId: (user && user.userDescription) ?? '',
       userAddressId: (user && user.userAddress) ?? '',
       userImageId: (user && user.userImage) ?? '',
     },
     validationSchema: EditUserSchema,
 
-    onSubmit: (values) => {
-      console.log('user id', user?.userId);
-      updateUserForm(editUserForm(values));
-      getUser();
-      console.log('user po', user);
+    onSubmit: async (values) => {
+      await updateUserForm(editUserForm(values));
+      getUser(user?.username ?? 'Wera');
       setShowSuccessMessage(true);
       formik.resetForm();
+
+      // console.log('format', format(user!.dateOfBirth, 'MM-dd'));
     },
   });
 
@@ -70,7 +65,7 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
         <form className="actionFormContent" onSubmit={formik.handleSubmit}>
           <DatePicker
             label="Basic example"
-            value={formik.values.dateOfBirthId}
+            value={format(formik.values.dateOfBirthId, 'YYYY-MM-dd')}
             onChange={(value) => formik.setFieldValue('dateOfBirthId', value)}
             renderInput={(params) => (
               <Input

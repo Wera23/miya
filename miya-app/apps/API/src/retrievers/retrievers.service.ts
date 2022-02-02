@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { User } from 'src/users/schema/user.schema';
 import { UpdateRetriever } from './dto/update-retriever.dto';
 import { RetrieversRepository } from './retrievers.repository';
 import { Retriever } from './schema/retriever.schema';
@@ -55,5 +54,8 @@ export class RetriversService {
       { id },
       retrieverUpdates,
     );
+  }
+  async removeRetriever(id: number): Promise<Retriever> {
+    return this.retrieversRepository.deleteOneRetriever({ id });
   }
 }

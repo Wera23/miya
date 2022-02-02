@@ -39,7 +39,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
     userId: Yup.number(),
     usernameId: Yup.string().required('To pole jest wymagane'),
     userPasswordId: Yup.string().required('To pole jest wymagane'),
-    dateOfBirthId: Yup.string(),
+    dateOfBirthId: Yup.number() || Yup.date(),
     userDescriptionId: Yup.string(),
     userAddressId: Yup.string(),
     userImageId: Yup.string(),

@@ -8,15 +8,11 @@ interface EditUserTypes {
   handleEditUser?: () => void;
 }
 
-const EditUserModal: React.FC<EditUserTypes> = ({
-    handleEditUser,
-}) => {
+const EditUserModal: React.FC<EditUserTypes> = ({ handleEditUser }) => {
   const [showModal, hideModal] = useModal(() => {
     return (
       <ReactModal isOpen ariaHideApp={false}>
-        <EditUserForm
-          closeModal={hideModal}
-        />
+        <EditUserForm closeModal={hideModal} />
       </ReactModal>
     );
   });

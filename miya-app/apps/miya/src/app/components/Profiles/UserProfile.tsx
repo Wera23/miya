@@ -30,8 +30,8 @@ const UserProfile: React.FC = () => {
   }, [setIsTransparent]);
 
   useEffect(() => {
-    getUser();
-  }, [getUser]);
+    getUser(user?.username ?? "Wera");
+  }, [getUser, user?.username]);
 
   const [showModal, hideModal] = useModal(() => {
     const actionsModal = () => {
