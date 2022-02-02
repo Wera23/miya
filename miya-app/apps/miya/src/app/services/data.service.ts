@@ -46,19 +46,19 @@ class DataService {
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 
-  getSpecificRetriever(id: string): AxiosPromise {
+  getSpecificRetriever(id: number): AxiosPromise {
     return apiService
       .get(`/retrievers/${id}`)
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 
-  editSpecificRetriever(id: string, retriever: EditRetriever): AxiosPromise {
+  editSpecificRetriever(id: number, retriever: EditRetriever): AxiosPromise {
     return apiService
       .patch(`/retrievers/${id}`, retriever)
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
 
-  deleteSpecificRetriever(id: string): AxiosPromise {
+  deleteSpecificRetriever(id: number): AxiosPromise {
     return apiService
       .delete(`/retrievers/${id}`)
       .catch((error: AxiosResponse) => Promise.reject(error));

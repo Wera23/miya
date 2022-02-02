@@ -23,6 +23,9 @@ const DeleteRetrieverModal: React.FC = () => {
       deleteSpecificRetriever(RETRIEVER_ID);
       getRetriever(RETRIEVER_ID);
       setDeleteRetriever(true);
+      setTimeout(() => {
+        hideModal();
+      }, 700);
     };
 
     return (

@@ -6,7 +6,7 @@ interface RetriverTypes {
   retriever: Retriever | undefined;
 }
 
-export default function useNestSingleRetriever(id: string): RetriverTypes {
+export default function useNestSingleRetriever(id: number): RetriverTypes {
   const [retriever, setRetreiver] = useState<Retriever>();
 
   useEffect(() => {

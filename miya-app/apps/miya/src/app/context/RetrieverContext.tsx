@@ -11,7 +11,7 @@ interface RetrieverActionsContextProps {
   getRetriever: TGetRetriever;
 }
 
-type TGetRetriever = (id: string) => void;
+type TGetRetriever = (id: number) => void;
 
 const RetrieverContext = createContext<RetrieverContextProps>(
   {} as RetrieverContextProps

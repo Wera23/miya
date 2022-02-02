@@ -61,18 +61,18 @@ async function postNewRetrieverForm(newRetriever: Retriever) {
   await dataService.postNewRetriever(newRetriever);
 }
 
-async function deleteSpecificRetriever(id: string) {
+async function deleteSpecificRetriever(id: number) {
   await dataService.deleteSpecificRetriever(id);
 }
 
 async function editSpecificRetrieverForm(
-  id: string,
+  id: number,
   updateRetriever: EditRetriever
 ) {
   await dataService.editSpecificRetriever(id, updateRetriever);
 }
 
-async function getSpecyficSingleRetriever(id: string): Promise<Retriever> {
+async function getSpecyficSingleRetriever(id: number): Promise<Retriever> {
   const retiever = await dataService.getSpecificRetriever(id);
   return detailsOfTheSpecificRetriever(retiever?.data);
 }

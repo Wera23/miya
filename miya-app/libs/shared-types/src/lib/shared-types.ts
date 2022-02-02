@@ -41,14 +41,14 @@ export class User {
   @IsNumber() @IsOptional() readonly userId: number;
   @IsString() readonly username: string;
   @IsString() readonly userPassword: string;
-  @IsString() @IsOptional() readonly dateOfBirth: string;
+  @IsString() @IsOptional() readonly dateOfBirth: number | Date;
   @IsString() @IsOptional() readonly userDescription: string;
   @IsString() @IsOptional() readonly userAddress: string;
   @IsString() @IsOptional() readonly userImage: string;
 }
 
 export class EditUser {
-  @IsString() @IsOptional() readonly dateOfBirth: string | undefined;
+  @IsString() @IsOptional() readonly dateOfBirth: number | Date | undefined;
   @IsString() @IsOptional() readonly userDescription: string | undefined;
   @IsString() @IsOptional() readonly userAddress: string | undefined;
   @IsString() @IsOptional() readonly userImage: string | undefined;

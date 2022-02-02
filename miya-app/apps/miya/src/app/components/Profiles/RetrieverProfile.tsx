@@ -19,7 +19,7 @@ import { retrieverProfile, ProfileTypes } from './ProfileData';
 import { Retriever } from '@miya-app/shared-types';
 import { useIsTransparentActionsContext } from '../../context/IsTransparent';
 import CirclePhoto from '../common/Photo/CirclePhoto';
-import { RETRIEVER_ID } from '../../constans';
+import { NEW_RETRIEVER_ID, RETRIEVER_ID } from '../../constans';
 import { useIsDeleteRetrieverContext } from '../../context';
 import { retrieverGraphic } from '../../../assets/images';
 
@@ -27,7 +27,6 @@ const RetrieverProfile: React.FC = () => {
   const { retriever } = useRetrieverContext();
   const { getRetriever } = useRetrieverActionsContext();
   const { setIsTransparent } = useIsTransparentActionsContext();
-  const { isDeleteRetriever } = useIsDeleteRetrieverContext();
 
   useEffect(() => {
     return () => {
@@ -36,6 +35,8 @@ const RetrieverProfile: React.FC = () => {
   }, [setIsTransparent]);
 
   useEffect(() => {
+    // isDeleteRetriever && getRetriever(RETRIEVER_ID);
+    // !isDeleteRetriever && getRetriever(NEW_RETRIEVER_ID);
     getRetriever(RETRIEVER_ID);
   }, [getRetriever]);
 
@@ -52,7 +53,7 @@ const RetrieverProfile: React.FC = () => {
           header="Twój Retriever"
           icon="paw"
         >
-          {retriever ? (
+          {retriever?.id ? (
             <>
               <div className={styles.profileDialog}>
                 {retriever?.image && <CirclePhoto image={retriever.image} />}
