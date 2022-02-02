@@ -2,7 +2,7 @@ import { IsString, IsNumber, IsOptional } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class Retriever {
-  @IsNumber() @IsOptional() readonly id: number;
+  @IsNumber() @IsOptional() readonly id?: number;
   @IsString() readonly name: string;
   @IsString() readonly age: string;
   @IsString() readonly city: string;
@@ -41,7 +41,7 @@ export class User {
   @IsNumber() @IsOptional() readonly userId: number;
   @IsString() readonly username: string;
   @IsString() readonly userPassword: string;
-  @IsString() @IsOptional() readonly dateOfBirth: number | Date;
+  @IsString() readonly dateOfBirth: number | Date;
   @IsString() @IsOptional() readonly userDescription: string;
   @IsString() @IsOptional() readonly userAddress: string;
   @IsString() @IsOptional() readonly userImage: string;
