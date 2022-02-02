@@ -7,6 +7,7 @@ import { RETRIEVER_ID } from '../../../constans';
 import {
   useIsDeleteRetrieverActionsContext,
   useRetrieverActionsContext,
+  useRetrieverContext,
 } from '../../../context';
 import { deleteSpecificRetriever } from '../../../services/retrieverService';
 import styles from './DeleteRetrieverModal.module.scss';
@@ -15,14 +16,15 @@ import classNames from 'classnames';
 import classnames from 'classnames';
 
 const DeleteRetrieverModal: React.FC = () => {
-  const { getRetriever } = useRetrieverActionsContext();
+  const { retriever } = useRetrieverContext();
+  const { cleanRetrieverData } = useRetrieverActionsContext();
   const { setDeleteRetriever } = useIsDeleteRetrieverActionsContext();
 
   const [showModal, hideModal] = useModal(() => {
     const handleDeleteRetriever = () => {
-      deleteSpecificRetriever(RETRIEVER_ID);
-      getRetriever(RETRIEVER_ID);
+      deleteSpecificRetriever(retriever?.id ?? 0);
       setDeleteRetriever(true);
+      cleanRetrieverData();
       setTimeout(() => {
         hideModal();
       }, 700);

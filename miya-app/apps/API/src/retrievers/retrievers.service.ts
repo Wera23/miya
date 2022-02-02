@@ -30,7 +30,7 @@ export class RetriversService {
     image: string,
   ): Promise<Retriever> {
     return this.retrieversRepository.createRetriever({
-      id: Date.now(),
+      id: Math.random(),
       name,
       age,
       city,

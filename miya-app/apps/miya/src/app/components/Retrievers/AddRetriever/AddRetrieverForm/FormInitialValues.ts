@@ -1,5 +1,4 @@
 export interface NewRetrieverValues {
-  idId: number;
   nameId: string;
   ageId: string;
   genderId: string;
@@ -15,7 +14,6 @@ export interface NewRetrieverValues {
 }
 
 export const initialValues: NewRetrieverValues = {
-  idId: 0,
   nameId: '',
   ageId: '',
   genderId: '',

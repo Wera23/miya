@@ -54,6 +54,9 @@ const SingleRetrieverModal: React.FC<SingleRetrieverTypes> = ({
       <Typography variant="body1" mb={3} mt={0}>
         {singleRetriever.city}
       </Typography>
+      <Typography variant="body1" mb={3} mt={0}>
+        ID: {singleRetriever.id}
+      </Typography>
       <Button
         size="small"
         className={styles.buttonSingleRetriever}

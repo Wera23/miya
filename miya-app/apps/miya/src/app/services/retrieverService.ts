@@ -5,7 +5,6 @@ import { dataService } from './data.service';
 
 function retrieverForm(values: NewRetrieverValues): Retriever {
   const newRetriever: Retriever = {
-    id: values.idId,
     name: values.nameId,
     age: values.ageId,
     city: values.cityId,
@@ -58,7 +57,8 @@ function detailsOfTheSpecificRetriever(retriever: Retriever): Retriever {
 }
 
 async function postNewRetrieverForm(newRetriever: Retriever) {
-  await dataService.postNewRetriever(newRetriever);
+  const retriever = await dataService.postNewRetriever(newRetriever);
+  return retriever?.data.id;
 }
 
 async function deleteSpecificRetriever(id: number) {

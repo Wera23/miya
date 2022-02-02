@@ -17,6 +17,8 @@ import {
   useUserActionsContext,
   useUserContext,
 } from '../../context/UserContext';
+import { format } from 'date-fns';
+import { formatISO, parse } from 'date-fns/esm';
 
 const UserProfile: React.FC = () => {
   const { user } = useUserContext();
@@ -30,7 +32,7 @@ const UserProfile: React.FC = () => {
   }, [setIsTransparent]);
 
   useEffect(() => {
-    getUser(user?.username ?? "Wera");
+    getUser(user?.username ?? 'Wera');
   }, [getUser, user?.username]);
 
   const [showModal, hideModal] = useModal(() => {
@@ -50,12 +52,15 @@ const UserProfile: React.FC = () => {
 
             <div className={styles.profileContent}>
               {userProfile.map((userSimpleData: ProfileTypes) => (
+
+                
                 <LineData value="userDescription" data={userSimpleData.value}>
                   <Typography variant="body2" pr={1}>
                     {userSimpleData.name}
                   </Typography>
                   <Typography variant="body1">
-                    {user?.[userSimpleData.value as keyof User]}
+                  {userSimpleData.value === "dateOfBirth" ? format(new Date() , "dd-MM-yyyy") : user?.[userSimpleData.value as keyof User]}
+                  {/* {userSimpleData.value === "dateOfBirth" ? user?.dateOfBirth : user?.[userSimpleData.value as keyof User]} */}
                   </Typography>
                 </LineData>
               ))}

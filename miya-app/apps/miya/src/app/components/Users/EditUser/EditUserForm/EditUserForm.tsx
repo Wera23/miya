@@ -29,7 +29,7 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
   const { getUser } = useUserActionsContext();
 
   const EditUserSchema = Yup.object().shape({
-    dateOfBirthId: Yup.number() || Yup.date(),
+    dateOfBirthId:  Yup.date(),
     userDescriptionId: Yup.string(),
     userAddress: Yup.string(),
     userImage: Yup.string(),
@@ -51,7 +51,7 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
       setShowSuccessMessage(true);
       formik.resetForm();
 
-      // console.log('format', format(user!.dateOfBirth, 'MM-dd'));
+       console.log('format', format(user!.dateOfBirth, 'MM-dd'));
     },
   });
 
@@ -65,7 +65,7 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
         <form className="actionFormContent" onSubmit={formik.handleSubmit}>
           <DatePicker
             label="Basic example"
-            value={format(formik.values.dateOfBirthId, 'YYYY-MM-dd')}
+            value={formik.values.dateOfBirthId}
             onChange={(value) => formik.setFieldValue('dateOfBirthId', value)}
             renderInput={(params) => (
               <Input

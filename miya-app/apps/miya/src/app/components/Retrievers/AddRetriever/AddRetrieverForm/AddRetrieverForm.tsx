@@ -21,6 +21,7 @@ import {
   SelectOptions,
   voivodeshipsData,
 } from '../../../common/Input/SelectOption';
+import { useRetrieverActionsContext } from '../../../../context';
 
 interface AddRetrieverTypes {
   closeModal: () => void;
@@ -31,10 +32,10 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
   initialValues,
   closeModal,
 }) => {
+  
+  const { getRetriever } = useRetrieverActionsContext();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
   const NewRetrieverSchema = Yup.object().shape({
-    idId: Yup.number(),
     nameId: Yup.string().required('To pole jest wymagane'),
     ageId: Yup.string().required('To pole jest wymagane'),
     genderId: Yup.string().required('To pole jest wymagane'),
@@ -53,10 +54,11 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
     initialValues: initialValues,
     validationSchema: NewRetrieverSchema,
 
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      let id;
       alert(JSON.stringify(values, null, 2));
-
-      postNewRetrieverForm(retrieverForm(values));
+      await postNewRetrieverForm(retrieverForm(values)).then((value) => (id = value));
+      getRetriever(id ?? 0)
       setShowSuccessMessage(true);
       formik.resetForm();
     },

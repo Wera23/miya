@@ -9,6 +9,7 @@ interface RetrieverContextProps {
 
 interface RetrieverActionsContextProps {
   getRetriever: TGetRetriever;
+  cleanRetrieverData: () => void;
 }
 
 type TGetRetriever = (id: number) => void;
@@ -36,9 +37,15 @@ export const RetrieverContextProvider: React.FC = ({ children }) => {
     loadRetriever();
   }, []);
 
+  console.log('ret', retriever);
+  
+  const cleanRetrieverData = () => {
+    setRetreiver(undefined)
+  }
+
   return (
     <RetrieverContext.Provider value={{ retriever }}>
-      <RetrieverActionsContext.Provider value={{ getRetriever }}>
+      <RetrieverActionsContext.Provider value={{ getRetriever, cleanRetrieverData }}>
         {children}
       </RetrieverActionsContext.Provider>
     </RetrieverContext.Provider>
