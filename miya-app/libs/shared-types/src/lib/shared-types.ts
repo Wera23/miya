@@ -43,15 +43,20 @@ export class User {
   @IsString() readonly userPassword: string;
   @IsString() readonly dateOfBirth: number | Date;
   @IsString() @IsOptional() readonly userDescription: string;
-  @IsString() @IsOptional() readonly userAddress: string;
+  @IsString() @IsOptional() readonly userVoivodeship: string;
+  @IsString() @IsOptional() readonly userCity: string;
   @IsString() @IsOptional() readonly userImage: string;
+  @IsString() @IsOptional() readonly userGender: string;
+
 }
 
 export class EditUser {
   @IsString() @IsOptional() readonly dateOfBirth: number | Date | undefined;
   @IsString() @IsOptional() readonly userDescription: string | undefined;
-  @IsString() @IsOptional() readonly userAddress: string | undefined;
-  @IsString() @IsOptional() readonly userImage: string | undefined;
+  @IsString() @IsOptional() readonly userVoivodeship: string;
+  @IsString() @IsOptional() readonly userCity: string;
+  @IsString() @IsOptional() readonly userImage: string;
+  @IsString() @IsOptional() readonly userGender: string;
 }
 
 export class UserLogin {
