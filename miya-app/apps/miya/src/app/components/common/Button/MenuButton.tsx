@@ -9,17 +9,19 @@ interface MenuButtonTypes {
   handleClickButton: () => void;
   buttonText: string;
   buttonIcon: string;
+  customClassName?: string;
 }
 
 const MenuButton: React.FC<MenuButtonTypes> = ({
   handleClickButton,
   buttonText,
   buttonIcon,
+  customClassName,
 }) => {
   const { isTransparent } = useIsTransparentContext();
 
   return (
-    <Button onClick={handleClickButton}>
+    <Button onClick={handleClickButton} className={customClassName}>
       <i
         className={classnames(
           `icon-${buttonIcon}`,

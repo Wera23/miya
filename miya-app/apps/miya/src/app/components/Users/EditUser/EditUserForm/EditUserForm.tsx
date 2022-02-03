@@ -29,10 +29,12 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
   const { getUser } = useUserActionsContext();
 
   const EditUserSchema = Yup.object().shape({
-    dateOfBirthId:  Yup.date(),
+    dateOfBirthId: Yup.date(),
     userDescriptionId: Yup.string(),
-    userAddress: Yup.string(),
-    userImage: Yup.string(),
+    userVoivodeshipId: Yup.string(),
+    userCityID: Yup.string(),
+    userImageId: Yup.string(),
+    userGenderId: Yup.string(),
   });
 
   const formik = useFormik({
@@ -40,8 +42,10 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
     initialValues: {
       dateOfBirthId: (user && user.dateOfBirth) ?? 0,
       userDescriptionId: (user && user.userDescription) ?? '',
-      userAddressId: (user && user.userAddress) ?? '',
+      userVoivodeshipId: (user && user.userVoivodeship) ?? '',
+      userCityId: (user && user.userCity) ?? '',
       userImageId: (user && user.userImage) ?? '',
+      userGenderId: (user && user.userGender) ?? '',
     },
     validationSchema: EditUserSchema,
 
@@ -51,7 +55,7 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
       setShowSuccessMessage(true);
       formik.resetForm();
 
-       console.log('format', format(user!.dateOfBirth, 'MM-dd'));
+      console.log('format', format(user!.dateOfBirth, 'MM-dd'));
     },
   });
 
@@ -102,10 +106,30 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
           />
 
           <Input
-            inputId={EditUserFormTypes.userAddress}
-            label="Twoje miasto i województwo"
-            value={formik.values.userAddressId}
-            placeholder="Podaj swoje miasto i województwo"
+            inputId={EditUserFormTypes.userVoivodeship}
+            label="Twoje województwo"
+            value={formik.values.userVoivodeshipId}
+            placeholder="Podaj województwo"
+            onChange={formik.handleChange}
+            icon="paw"
+            size="small"
+          />
+
+          <Input
+            inputId={EditUserFormTypes.userCity}
+            label="Twoje miasto"
+            value={formik.values.userCityId}
+            placeholder="Podaj miasto"
+            onChange={formik.handleChange}
+            icon="paw"
+            size="small"
+          />
+
+          <Input
+            inputId={EditUserFormTypes.userGender}
+            label="Twoja płeć"
+            value={formik.values.userGenderId}
+            placeholder="Podaj płeć"
             onChange={formik.handleChange}
             icon="paw"
             size="small"

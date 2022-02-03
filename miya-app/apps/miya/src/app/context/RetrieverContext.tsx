@@ -37,15 +37,15 @@ export const RetrieverContextProvider: React.FC = ({ children }) => {
     loadRetriever();
   }, []);
 
-  console.log('ret', retriever);
-  
   const cleanRetrieverData = () => {
-    setRetreiver(undefined)
-  }
+    setRetreiver(undefined);
+  };
 
   return (
     <RetrieverContext.Provider value={{ retriever }}>
-      <RetrieverActionsContext.Provider value={{ getRetriever, cleanRetrieverData }}>
+      <RetrieverActionsContext.Provider
+        value={{ getRetriever, cleanRetrieverData }}
+      >
         {children}
       </RetrieverActionsContext.Provider>
     </RetrieverContext.Provider>

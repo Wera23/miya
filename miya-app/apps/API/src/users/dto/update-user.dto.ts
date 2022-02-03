@@ -2,7 +2,9 @@ export class UpdateUser {
     dateOfBirth: string;
     userPassword: string;
     userDescription: string;
-    userAddress: string;
+    userVoivodeship: string;
+    userCity: string;
     userImage: string;
+    userGender: string;
   }
   

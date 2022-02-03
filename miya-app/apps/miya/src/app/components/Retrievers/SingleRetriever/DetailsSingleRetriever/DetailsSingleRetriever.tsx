@@ -3,14 +3,13 @@ import classnames from 'classnames';
 import { Retriever } from '@miya-app/shared-types';
 
 import { Typography } from '@mui/material';
-import { DetailsModal, LineData } from '../../../common';
+import { DetailsModal, LineData, CirclePhoto } from '../../../common';
 
 import styles from './DetailsSingleRetriever.module.scss';
 import {
   DetailsRetrieverTypes,
   detailsSingleRetrieverData,
 } from './DetailsSingleRetrieverData';
-import CirclePhoto from '../../../common/Photo/CirclePhoto';
 interface SingleRetrieverTypes {
   singleRetriever: Retriever;
   closeModal: () => void;

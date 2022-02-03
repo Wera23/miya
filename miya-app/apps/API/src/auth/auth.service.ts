@@ -16,8 +16,10 @@ export class AuthService {
     dateOfBirth: string,
     userPassword: string,
     userDescription: string,
-    userAddress: string,
+    userVoivodeship: string,
+    userCity: string,
     userImage: string,
+    userGender: string,
   ): Promise<any> {
     return await this.usersService
       .createUser(
@@ -25,8 +27,10 @@ export class AuthService {
         dateOfBirth,
         userPassword,
         userDescription,
-        userAddress,
+        userVoivodeship,
+        userCity,
         userImage,
+        userGender,
       )
       .then(() => {
         return this.jwtService.sign(User);
@@ -49,8 +53,10 @@ export class AuthService {
       sup: user._doc.userId,
       dateOfBirth: user._doc.dateOfBirth,
       userDescription: user._doc.userDescription,
-      userAddress: user._doc.userAddress,
+      userVoivodeship: user._doc.userVoivodeship,
+      userCity: user._doc.userCity,
       userImage: user._doc.userImage,
+      userGender: user._doc.userGender,
     };
 
     return {

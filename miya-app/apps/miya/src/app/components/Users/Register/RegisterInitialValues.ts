@@ -4,8 +4,11 @@ export interface RegisterValues {
   userPasswordId: string;
   dateOfBirthId: number | Date;
   userDescriptionId: string;
-  userAddressId: string;
+  userVoivodeshipId: string;
+  userCityId: string;
   userImageId: string;
+  userGenderId: string;
+  
 }
 
 export const initialValues: RegisterValues = {
@@ -14,8 +17,10 @@ export const initialValues: RegisterValues = {
   userPasswordId: '',
   dateOfBirthId: 0,
   userDescriptionId: '',
-  userAddressId: '',
+  userVoivodeshipId: '',
+  userCityId: '',
   userImageId: '',
+  userGenderId: '',
 };
 
 export enum RegisterFormTypes {
@@ -24,6 +29,8 @@ export enum RegisterFormTypes {
   userPassword = 'userPasswordId',
   dateOfBirth = 'dateOfBirthId',
   userDescription = 'userDescriptionId',
-  userAddress = 'userAddressId',
+  userVoivodeship = 'userVoivodeshipId',
+  userCity = 'userCityId',
   userImage = 'userImageId',
+  userGender = 'userGenderId',
 }

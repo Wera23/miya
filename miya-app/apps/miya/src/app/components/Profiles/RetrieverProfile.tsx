@@ -8,7 +8,7 @@ import {
   DeleteRetrieverModal,
   EditRetrieverModal,
 } from '..';
-import { DetailsModal, LineData, MenuButton } from '../common';
+import { CirclePhoto, DetailsModal, LineData, MenuButton } from '../common';
 
 import styles from './ProfileModal.module.scss';
 import {
@@ -18,8 +18,7 @@ import {
 import { retrieverProfile, ProfileTypes } from './ProfileData';
 import { Retriever } from '@miya-app/shared-types';
 import { useIsTransparentActionsContext } from '../../context/IsTransparent';
-import CirclePhoto from '../common/Photo/CirclePhoto';
-import { retrieverGraphic } from '../../../assets/images';
+import { retrieverGraphic, noImageRetriever } from '../../../assets/images';
 
 const RetrieverProfile: React.FC = () => {
   const { getRetriever } = useRetrieverActionsContext();
@@ -34,9 +33,7 @@ const RetrieverProfile: React.FC = () => {
 
   useEffect(() => {
     getRetriever(retriever?.id ?? 0);
-    // !isDeleteRetriever && getRetriever(NEW_RETRIEVER_ID);
-    // retriever && getRetriever(retriever.id);
-  }, [getRetriever]);
+  }, [getRetriever, retriever?.id]);
 
   const [showModal, hideModal] = useModal(() => {
     const actionsModal = () => {
@@ -51,11 +48,14 @@ const RetrieverProfile: React.FC = () => {
           header="Twój Retriever"
           icon="paw"
         >
-          <h1>ID: {retriever?.id} {retriever?.name}</h1>
           {retriever?.id ? (
             <>
               <div className={styles.profileDialog}>
-                {retriever?.image && <CirclePhoto image={retriever.image} />}
+                {retriever?.image ? (
+                  <CirclePhoto image={retriever.image} />
+                ) : (
+                  <CirclePhoto image={noImageRetriever} />
+                )}
 
                 <div className={styles.profileContent}>
                   {retrieverProfile.map((retrieverSimpleData: ProfileTypes) => (
@@ -79,8 +79,12 @@ const RetrieverProfile: React.FC = () => {
                 </div>
               </div>
               <div className={styles.profileActions}>
-                <EditRetrieverModal />
-                <DeleteRetrieverModal />
+                <EditRetrieverModal
+                  customClassName={styles.profileActionButton}
+                />
+                <DeleteRetrieverModal
+                  customClassName={styles.profileActionButton}
+                />
               </div>
             </>
           ) : (

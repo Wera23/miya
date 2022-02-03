@@ -4,11 +4,11 @@ import { BasicButton } from '../../common';
 import EditRetrieverForm from './EditRetrieverForm/EditRetrieverForm';
 
 interface EditRetrieverTypes {
-  handleEditRetriever?: () => void;
+  customClassName: string;
 }
 
 const EditRetrieverModal: React.FC<EditRetrieverTypes> = ({
-  handleEditRetriever,
+  customClassName,
 }) => {
   const [showModal, hideModal] = useModal(() => {
     return (
@@ -20,7 +20,6 @@ const EditRetrieverModal: React.FC<EditRetrieverTypes> = ({
 
   const handleClick = (): void => {
     showModal();
-    handleEditRetriever && handleEditRetriever();
   };
 
   return (
@@ -28,6 +27,7 @@ const EditRetrieverModal: React.FC<EditRetrieverTypes> = ({
       onClick={handleClick}
       buttonText="Edytuj psa"
       buttonIcon="paw"
+      customClassName={customClassName}
     />
   );
 };

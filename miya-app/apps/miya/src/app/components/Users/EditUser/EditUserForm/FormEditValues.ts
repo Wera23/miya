@@ -1,13 +1,17 @@
 export interface EditUserValues {
   dateOfBirthId: number | Date;
   userDescriptionId: string;
-  userAddressId: string;
+  userVoivodeshipId: string;
+  userCityId: string;
   userImageId: string;
+  userGenderId: string;
 }
 
 export enum EditUserFormTypes {
   dateOfBirth = 'dateOfBirthId',
   userDescription = 'userDescriptionId',
-  userAddress = 'userAddressId',
+  userVoivodeship = 'userVoivodeshipId',
+  userCity = 'userCityId',
   userImage = 'userImageId',
+  userGender = 'userGenderId',
 }

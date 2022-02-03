@@ -55,7 +55,6 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
       nameId: (retriever && retriever.name) ?? '',
       cityId: (retriever && retriever.city) ?? '',
       voivodeshipId: (retriever && retriever.voivodeship) ?? '',
-      // ownerId: (retriever && retriever.owner) ?? '',
       descriptionId: (retriever && retriever.description) ?? '',
       latId: (retriever && retriever.lat) ?? 0,
       longId: (retriever && retriever.long) ?? 0,
@@ -65,8 +64,8 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
     },
     validationSchema: EditRetrieverSchema,
     onSubmit: (values) => {
-      editSpecificRetrieverForm(RETRIEVER_ID, edtiRetrieverForm(values));
-      getRetriever(RETRIEVER_ID);
+      editSpecificRetrieverForm(retriever?.id ?? 0, edtiRetrieverForm(values));
+      getRetriever(retriever?.id ?? 0);
       setShowSuccessMessage(true);
       formik.resetForm();
     },

@@ -41,8 +41,10 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
     userPasswordId: Yup.string().required('To pole jest wymagane'),
     dateOfBirthId: Yup.number() || Yup.date(),
     userDescriptionId: Yup.string(),
-    userAddressId: Yup.string(),
+    userVoivodeshipId: Yup.string(),
+    userCityId: Yup.string(),
     userImageId: Yup.string(),
+    userGenderId: Yup.string(),
   });
 
   const formik = useFormik({
@@ -52,13 +54,13 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
     onSubmit: (values) => {
       console.log('reg');
       postNewUserForm(addNewUserForm(values))
-      .then((response: { access_token: string }) => {
-        localStorage.setItem('token', response.access_token);
-        setLoggedIn(true);
-        formik.resetForm();
-        navigate('/', { replace: true });
-      })
-      .catch((error) => console.error(error));
+        .then((response: { access_token: string }) => {
+          localStorage.setItem('token', response.access_token);
+          setLoggedIn(true);
+          formik.resetForm();
+          navigate('/', { replace: true });
+        })
+        .catch((error) => console.error(error));
     },
   });
 
@@ -126,10 +128,30 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
             />
 
             <Input
-              inputId={RegisterFormTypes.userAddress}
-              label="Twoje miasto i województwo"
-              value={formik.values.userAddressId}
-              placeholder="Podaj swoje miasto i województwo"
+              inputId={RegisterFormTypes.userVoivodeship}
+              label="Twoje województwo"
+              value={formik.values.userVoivodeshipId}
+              placeholder="Podaj województwo"
+              onChange={formik.handleChange}
+              icon="paw"
+              size="small"
+            />
+
+            <Input
+              inputId={RegisterFormTypes.userCity}
+              label="Twoje miasto"
+              value={formik.values.userCityId}
+              placeholder="Podaj miasto"
+              onChange={formik.handleChange}
+              icon="paw"
+              size="small"
+            />
+
+            <Input
+              inputId={RegisterFormTypes.userGender}
+              label="Twoja płeć"
+              value={formik.values.userGenderId}
+              placeholder="Podaj płeć"
               onChange={formik.handleChange}
               icon="paw"
               size="small"

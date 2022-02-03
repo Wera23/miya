@@ -11,7 +11,13 @@ import {
   useIsTransparentActionsContext,
 } from '../../../context';
 
-const AddRetrieverModal: React.FC = () => {
+interface AddRetrieverTypes {
+  customClassName?: string;
+}
+
+const AddRetrieverModal: React.FC<AddRetrieverTypes> = ({
+  customClassName,
+}) => {
   const { setIsTransparent } = useIsTransparentActionsContext();
   const { setDeleteRetriever } = useIsDeleteRetrieverActionsContext();
 
@@ -44,26 +50,11 @@ const AddRetrieverModal: React.FC = () => {
   };
 
   return (
-    // <div>
-    //   {!isDeleteRetriever ? (
-    //     <MenuButton
-    //       handleClickButton={handleClick}
-    //       buttonText="Dodaj psa"
-    //       buttonIcon="paw"
-    //     />
-    //   ) : (
-    //     <BasicButton
-    //       onClick={handleClick}
-    //       buttonText="Dodaj psa"
-    //       buttonIcon="paw"
-    //     />
-    //   )}
-    // </div>
-
     <MenuButton
       handleClickButton={handleClick}
       buttonText="Dodaj psa"
       buttonIcon="paw"
+      customClassName={customClassName}
     />
   );
 };

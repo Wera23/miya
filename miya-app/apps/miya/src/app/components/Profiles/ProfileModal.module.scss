@@ -1,3 +1,6 @@
+$darkerBg: #006e3a;
+$brighterBg: #00783f;
+
 .profileContent,
 .profileDialog,
 .addNewRetriever {
@@ -14,6 +17,7 @@
 
 .profileContent {
   align-items: flex-start;
+  margin-top: 20px;
 }
 
 .addNewRetrieverLink {
@@ -24,4 +28,23 @@
 
 .profileActions {
   display: flex;
+  margin-top: 20px;
+}
+
+.profileActionButton {
+  border: 1px solid transparent;
+  color: $darkerBg;
+
+  background-color: transparent;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: transparent;
+    border: 1px solid transparent;
+    background-color: darken($color: #00000007, $amount: 0);
+  }
+  &:active {
+    background-color: transparent;
+    border-color: $brighterBg;
+  }
 }

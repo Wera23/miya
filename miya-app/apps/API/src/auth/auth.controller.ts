@@ -14,8 +14,10 @@ export class AuthController {
       req.body.dateOfBirth,
       req.body.userPassword,
       req.body.userDescription,
-      req.body.userAddress,
+      req.body.userVoivodeship,
+      req.body.userCity,
       req.body.userImage,
+      req.body.userGender,
     );
   }
 

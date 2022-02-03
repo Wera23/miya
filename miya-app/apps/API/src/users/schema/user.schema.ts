@@ -27,10 +27,16 @@ export class User {
   userDescription?: string;
   @Prop()
   @IsOptional()
-  userAddress?: string;
+  userVoivodeship: string;
+  @Prop()
+  @IsOptional()
+  userCity: string;
   @Prop()
   @IsOptional()
   userImage: string;
+  @Prop()
+  @IsOptional()
+  userGender: string;
   // @Prop({type: RetrieverSchema})
   // @Type(()=> Retriever)
   // retriever: Retriever

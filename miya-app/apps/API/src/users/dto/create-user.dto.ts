@@ -10,6 +10,8 @@ export class CreateUser {
   @IsString()
   userPassword: string;
   userDescription?: string;
-  userAddress?: string;
+  userVoivodeship?: string;
+  userCity?: string;
   userImage?: string;
+  userGender?: string;
 }

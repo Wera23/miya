@@ -22,8 +22,11 @@ export class UsersService {
     dateOfBirth: string,
     userPassword: string,
     userDescription?: string,
-    userAddress?: string,
+    userVoivodeship?: string,
+    userCity?: string,
     userImage?: string,
+    userGender?: string,
+
   ): Promise<User> {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(userPassword, salt);
@@ -33,8 +36,10 @@ export class UsersService {
       dateOfBirth,
       userPassword: hashedPassword,
       userDescription,
-      userAddress,
+      userVoivodeship,
+      userCity,
       userImage,
+      userGender,
     });
   }
 

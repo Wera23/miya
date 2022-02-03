@@ -16,8 +16,11 @@ function editUserForm(values: EditUserValues): EditUser {
   const updateUser: EditUser = {
     dateOfBirth: values?.dateOfBirthId,
     userDescription: values?.userDescriptionId,
-    userAddress: values?.userAddressId,
+    userVoivodeship: values?.userVoivodeshipId,
+    userCity: values?.userCityId,
     userImage: values?.userImageId,
+    userGender: values?.userGenderId,
+
   };
   return updateUser;
 }
@@ -29,8 +32,10 @@ function detailsOfTheCurrentUser(user: User): User {
     userDescription: user.userDescription,
     dateOfBirth: user.dateOfBirth,
     userPassword: user.userPassword,
-    userAddress: user.userAddress,
+    userVoivodeship: user.userVoivodeship,
+    userCity: user.userCity,
     userImage: user.userImage,
+    userGender: user.userGender,
   };
   return currentUser;
 }

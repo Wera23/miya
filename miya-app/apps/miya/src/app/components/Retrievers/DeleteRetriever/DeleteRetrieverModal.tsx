@@ -12,10 +12,15 @@ import {
 import { deleteSpecificRetriever } from '../../../services/retrieverService';
 import styles from './DeleteRetrieverModal.module.scss';
 import { Typography } from '@mui/material';
-import classNames from 'classnames';
 import classnames from 'classnames';
 
-const DeleteRetrieverModal: React.FC = () => {
+interface DeleteRetrieverTypes {
+  customClassName: string;
+}
+
+const DeleteRetrieverModal: React.FC<DeleteRetrieverTypes> = ({
+  customClassName,
+}) => {
   const { retriever } = useRetrieverContext();
   const { cleanRetrieverData } = useRetrieverActionsContext();
   const { setDeleteRetriever } = useIsDeleteRetrieverActionsContext();
@@ -60,6 +65,7 @@ const DeleteRetrieverModal: React.FC = () => {
       onClick={handleClick}
       buttonText="Usuń swojego psa"
       buttonIcon="paw"
+      customClassName={customClassName}
     />
   );
 };
