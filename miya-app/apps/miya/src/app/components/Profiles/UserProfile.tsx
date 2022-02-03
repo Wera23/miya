@@ -78,7 +78,7 @@ const UserProfile: React.FC = () => {
                 <Typography variant="body2" pr={1}>
                   Mój pies:
                 </Typography>
-                <Typography variant="body1">{retriever?.name}</Typography>
+                <Typography variant="body1">{retriever?.id ? retriever.name : "Aktualnie nie posiadam psa w bazie"}</Typography>
               </div>
             </div>
           </div>

@@ -27,7 +27,7 @@ const DetailsSingleRetriever: FC<SingleRetrieverTypes> = ({
       icon="paw"
     >
       <div className={styles.detailsDialog}>
-        {singleRetriever?.image ? (
+        {singleRetriever.image ? (
           <CirclePhoto image={singleRetriever.image} />
         ) : (
           <CirclePhoto image={noImageRetriever} />

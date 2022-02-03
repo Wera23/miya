@@ -30,8 +30,3 @@ export const detailsSingleRetrieverData: DetailsRetrieverTypes[] = [
     value: 'owner',
   },
 ];
-
-// export const socialMediaRetriever: DetailsRetrieverTypes[] = [
-//   { name: 'Instagram', value: 'instagram', icon: 'instagram' },
-//   { name: 'Facebook', value: 'facebook', icon: 'facebook-circled' },
-// ];
