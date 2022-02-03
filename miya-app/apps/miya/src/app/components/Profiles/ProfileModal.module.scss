@@ -5,7 +5,7 @@ $brighterBg: #00783f;
 .profileDialog,
 .addNewRetriever {
   display: flex;
-  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
@@ -20,6 +20,10 @@ $brighterBg: #00783f;
   margin-top: 20px;
 }
 
+.profileImage{
+  margin-bottom: 20px;
+}
+
 .addNewRetrieverLink {
   &:hover {
     opacity: 0.7;
@@ -29,6 +33,10 @@ $brighterBg: #00783f;
 .profileActions {
   display: flex;
   margin-top: 20px;
+}
+
+.profileAdditionInf {
+  display: flex;
 }
 
 .profileActionButton {
@@ -47,4 +55,19 @@ $brighterBg: #00783f;
     background-color: transparent;
     border-color: $brighterBg;
   }
+}
+
+.profileAddRetrieverButton {
+  border: 1px solid transparent !important;
+  color: $darkerBg !important;
+  box-shadow: none;
+  text-transform: none;
+  padding: 7px 12px;
+  line-height: 1;
+  outline: none;
+  font-family: 'Dosis';
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

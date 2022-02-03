@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 
 import {
   BasicButton,
+  ConfirmPopup,
   DetailsModal,
   Input,
   Message,
@@ -191,14 +192,12 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
       )}
 
       {showSuccessMessage && (
-        <div className="actionFormMessage">
-          <Message
-            messageText="Dane Twojego psa zostały zedytowane"
-            colorMessage="green"
-          />
-
-          <BasicButton buttonText="OK" buttonIcon="cog" onClick={closeModal} />
-        </div>
+        <ConfirmPopup
+          messageText="Dane Twojego psa zostały zedytowane"
+          buttonText="OK"
+          buttonIcon="cog"
+          closeModal={closeModal}
+        />
       )}
     </DetailsModal>
   );

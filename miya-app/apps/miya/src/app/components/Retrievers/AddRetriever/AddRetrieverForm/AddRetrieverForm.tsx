@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 
 import {
   BasicButton,
+  ConfirmPopup,
   DetailsModal,
   Input,
   Message,
@@ -32,7 +33,6 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
   initialValues,
   closeModal,
 }) => {
-  
   const { getRetriever } = useRetrieverActionsContext();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const NewRetrieverSchema = Yup.object().shape({
@@ -57,8 +57,10 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
     onSubmit: async (values) => {
       let id;
       alert(JSON.stringify(values, null, 2));
-      await postNewRetrieverForm(retrieverForm(values)).then((value) => (id = value));
-      getRetriever(id ?? 0)
+      await postNewRetrieverForm(retrieverForm(values)).then(
+        (value) => (id = value)
+      );
+      getRetriever(id ?? 0);
       setShowSuccessMessage(true);
       formik.resetForm();
     },
@@ -247,10 +249,12 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
       )}
 
       {showSuccessMessage && (
-        <div className="actionFormMessage">
-          <Message messageText="Twój pies został dodany" colorMessage="green" />
-          <BasicButton buttonText="OK" buttonIcon="cog" onClick={closeModal} />
-        </div>
+        <ConfirmPopup
+          messageText="Twój pies został dodany"
+          buttonText="OK"
+          buttonIcon="cog"
+          closeModal={closeModal}
+        />
       )}
     </DetailsModal>
   );

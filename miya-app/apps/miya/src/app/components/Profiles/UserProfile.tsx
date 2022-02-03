@@ -17,11 +17,13 @@ import {
   useUserContext,
 } from '../../context/UserContext';
 import { noImageShe, noImageHe } from '../../../assets/images';
+import { useRetrieverContext } from '../../context';
 
 const UserProfile: React.FC = () => {
   const { user } = useUserContext();
   const { getUser } = useUserActionsContext();
   const { setIsTransparent } = useIsTransparentActionsContext();
+  const { retriever } = useRetrieverContext();
 
   useEffect(() => {
     return () => {
@@ -46,14 +48,17 @@ const UserProfile: React.FC = () => {
           icon="user"
         >
           <div className={styles.profileDialog}>
-            {/* {user?.userImage ? (
+            {user?.userImage ? (
               <CirclePhoto image={user.userImage} />
             ) : (
-              <h1></h1>>
+              <div>
+                {user?.userGender === 'Kobieta' ? (
+                  <CirclePhoto image={noImageShe} />
+                ) : (
+                  <CirclePhoto image={noImageHe} />
+                )}
+              </div>
             )}
- */}
-
-
 
             <div className={styles.profileContent}>
               {userProfile.map((userSimpleData: ProfileTypes) => (
@@ -68,6 +73,13 @@ const UserProfile: React.FC = () => {
                   </Typography>
                 </LineData>
               ))}
+
+              <div className={styles.profileAdditionInf}>
+                <Typography variant="body2" pr={1}>
+                  Mój pies:
+                </Typography>
+                <Typography variant="body1">{retriever?.name}</Typography>
+              </div>
             </div>
           </div>
           <EditUserModal />

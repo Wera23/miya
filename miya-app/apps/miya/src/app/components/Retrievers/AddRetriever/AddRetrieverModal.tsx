@@ -9,7 +9,9 @@ import { initialValues } from './AddRetrieverForm/FormInitialValues';
 import {
   useIsDeleteRetrieverActionsContext,
   useIsTransparentActionsContext,
+  // useRetrieverContext,
 } from '../../../context';
+// import RetrieverProfileContent from '../../Profiles/RetrieverProfileContent';
 
 interface AddRetrieverTypes {
   customClassName?: string;
@@ -20,6 +22,7 @@ const AddRetrieverModal: React.FC<AddRetrieverTypes> = ({
 }) => {
   const { setIsTransparent } = useIsTransparentActionsContext();
   const { setDeleteRetriever } = useIsDeleteRetrieverActionsContext();
+  // const { retriever } = useRetrieverContext();
 
   useEffect(() => {
     return () => {
@@ -35,6 +38,15 @@ const AddRetrieverModal: React.FC<AddRetrieverTypes> = ({
 
     return (
       <ReactModal isOpen ariaHideApp={false}>
+        {/* {retriever?.id ? (
+          <AddRetrieverForm
+            closeModal={actionsModal}
+            initialValues={initialValues}
+          />
+        ) : (
+          <RetrieverProfileContent closeModal={actionsModal} />
+        )} */}
+
         <AddRetrieverForm
           closeModal={actionsModal}
           initialValues={initialValues}

@@ -13,12 +13,12 @@ export const retrieverProfile: ProfileTypes[] = [
     value: 'age',
   },
   {
-    name: 'Miasto',
-    value: 'city',
-  },
-  {
     name: 'Województwo',
     value: 'voivodeship',
+  },
+  {
+    name: 'Miasto',
+    value: 'city',
   },
   {
     name: 'Krótki opis',
@@ -36,15 +36,15 @@ export const userProfile: ProfileTypes[] = [
     value: 'userDescription',
   },
   {
-    name: 'Moje miasto',
-    value: 'userAddress',
+    name: 'Województwo',
+    value: 'userVoivodeship',
+  },
+  {
+    name: 'Miasto',
+    value: 'userCity',
   },
   {
     name: 'Data moich urodzin',
     value: 'dateOfBirth',
-  },
-  {
-    name: 'Mój pies',
-    value: 'username',
-  },
+  }, 
 ];

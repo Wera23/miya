@@ -1,0 +1,19 @@
+.confirmPopup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmPopupMessage {
+  padding-bottom: 40px;
+}
+.invisibleButton {
+  opacity: 0;
+  margin-top: 20px;
+}
+
+.visibleButton {
+  opacity: 1;
+  transition: all 0.2s ease-out;
+}

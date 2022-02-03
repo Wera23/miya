@@ -10,6 +10,7 @@ import {
   DetailsRetrieverTypes,
   detailsSingleRetrieverData,
 } from './DetailsSingleRetrieverData';
+import { noImageRetriever } from '../../../../../assets/images';
 interface SingleRetrieverTypes {
   singleRetriever: Retriever;
   closeModal: () => void;
@@ -26,8 +27,10 @@ const DetailsSingleRetriever: FC<SingleRetrieverTypes> = ({
       icon="paw"
     >
       <div className={styles.detailsDialog}>
-        {singleRetriever?.image && (
+        {singleRetriever?.image ? (
           <CirclePhoto image={singleRetriever.image} />
+        ) : (
+          <CirclePhoto image={noImageRetriever} />
         )}
 
         <div className={styles.detailsContent}>

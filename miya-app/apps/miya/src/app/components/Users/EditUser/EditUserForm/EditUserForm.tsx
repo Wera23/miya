@@ -3,7 +3,14 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { format } from 'date-fns';
 
-import { BasicButton, DetailsModal, Input, Message } from '../../../common';
+import {
+  BasicButton,
+  ConfirmPopup,
+  DetailsModal,
+  Input,
+  Message,
+  SelectInput,
+} from '../../../common';
 
 import '../../../../../assets/styles/forms.scss';
 
@@ -18,6 +25,11 @@ import {
   editUserForm,
   updateUserForm,
 } from '../../../../services/loginService';
+import {
+  genderUserData,
+  SelectOptions,
+  voivodeshipsData,
+} from '../../../common/Input/SelectOption';
 
 interface EditUserTypes {
   closeModal: () => void;
@@ -85,16 +97,6 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
             )}
           />
 
-          {/* <Input
-            inputId={EditUserFormTypes.dateOfBirth}
-            label="Data ur"
-            value={formik.values.dateOfBirthId}
-            placeholder="Jeśli chcesz, napisz coś o sobie"
-            onChange={formik.handleChange}
-            icon="paw"
-            size="small"
-          /> */}
-
           <Input
             inputId={EditUserFormTypes.userDescription}
             label="Kilka słów o sobie"
@@ -105,15 +107,23 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
             size="small"
           />
 
-          <Input
-            inputId={EditUserFormTypes.userVoivodeship}
-            label="Twoje województwo"
+          <SelectInput
+            onChange={(value: SelectOptions) =>
+              formik.setFieldValue('userVoivodeshipId', value.value)
+            }
             value={formik.values.userVoivodeshipId}
-            placeholder="Podaj województwo"
-            onChange={formik.handleChange}
+            options={voivodeshipsData}
             icon="paw"
-            size="small"
+            label="Województwo"
+            placeholder="Wybierz swoje województwo"
           />
+
+          {formik.errors.userVoivodeshipId && (
+            <Message
+              colorMessage="error"
+              messageText="* To pole jest wymagane"
+            />
+          )}
 
           <Input
             inputId={EditUserFormTypes.userCity}
@@ -125,16 +135,16 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
             size="small"
           />
 
-          <Input
-            inputId={EditUserFormTypes.userGender}
-            label="Twoja płeć"
+          <SelectInput
+            onChange={(value: SelectOptions) =>
+              formik.setFieldValue('userGenderId', value.value)
+            }
             value={formik.values.userGenderId}
-            placeholder="Podaj płeć"
-            onChange={formik.handleChange}
+            options={genderUserData}
             icon="paw"
-            size="small"
+            label="Podaj swoją płeć"
+            placeholder="Wybierz swoją płeć"
           />
-
           <Input
             inputId={EditUserFormTypes.userImage}
             label="Twoje zdjęcie"
@@ -152,13 +162,12 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
       )}
 
       {showSuccessMessage && (
-        <div>
-          <Message
-            messageText="Twoje dane zostały zedytowane"
-            colorMessage="green"
-          />
-          <BasicButton buttonText="OK" buttonIcon="cog" onClick={closeModal} />
-        </div>
+        <ConfirmPopup
+          messageText="Twoje dane zostały zedytowane"
+          buttonText="OK"
+          buttonIcon="cog"
+          closeModal={closeModal}
+        />
       )}
     </DetailsModal>
   );

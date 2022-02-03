@@ -59,3 +59,15 @@ export const genderData: SelectOptions[] = [
     label: 'Piesek',
   },
 ];
+
+
+export const genderUserData: SelectOptions[] = [
+  {
+    value: 'Kobieta',
+    label: 'Kobieta',
+  },
+  {
+    value: 'Mężczyzna',
+    label: 'Mężczyzna',
+  },
+];

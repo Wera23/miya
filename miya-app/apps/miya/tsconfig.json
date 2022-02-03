@@ -9,7 +9,8 @@
     "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "resolveJsonModule": true,
   },
   "files": [],
   "include": [],
@@ -22,3 +23,5 @@
     }
   ]
 }
+
+

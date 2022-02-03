@@ -18,6 +18,11 @@ import {
   addNewUserForm,
   postNewUserForm,
 } from '../../../services/registerService';
+import {
+  genderUserData,
+  SelectOptions,
+  voivodeshipsData,
+} from '../../common/Input/SelectOption';
 
 interface RegisterTypes {
   initialValues: RegisterValues;
@@ -89,7 +94,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               />
             )}
 
-            {/* <DatePicker
+            <DatePicker
               label="Basic example"
               value={formik.values.dateOfBirthId}
               onChange={(value) => formik.setFieldValue('dateOfBirthId', value)}
@@ -105,33 +110,13 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
                   size="small"
                 />
               )}
-            /> */}
+            />
 
             <Input
               inputId={RegisterFormTypes.userDescription}
               label="Kilka słów o sobie"
               value={formik.values.userDescriptionId}
               placeholder="Jeśli chcesz, napisz coś o sobie"
-              onChange={formik.handleChange}
-              icon="paw"
-              size="small"
-            />
-
-            <Input
-              inputId={RegisterFormTypes.dateOfBirth}
-              label="Urodziny"
-              value={formik.values.dateOfBirthId}
-              placeholder="Jeśli chcesz, napisz coś o sobie"
-              onChange={formik.handleChange}
-              icon="paw"
-              size="small"
-            />
-
-            <Input
-              inputId={RegisterFormTypes.userVoivodeship}
-              label="Twoje województwo"
-              value={formik.values.userVoivodeshipId}
-              placeholder="Podaj województwo"
               onChange={formik.handleChange}
               icon="paw"
               size="small"
@@ -147,14 +132,33 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               size="small"
             />
 
-            <Input
-              inputId={RegisterFormTypes.userGender}
-              label="Twoja płeć"
-              value={formik.values.userGenderId}
-              placeholder="Podaj płeć"
-              onChange={formik.handleChange}
+            <SelectInput
+              onChange={(value: SelectOptions) =>
+                formik.setFieldValue('userVoivodeshipId', value.value)
+              }
+              value={formik.values.userVoivodeshipId}
+              options={voivodeshipsData}
               icon="paw"
-              size="small"
+              label="Województwo"
+              placeholder="Wybierz swoje województwo"
+            />
+
+            {formik.errors.userVoivodeshipId && (
+              <Message
+                colorMessage="error"
+                messageText="* To pole jest wymagane"
+              />
+            )}
+
+            <SelectInput
+              onChange={(value: SelectOptions) =>
+                formik.setFieldValue('userGenderId', value.value)
+              }
+              value={formik.values.userGenderId}
+              options={genderUserData}
+              icon="paw"
+              label="Podaj swoją płeć"
+              placeholder="Wybierz swoją płeć"
             />
 
             <Input
