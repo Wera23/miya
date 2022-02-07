@@ -19,6 +19,7 @@ import {
   TransparentContextProvider,
 } from './context';
 import { UserContextProvider } from './context/UserContext';
+import RetrieversGallery from './components/Retrievers/RetrieversGallery/RetrieversGallery';
 
 export function App() {
   useEffect(() => {
@@ -45,6 +46,7 @@ export function App() {
                           element={<PrivateRoute component={Homepage} />}
                         />
                         <Route path="/login" element={<Login />} />
+                        <Route path="/gallery" element={<RetrieversGallery />} />
                         <Route path="/register" element={<Register />} />
                         <Route
                           path="*"

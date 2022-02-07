@@ -1,1 +1,2 @@
-export * from './ConfirmOkAnimation';
+export * from './AnimationConfirmOk';
+export * from './AnimationSpinner';

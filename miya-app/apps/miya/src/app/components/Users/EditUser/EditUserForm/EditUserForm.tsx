@@ -8,7 +8,6 @@ import {
   ConfirmPopup,
   DetailsModal,
   Input,
-  Message,
   SelectInput,
 } from '../../../common';
 
@@ -117,13 +116,6 @@ const EditUserForm: FC<EditUserTypes> = ({ closeModal }) => {
             label="Województwo"
             placeholder="Wybierz swoje województwo"
           />
-
-          {formik.errors.userVoivodeshipId && (
-            <Message
-              colorMessage="error"
-              messageText="* To pole jest wymagane"
-            />
-          )}
 
           <Input
             inputId={EditUserFormTypes.userCity}

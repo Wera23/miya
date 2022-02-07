@@ -52,7 +52,7 @@ const SingleRetrieverModal: React.FC<SingleRetrieverTypes> = ({
         {singleRetriever.name}
       </Typography>
       <Typography variant="body1" mb={3} mt={0}>
-        {singleRetriever.city}
+        {singleRetriever.city}, {singleRetriever.age}
       </Typography>
 
       <Button

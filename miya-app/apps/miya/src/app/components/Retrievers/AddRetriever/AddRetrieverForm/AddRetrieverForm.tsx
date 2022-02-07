@@ -42,7 +42,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
     cityId: Yup.string().required('To pole jest wymagane'),
     voivodeshipId: Yup.string().required('To pole jest wymagane'),
     ownerId: Yup.string(),
-    descriptionId: Yup.string(),
+    descriptionId: Yup.string().max(200),
     latId: Yup.number().required('To pole jest wymagane'),
     longId: Yup.number().required('To pole jest wymagane'),
     instagramId: Yup.string(),
@@ -86,7 +86,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             size="small"
           />
 
-          {formik.errors.nameId && (
+          {formik.errors.nameId && formik.touched.nameId && (
             <Message
               colorMessage="error"
               messageText="* To pole jest wymagane"
@@ -103,7 +103,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             size="small"
           />
 
-          {formik.errors.ageId && (
+          {formik.errors.ageId && formik.touched.ageId && (
             <Message
               colorMessage="error"
               messageText="* To pole jest wymagane"
@@ -121,7 +121,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             placeholder="Wybierz płeć swojego psa"
           />
 
-          {formik.errors.genderId && (
+          {formik.errors.genderId && formik.touched.genderId && (
             <Message
               colorMessage="error"
               messageText="* To pole jest wymagane"
@@ -138,7 +138,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             size="small"
           />
 
-          {formik.errors.cityId && (
+          {formik.errors.cityId && formik.touched.cityId && (
             <Message
               colorMessage="error"
               messageText="* To pole jest wymagane"
@@ -156,7 +156,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             placeholder="Wybierz swoje województwo"
           />
 
-          {formik.errors.voivodeshipId && (
+          {formik.errors.voivodeshipId && formik.touched.voivodeshipId && (
             <Message
               colorMessage="error"
               messageText="* To pole jest wymagane"
@@ -205,12 +205,15 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             />
           </div>
 
-          {formik.errors.latId && formik.errors.longId && (
-            <Message
-              colorMessage="error"
-              messageText="* To pole jest wymagane"
-            />
-          )}
+          {formik.errors.latId &&
+            formik.errors.longId &&
+            formik.touched.latId &&
+            formik.touched.longId && (
+              <Message
+                colorMessage="error"
+                messageText="* To pole jest wymagane"
+              />
+            )}
 
           <Input
             inputId={RetrieverFormTypes.instagram}

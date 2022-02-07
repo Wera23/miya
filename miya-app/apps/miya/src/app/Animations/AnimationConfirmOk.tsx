@@ -5,7 +5,7 @@ import { AnimationItem } from 'lottie-web';
 import { confirmOk } from '../../assets/animations';
 import styles from './Animation.module.scss';
 
-export const ConfirmOkAnimation: React.FC<{ height?: string }> = () => {
+export const AnimationConfirmOk: React.FC<{ height?: string }> = () => {
   const animRef = useRef<AnimationItem>({} as AnimationItem);
   const defaultOptions: ReactLottieConfig = {
     animationData: confirmOk,

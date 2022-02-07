@@ -17,7 +17,7 @@ const MapWithAllRetrievers: React.FC = () => {
 
   return (
     <div className="map">
-      <MapContainer zoom={7} center={[50.09, 19.01]} scrollWheelZoom={false}>
+      <MapContainer zoom={7} center={[51.95, 20.18]} scrollWheelZoom={false}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
         {listOfRetievers.map((retriever: Retriever, key: number) => (

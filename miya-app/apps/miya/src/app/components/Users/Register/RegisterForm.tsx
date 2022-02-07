@@ -29,9 +29,9 @@ interface RegisterTypes {
 }
 
 const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
+  const navigate = useNavigate();
   const { setLoggedIn } = useLoggedInActionsContext();
   const { loggedIn } = useLoggedInContext();
-  const navigate = useNavigate();
 
   useEffect(() => {
     return () => {
@@ -41,11 +41,11 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
   }, []);
 
   const NewUserSchema = Yup.object().shape({
-    userId: Yup.number(),
+    // userId: Yup.number(),
     usernameId: Yup.string().required('To pole jest wymagane'),
     userPasswordId: Yup.string().required('To pole jest wymagane'),
     dateOfBirthId: Yup.number() || Yup.date(),
-    userDescriptionId: Yup.string(),
+    userDescriptionId: Yup.string().max(120),
     userVoivodeshipId: Yup.string(),
     userCityId: Yup.string(),
     userImageId: Yup.string(),
@@ -57,7 +57,7 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
     validationSchema: NewUserSchema,
 
     onSubmit: (values) => {
-      console.log('reg');
+      console.log("reg")
       postNewUserForm(addNewUserForm(values))
         .then((response: { access_token: string }) => {
           localStorage.setItem('token', response.access_token);
@@ -87,10 +87,10 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               size="small"
             />
 
-            {formik.errors.usernameId && (
+            {formik.errors.usernameId && formik.touched.usernameId && (
               <Message
                 colorMessage="error"
-                messageText="* To pole jest wymagane"
+                messageText="* Nazwa użytkownika jest wymagana"
               />
             )}
 
@@ -124,9 +124,9 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
 
             <Input
               inputId={RegisterFormTypes.userCity}
-              label="Twoje miasto"
+              label="Miasto"
               value={formik.values.userCityId}
-              placeholder="Podaj miasto"
+              placeholder="Podaj swoje miasto"
               onChange={formik.handleChange}
               icon="paw"
               size="small"
@@ -143,13 +143,6 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               placeholder="Wybierz swoje województwo"
             />
 
-            {formik.errors.userVoivodeshipId && (
-              <Message
-                colorMessage="error"
-                messageText="* To pole jest wymagane"
-              />
-            )}
-
             <SelectInput
               onChange={(value: SelectOptions) =>
                 formik.setFieldValue('userGenderId', value.value)
@@ -157,8 +150,8 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               value={formik.values.userGenderId}
               options={genderUserData}
               icon="paw"
-              label="Podaj swoją płeć"
-              placeholder="Wybierz swoją płeć"
+              label="Płeć"
+              placeholder="Podaj swoją płeć"
             />
 
             <Input
@@ -181,10 +174,10 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
               size="small"
             />
 
-            {formik.errors.userPasswordId && (
+            {formik.errors.userPasswordId && formik.touched.userPasswordId && (
               <Message
                 colorMessage="error"
-                messageText="* To pole jest wymagane"
+                messageText="* Podanie hasła jest wymagane"
               />
             )}
 

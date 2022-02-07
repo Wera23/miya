@@ -1,3 +1,5 @@
+$leafletSmallModalBG:rgba(240, 253, 239, 0.877);
+
 .map {
   display: flex;
   justify-content: center;
@@ -7,15 +9,15 @@
 .leaflet-container {
   width: 100vw;
   height: 100vh;
-  box-sizing: border-box;  
-  // position: relative;
+  box-sizing: border-box;
   z-index: 0;
 }
 
 .leaflet-popup-content-wrapper {
   border-radius: 5px;
   text-align: center;
-  background-color: rgba(253, 250, 246, 0.85);
+  // background-color: rgba(253, 250, 246, 0.85);
+  background-color: $leafletSmallModalBG;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   width: 15vw;
   display: flex;
@@ -23,9 +25,22 @@
   align-items: center;
 }
 
-.point {
-  // z-index: 444;
+.leaflet-popup-tip{
+  background-color: $leafletSmallModalBG;
 
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: #003;
+  padding: 6px 6px 0 0;
+  font-size: 13px;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+  color: green;
+}
+
+.point {
   &:hover {
     opacity: 0.9;
     filter: saturate(30%);

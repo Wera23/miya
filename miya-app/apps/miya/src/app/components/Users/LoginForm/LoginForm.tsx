@@ -23,8 +23,8 @@ interface LoginTypes {
 }
 
 const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
-  const { setLoggedIn } = useLoggedInActionsContext();
   const navigate = useNavigate();
+  const { setLoggedIn } = useLoggedInActionsContext();
   const { loggedIn } = useLoggedInContext();
   const [wrongData, setWrongData] = useState<boolean>(false);
 
@@ -77,10 +77,10 @@ const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
               size="small"
             />
 
-            {formik.errors.usernameId && (
+            {formik.errors.usernameId && formik.touched.usernameId && (
               <Message
                 colorMessage="error"
-                messageText="* To pole jest wymagane, aby się zalogować"
+                messageText="* Nazwa użytkownika jest wymagana, aby się zalogować"
               />
             )}
 
@@ -94,10 +94,10 @@ const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
               size="small"
             />
 
-            {formik.errors.userPasswordId && (
+            {formik.errors.userPasswordId && formik.touched.userPasswordId && (
               <Message
                 colorMessage="error"
-                messageText="* To pole jest wymagane, aby się zalogować"
+                messageText="* Podanie hasła jest wymagane, aby się zalogować"
               />
             )}
 
@@ -124,7 +124,7 @@ const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
         {wrongData && (
           <Message
             colorMessage="error"
-            messageText="Nieprawidłowe hasło lub nazwa użytkownika"
+            messageText="Nieprawidłowe hasło lub nazwa użytkownika. Spróbuj ponownie"
           />
         )}
       </div>

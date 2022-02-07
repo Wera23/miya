@@ -37,7 +37,6 @@ export class UsersController {
       user.userCity,
       user.userImage,
       user.userGender,
-
     );
   }
 

@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import styles from './ConfirmPopup.module.scss';
 import { BasicButton, Message } from '..';
-import { ConfirmOkAnimation } from '../../../Animations';
+import { AnimationConfirmOk } from '../../../Animations';
 
 interface ConfirmPopupTypes {
   messageText: string;
@@ -33,7 +33,7 @@ const ConfirmPopup: FC<ConfirmPopupTypes> = ({
         colorMessage="green"
         classCustomeName={styles.confirmPopupMessage}
       />
-      <ConfirmOkAnimation />
+      <AnimationConfirmOk />
 
       <BasicButton
         buttonText={buttonText}

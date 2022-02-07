@@ -7,11 +7,10 @@ import {
   ConfirmPopup,
   DetailsModal,
   Input,
-  Message,
   SelectInput,
 } from '../../../common';
-import styles from './EditRetrieverForm.module.scss';
 
+import styles from './EditRetrieverForm.module.scss';
 import { RetrieverFormTypes } from './FormEditValues';
 import {
   edtiRetrieverForm,
@@ -25,7 +24,6 @@ import {
   SelectOptions,
   voivodeshipsData,
 } from '../../../common/Input/SelectOption';
-import { RETRIEVER_ID } from '../../../../constans';
 
 interface EditRetrieverTypes {
   closeModal: () => void;
