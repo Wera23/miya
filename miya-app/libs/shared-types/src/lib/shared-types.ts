@@ -38,7 +38,7 @@ export class EditRetriever {
 }
 
 export class User {
-  @IsNumber() @IsOptional() readonly userId: number;
+  @IsNumber() @IsOptional() readonly userId?: number;
   @IsString() readonly username: string;
   @IsString() readonly userPassword: string;
   @IsString() readonly dateOfBirth: number | Date;
