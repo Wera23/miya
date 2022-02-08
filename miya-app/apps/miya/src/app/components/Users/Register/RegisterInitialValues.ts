@@ -1,5 +1,4 @@
 export interface RegisterValues {
-  userId: number;
   usernameId: string;
   userPasswordId: string;
   dateOfBirthId: number | Date;
@@ -12,7 +11,6 @@ export interface RegisterValues {
 }
 
 export const initialValues: RegisterValues = {
-  userId: 0,
   usernameId: '',
   userPasswordId: '',
   dateOfBirthId: 0,

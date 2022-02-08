@@ -5,7 +5,6 @@ import { dataService } from './data.service';
 
 function addNewUserForm(values: RegisterValues): User {
   const newUser: User = {
-    userId: values.userId,
     username: values.usernameId,
     userPassword: values.userPasswordId,
     dateOfBirth: values.dateOfBirthId,

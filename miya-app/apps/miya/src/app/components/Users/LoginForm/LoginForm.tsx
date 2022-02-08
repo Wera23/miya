@@ -28,12 +28,6 @@ const LoginForm: FC<LoginTypes> = ({ initialValues }) => {
   const { loggedIn } = useLoggedInContext();
   const [wrongData, setWrongData] = useState<boolean>(false);
 
-  useEffect(() => {
-    return () => {
-      setLoggedIn(true);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const LoginUserSchema = Yup.object().shape({
     usernameId: Yup.string().required(),

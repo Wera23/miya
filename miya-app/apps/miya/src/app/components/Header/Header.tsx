@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { AddRetrieverModal, UserProfile, RetrieverProfile } from '..';
 import { useLoggedInActionsContext } from '../../context';
@@ -8,8 +9,12 @@ import styles from './Header.module.scss';
 const Header: FC = () => {
   const { setLoggedIn } = useLoggedInActionsContext();
 
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     setLoggedIn(false);
+    localStorage.removeItem('token');
+    navigate('/login');
   };
 
   return (

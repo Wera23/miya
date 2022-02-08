@@ -4,23 +4,23 @@ import { MapContainer, TileLayer, Popup } from 'react-leaflet';
 import { SingleRetriever } from '../..';
 
 import { Retriever } from '@miya-app/shared-types';
-import useNestRetrievers from '../../../services/dataHooks/useNestRetrievers';
 import { retrieverMapPointPng } from '../../../../assets/images';
 import './MapWithAllRetrievers.scss';
+import { useRetrieversContext } from '../../../context/RetrieversContext';
 
 const MapWithAllRetrievers: React.FC = () => {
-  const { retrievers } = useNestRetrievers();
+  const { retrievers } = useRetrieversContext();
 
-  const listOfRetievers = Object.keys(retrievers).map(function (key: any) {
-    return retrievers[key];
-  });
+  // const listOfRetievers = Object.keys(retrievers).map(function (key: any) {
+  //   return retrievers[key];
+  // });
 
   return (
     <div className="map">
       <MapContainer zoom={7} center={[51.95, 20.18]} scrollWheelZoom={false}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {listOfRetievers.map((retriever: Retriever, key: number) => (
+        {retrievers?.map((retriever: Retriever, key: number) => (
           <div key={key}>
             {retriever?.lat && retriever?.long && (
               <div key={retriever.id}>

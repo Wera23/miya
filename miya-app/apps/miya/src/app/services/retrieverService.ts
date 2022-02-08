@@ -56,6 +56,25 @@ function detailsOfTheSpecificRetriever(retriever: Retriever): Retriever {
   return specificRetriever;
 }
 
+function mapAllRetrievers(allRetrievers: Retriever[]): Retriever[] {
+  const retrievers: Retriever[] = allRetrievers.map((retriever: Retriever) => ({
+    id: retriever.id,
+    name: retriever.name,
+    age: retriever.age,
+    city: retriever.city,
+    voivodeship: retriever.voivodeship,
+    gender: retriever.gender,
+    owner: retriever.owner,
+    description: retriever.description,
+    lat: retriever.lat,
+    long: retriever.long,
+    instagram: retriever.instagram,
+    facebook: retriever.facebook,
+    image: retriever.image,
+  }));
+  return retrievers;
+}
+
 async function postNewRetrieverForm(newRetriever: Retriever) {
   const retriever = await dataService.postNewRetriever(newRetriever);
   return retriever?.data.id;
@@ -77,6 +96,12 @@ async function getSpecyficSingleRetriever(id: number): Promise<Retriever> {
   return detailsOfTheSpecificRetriever(retiever?.data);
 }
 
+async function getAllRetrievers() {
+  const retrievers = await dataService.getRetrievers();
+  console.log('ccc', retrievers);
+  return mapAllRetrievers(retrievers.data);
+}
+
 export {
   postNewRetrieverForm,
   retrieverForm,
@@ -85,4 +110,5 @@ export {
   detailsOfTheSpecificRetriever,
   edtiRetrieverForm,
   deleteSpecificRetriever,
+  getAllRetrievers,
 };

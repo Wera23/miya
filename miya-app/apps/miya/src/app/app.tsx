@@ -20,6 +20,9 @@ import {
 } from './context';
 import { UserContextProvider } from './context/UserContext';
 import RetrieversGallery from './components/Retrievers/RetrieversGallery/RetrieversGallery';
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { RetrieversContextProvider } from './context/RetrieversContext';
 
 export function App() {
   useEffect(() => {
@@ -34,11 +37,13 @@ export function App() {
     <LoggedContextProvider>
       <UserContextProvider>
         <LocalizationProvider dateAdapter={DateAdapter as any}>
+          <RetrieversContextProvider>
           <RetrieverContextProvider>
             <DeleteRetrieverContextProvider>
               <TransparentContextProvider>
                 <ThemeProvider theme={appTheme}>
                   <ModalProvider>
+                    <ToastContainer />
                     <BrowserRouter>
                       <Routes>
                         <Route
@@ -59,6 +64,7 @@ export function App() {
               </TransparentContextProvider>
             </DeleteRetrieverContextProvider>
           </RetrieverContextProvider>
+          </RetrieversContextProvider>
         </LocalizationProvider>
       </UserContextProvider>
     </LoggedContextProvider>

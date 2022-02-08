@@ -42,7 +42,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
     cityId: Yup.string().required('To pole jest wymagane'),
     voivodeshipId: Yup.string().required('To pole jest wymagane'),
     ownerId: Yup.string(),
-    descriptionId: Yup.string().max(200),
+    descriptionId: Yup.string().max(400),
     latId: Yup.number().required('To pole jest wymagane'),
     longId: Yup.number().required('To pole jest wymagane'),
     instagramId: Yup.string(),
@@ -56,7 +56,6 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
 
     onSubmit: async (values) => {
       let id;
-      alert(JSON.stringify(values, null, 2));
       await postNewRetrieverForm(retrieverForm(values)).then(
         (value) => (id = value)
       );

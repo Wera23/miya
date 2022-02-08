@@ -1,4 +1,10 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+} from 'axios';
+import { toast } from 'react-toastify';
 // import { useHistory } from 'react-router-dom';
 
 const axiosInstance: AxiosInstance = axios.create({
@@ -19,13 +25,32 @@ axiosInstance.interceptors.request.use(
   },
   function (error) {
     if (error.response.status) {
-      // console.log("Muisz się zalogować")
-      // store.dispatch(Login());
-      localStorage.removeItem("Authorization");
+      localStorage.removeItem('Authorization');
       localStorage.clear();
-      // window.location.href = 'http://localhost:4200/login';
-      // history.push("/login");
     }
+  }
+);
+
+axiosInstance.interceptors.response.use(
+  (response: AxiosResponse) => response,
+  (error: AxiosError) => {
+    if (error.response !== undefined) {
+      const {
+        response,
+        response: { status, data },
+      } = error;
+
+      const errorMessage = data.error.message;
+
+      switch (status) {
+        case 401:
+          console.log("HEHE")
+          toast.error('Błąd autoryzacji!');
+          localStorage.removeItem('token');
+          break;
+      }
+    }
+    return Promise.reject(error)
   }
 );
 

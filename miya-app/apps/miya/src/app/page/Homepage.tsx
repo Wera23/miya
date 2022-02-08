@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { Header, MapWithAllRetrievers } from '../components';
 
 import styles from './pages.module.scss';
-import { retrieverMapPointPng } from '../../assets/images';
+import { noImageRetriever, retrieverMapPointPng } from '../../assets/images';
 import { useIsTransparentContext } from '../context/IsTransparent';
 import { useUserActionsContext, useUserContext } from '../context/UserContext';
 import { useEffect } from 'react';
@@ -29,7 +29,7 @@ const Homepage = () => {
       </div>
 
       <div className={styles.homepageLogo}>
-        <img src={retrieverMapPointPng} alt="" />
+        <img src={noImageRetriever} alt="" />
       </div>
     </div>
   );

@@ -24,13 +24,9 @@ export const useUserActionsContext = () => useContext(UserActionsContext);
 export const UserContextProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<User>();
 
-  const getUser: TGetUser =  useCallback(async (name) => {
-    // const loadUser =  (): Promise<void> => {
-      const user = await getSpecyficUser(name);
-      setUser(user);
-    // };
-
-    // loadUser();
+  const getUser: TGetUser = useCallback(async (name) => {
+    const user = await getSpecyficUser(name);
+    setUser(user);
   }, []);
 
   return (

@@ -23,6 +23,12 @@
   bottom: 40px;
   left: 40px;
   z-index: 55;
+  display: none;
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 .homepageMap {

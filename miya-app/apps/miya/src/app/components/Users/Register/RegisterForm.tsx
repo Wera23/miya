@@ -33,12 +33,6 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
   const { setLoggedIn } = useLoggedInActionsContext();
   const { loggedIn } = useLoggedInContext();
 
-  useEffect(() => {
-    return () => {
-      setLoggedIn(true);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const NewUserSchema = Yup.object().shape({
     // userId: Yup.number(),
