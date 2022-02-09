@@ -8,9 +8,10 @@ import { RetrieversRepository } from './retrievers.repository';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([
-      { name: Retriever.name, schema: RetrieverSchema },
-    ]),
+    MongooseModule.forFeature(
+      [{ name: Retriever.name, schema: RetrieverSchema }],
+      'retrievers',
+    ),
   ],
   providers: [RetriversService, RetrieversRepository],
   controllers: [RetrieversController],

@@ -1,11 +1,17 @@
 import { Injectable } from '@nestjs/common';
+import { InjectConnection } from '@nestjs/mongoose';
+import { Connection } from 'mongoose';
+import { User } from 'src/users/schema/user.schema';
 import { UpdateRetriever } from './dto/update-retriever.dto';
 import { RetrieversRepository } from './retrievers.repository';
 import { Retriever } from './schema/retriever.schema';
 
 @Injectable()
 export class RetriversService {
-  constructor(private readonly retrieversRepository: RetrieversRepository) {}
+  constructor(
+    // @InjectConnection('retrievers') private connection: Connection,
+    private readonly retrieversRepository: RetrieversRepository,
+  ) {}
 
   async getRetrievers(): Promise<Retriever[]> {
     return this.retrieversRepository.findRetrievers({});

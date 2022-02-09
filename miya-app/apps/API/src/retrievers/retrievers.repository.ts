@@ -1,13 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model } from 'mongoose';
-import { Retriever } from './schema/retriever.schema';
+import { CreateRetriever } from './dto/create-retriever.dto';
+import { Retriever, RetrieverDokument } from './schema/retriever.schema';
 
 @Injectable()
 export class RetrieversRepository {
   constructor(
     @InjectModel(Retriever.name)
-    private retrieverModel: Model<Retriever>,
+    private retrieverModel: Model<RetrieverDokument>,
   ) {}
 
   async findOneRetriever(
@@ -19,11 +20,11 @@ export class RetrieversRepository {
   async findRetrievers(
     retrieversFilterQuery: FilterQuery<Retriever>,
   ): Promise<Retriever[]> {
-    return this.retrieverModel.find(retrieversFilterQuery);
+    return this.retrieverModel.find(retrieversFilterQuery).exec();
     // return this.retrieverModel.find(retrieversFilterQuery, {relations: ["user"]});
   }
 
-  async createRetriever(retriever: Retriever): Promise<Retriever> {
+  async createRetriever(retriever: CreateRetriever): Promise<Retriever> {
     const newRetriever = new this.retrieverModel(retriever);
     return newRetriever.save();
   }

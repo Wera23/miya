@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { User } from './schema/user.schema';
 import { UsersRepository } from './users.repository';
 import * as bcrypt from 'bcrypt';
-import { Retriever } from 'src/retrievers/schema/retriever.schema';
 import { UpdateUser } from './dto/update-user.dto';
+import { Retriever } from 'src/retrievers/schema/retriever.schema';
 
 @Injectable()
 export class UsersService {
@@ -26,7 +26,6 @@ export class UsersService {
     userCity?: string,
     userImage?: string,
     userGender?: string,
-
   ): Promise<User> {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(userPassword, salt);

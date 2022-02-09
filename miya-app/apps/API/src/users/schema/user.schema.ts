@@ -1,48 +1,49 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { IsOptional } from 'class-validator';
-import { Document, ObjectId } from 'mongoose';
-// import { Transform, Type } from 'class-transformer';
-// import { Retriever, RetrieverSchema } from 'src/retrievers/schema/retriever.schema';
-// import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
+// import { IsOptional } from 'class-validator';
+import { Transform, Type } from 'class-transformer';
+import { Document, ObjectId, SchemaTypes, Types } from 'mongoose';
+import {
+  Retriever,
+  RetrieverSchema,
+} from 'src/retrievers/schema/retriever.schema';
 
 export type UserDokument = User & Document;
 
-@Schema()
-export class User {
+@Schema({ _id: false })
+export class User extends Document {
   // @Transform(({ value }) => value.toString())
   // _id: ObjectId;
-  // @PrimaryGeneratedColumn()
+  @Prop({ type: Types.ObjectId })
+  _id: Types.ObjectId;
   @Prop()
-  @IsOptional()
   userId?: number;
   @Prop({ unique: true })
   username: string;
   @Prop()
-  @IsOptional()
   dateOfBirth?: string;
   @Prop()
   userPassword: string;
   @Prop()
-  @IsOptional()
   userDescription?: string;
   @Prop()
-  @IsOptional()
   userVoivodeship: string;
   @Prop()
-  @IsOptional()
   userCity: string;
   @Prop()
-  @IsOptional()
   userImage: string;
   @Prop()
-  @IsOptional()
   userGender: string;
-  // @Prop({type: RetrieverSchema})
-  // @Type(()=> Retriever)
-  // retriever: Retriever
-
-  // @OneToMany(() => Retriever, retriever => retriever.user, {cascade: true});
-  // retriever: Retriever;
+  @Prop({ type: RetrieverSchema, ref: Retriever.name })
+  @Type(() => Retriever)
+  retriever: Retriever[];
+  // @Prop({ type: SchemaTypes.ObjectId, ref: 'Retriever' })
+  // retrievers: Retriever;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+
+// UserSchema.virtual('retrievers', {
+//   ref: 'Retriever',
+//   localField: '_id',
+//   foreignField: 'userItem',
+// });

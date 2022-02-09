@@ -1,59 +1,48 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
-// import {
-//   Entity,
-//   PrimaryGeneratedColumn,
-//   Column,
-//   ManyToOne,
-//   JoinColumn,
-// } from 'typeorm';
+// import { Transform } from 'class-transformer';
+import { Document, SchemaTypes, Types } from 'mongoose';
+import { User } from 'src/users/schema/user.schema';
 
 export type RetrieverDokument = Retriever & Document;
 
+// {_id: false}
 @Schema()
-// @Entity()
-export class Retriever {
-  // @PrimaryGeneratedColumn()
+export class Retriever extends Document {
+  // @Transform(({ value }) => value.toString())
+  // _id: string;
+  @Prop({ type: Types.ObjectId })
+  _id: Types.ObjectId;
   @Prop()
   id: number;
-  // @Column()
   @Prop()
   name: string;
-  // @Column()
   @Prop()
   age: string;
-  // @Column()
   @Prop()
   city?: string;
-  // @Column()
   @Prop()
   voivodeship: string;
-  // @Column()
   @Prop()
   gender: string;
-  // @Column()
   @Prop()
   owner?: string;
   @Prop()
   description?: string;
-  // @Column()
   @Prop()
   lat: number;
-  // @Column()
   @Prop()
   long: number;
-  // @Column()
   @Prop()
   instagram: string;
-  // @Column()
   @Prop()
   facebook: string;
   @Prop()
   image: string;
+  @Prop({ type: SchemaTypes.ObjectId, ref: 'User' })
+  user: User;
 
-  // @ManyToOne(() => User, (user) => user.retriever)
-  // @JoinColumn({ name: 'retriever_id' })
-  // user: User;
+  // @Prop({ type: SchemaTypes.ObjectId, ref: 'User', required: true })
+  // retrieverItem!: Types.ObjectId;
 }
 
 export const RetrieverSchema = SchemaFactory.createForClass(Retriever);

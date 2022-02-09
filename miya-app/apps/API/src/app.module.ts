@@ -12,6 +12,12 @@ import { MulterModule } from '@nestjs/platform-express';
   imports: [
     RetrieversModule,
     MongooseModule.forRoot(config.mongoURI),
+    // MongooseModule.forRoot(config.mongoURIRetriever, {
+    //   connectionName: 'retrievers',
+    // }),
+    // MongooseModule.forRoot(config.mongoURIUser, {
+    //   connectionName: 'users',
+    // }),
     AuthModule,
     UsersModule,
     // MulterModule.register({
