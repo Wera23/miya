@@ -35,6 +35,7 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
 }) => {
   const { getRetriever } = useRetrieverActionsContext();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
   const NewRetrieverSchema = Yup.object().shape({
     nameId: Yup.string().required('To pole jest wymagane'),
     ageId: Yup.string().required('To pole jest wymagane'),
@@ -66,6 +67,8 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
   });
 
   const instagramCorrectName = formik.values.instagramId;
+
+
 
   return (
     <DetailsModal

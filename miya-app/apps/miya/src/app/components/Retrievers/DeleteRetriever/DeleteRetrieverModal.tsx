@@ -3,7 +3,6 @@ import { useModal } from 'react-modal-hook';
 
 import { BasicButton } from '../../common';
 
-import { RETRIEVER_ID } from '../../../constans';
 import {
   useIsDeleteRetrieverActionsContext,
   useRetrieverActionsContext,

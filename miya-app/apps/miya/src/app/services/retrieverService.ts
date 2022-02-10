@@ -98,7 +98,6 @@ async function getSpecyficSingleRetriever(id: number): Promise<Retriever> {
 
 async function getAllRetrievers() {
   const retrievers = await dataService.getRetrievers();
-  console.log('ccc', retrievers);
   return mapAllRetrievers(retrievers.data);
 }
 

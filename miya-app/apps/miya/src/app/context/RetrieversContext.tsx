@@ -1,9 +1,8 @@
 import { Retriever } from '@miya-app/shared-types';
-import React, { useState, createContext, useContext, useEffect } from 'react';
+import React, { useState, createContext, useContext } from 'react';
 import { useCallback } from 'react';
 import {
   getAllRetrievers,
-  getSpecyficSingleRetriever,
 } from '../services/retrieverService';
 
 interface RetrieversContextProps {
@@ -34,10 +33,6 @@ export const RetrieversContextProvider: React.FC = ({ children }) => {
     const retrievers = await getAllRetrievers();
     setRetrivers(retrievers);
   }, []);
-
-  useEffect(() => {
-    getRetrievers();
-  }, [getRetrievers]);
 
   return (
     <RetrieversContext.Provider value={{ retrievers }}>

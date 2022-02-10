@@ -10,9 +10,6 @@ import { useEffect } from 'react';
 
 const Homepage = () => {
   const { isTransparent } = useIsTransparentContext();
-  const { user } = useUserContext();
-  const { getUser } = useUserActionsContext();
-
   
   return (
     <div className={styles.homepage}>

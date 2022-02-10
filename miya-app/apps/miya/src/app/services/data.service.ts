@@ -6,7 +6,6 @@ import {
   EditUser,
 } from '@miya-app/shared-types';
 import { AxiosPromise, AxiosResponse } from 'axios';
-import { request } from 'http';
 import { apiService } from './api.service';
 
 class DataService {

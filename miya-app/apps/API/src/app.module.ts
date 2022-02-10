@@ -7,7 +7,6 @@ import { UsersModule } from './users/users.module';
 
 import config from './config/keys';
 import { AppController } from './app.controller';
-import { MulterModule } from '@nestjs/platform-express';
 @Module({
   imports: [
     RetrieversModule,
