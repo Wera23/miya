@@ -20,7 +20,6 @@ function editUserForm(values: EditUserValues): EditUser {
     userCity: values?.userCityId,
     userImage: values?.userImageId,
     userGender: values?.userGenderId,
-
   };
   return updateUser;
 }
@@ -29,9 +28,11 @@ function detailsOfTheCurrentUser(user: User): User {
   const currentUser: User = {
     userId: user.userId,
     username: user.username,
-    userDescription: user.userDescription,
     dateOfBirth: user.dateOfBirth,
     userPassword: user.userPassword,
+    userGreet: user.userGreet,
+    isActive: user.isActive,
+    userDescription: user.userDescription,
     userVoivodeship: user.userVoivodeship,
     userCity: user.userCity,
     userImage: user.userImage,

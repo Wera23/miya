@@ -7,8 +7,9 @@ export class CreateUser {
   username: string;
   dateOfBirth?: string;
   @IsNotEmpty()
-  @IsString()
   userPassword: string;
+  userGreet: boolean;
+  isActive: boolean;
   userDescription?: string;
   userVoivodeship?: string;
   userCity?: string;

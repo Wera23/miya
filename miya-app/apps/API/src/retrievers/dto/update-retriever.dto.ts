@@ -7,8 +7,6 @@ export class UpdateRetriever {
   gender: string;
   owner?: string;
   description?: string;
-  lat: number;
-  long: number;
   instagram: string;
   facebook: string;
   image: string;

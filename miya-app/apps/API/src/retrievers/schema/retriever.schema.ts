@@ -38,12 +38,6 @@ export class Retriever {
   description?: string;
   // @Column()
   @Prop()
-  lat: number;
-  // @Column()
-  @Prop()
-  long: number;
-  // @Column()
-  @Prop()
   instagram: string;
   // @Column()
   @Prop()

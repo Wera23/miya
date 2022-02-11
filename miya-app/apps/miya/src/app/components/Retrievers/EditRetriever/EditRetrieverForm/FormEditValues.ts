@@ -4,8 +4,6 @@ export interface EditRetrieverValues {
   cityId: string;
   voivodeshipId: string;
   descriptionId: string;
-  latId: number;
-  longId: number;
   instagramId: string;
   facebookId: string;
   imageId: string;
@@ -17,8 +15,6 @@ export enum RetrieverFormTypes {
   city = 'cityId',
   voivodeship = 'voivodeshipId',
   description = 'descriptionId',
-  lat = 'latId',
-  long = 'longId',
   instagram = 'instagramId',
   facebook = 'facebookId',
   image = 'imageId',

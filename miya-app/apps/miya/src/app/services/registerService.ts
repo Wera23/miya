@@ -13,6 +13,8 @@ function addNewUserForm(values: RegisterValues): User {
     userCity: values.userCityId,
     userImage: values.userImageId,
     userGender: values.userGenderId,
+    userGreet: values.userGreetId,
+    isActive: values.isActiveId,
   };
   return newUser;
 }

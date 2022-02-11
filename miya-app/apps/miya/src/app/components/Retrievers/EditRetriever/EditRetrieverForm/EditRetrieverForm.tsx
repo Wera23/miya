@@ -40,8 +40,6 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
     cityId: Yup.string(),
     voivodeshipId: Yup.string(),
     genderId: Yup.string(),
-    latId: Yup.number(),
-    longId: Yup.number(),
     instagramId: Yup.string(),
     facebookId: Yup.string(),
     imageId: Yup.string(),
@@ -55,8 +53,6 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
       cityId: (retriever && retriever.city) ?? '',
       voivodeshipId: (retriever && retriever.voivodeship) ?? '',
       descriptionId: (retriever && retriever.description) ?? '',
-      latId: (retriever && retriever.lat) ?? 0,
-      longId: (retriever && retriever.long) ?? 0,
       instagramId: (retriever && retriever.instagram) ?? '',
       facebookId: (retriever && retriever.facebook) ?? '',
       imageId: (retriever && retriever.image) ?? '',
@@ -129,28 +125,6 @@ const EditRetrieverForm: FC<EditRetrieverTypes> = ({ closeModal }) => {
             size="small"
             containerClassName={styles.longInput}
           />
-
-          <div className={styles.retrieverCoordinates}>
-            <Input
-              inputId={RetrieverFormTypes.lat}
-              placeholder="Podaj współrzędną lat"
-              value={formik.values.latId}
-              label="Lat"
-              onChange={formik.handleChange}
-              icon="paw"
-              size="small"
-            />
-
-            <Input
-              inputId={RetrieverFormTypes.long}
-              placeholder="Podaj współrzędną long"
-              value={formik.values.longId}
-              label="Long"
-              onChange={formik.handleChange}
-              icon="paw"
-              size="small"
-            />
-          </div>
 
           <Input
             inputId={RetrieverFormTypes.instagram}

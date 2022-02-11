@@ -5,7 +5,7 @@ import {
   Get,
   Param,
   Patch,
-  Post, 
+  Post,
   UseGuards,
 } from '@nestjs/common';
 import { CreateRetriever } from './dto/create-retriever.dto';
@@ -40,8 +40,6 @@ export class RetrieversController {
       retriever.gender,
       retriever.owner,
       retriever.description,
-      retriever.lat,
-      retriever.long,
       retriever.instagram,
       retriever.facebook,
       retriever.image,

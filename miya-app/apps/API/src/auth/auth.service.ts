@@ -15,6 +15,8 @@ export class AuthService {
     username: string,
     dateOfBirth: string,
     userPassword: string,
+    userGreet: boolean,
+    isActive: boolean,
     userDescription: string,
     userVoivodeship: string,
     userCity: string,
@@ -26,6 +28,8 @@ export class AuthService {
         username,
         dateOfBirth,
         userPassword,
+        userGreet,
+        isActive,
         userDescription,
         userVoivodeship,
         userCity,
@@ -57,6 +61,8 @@ export class AuthService {
       userCity: user._doc.userCity,
       userImage: user._doc.userImage,
       userGender: user._doc.userGender,
+      userGreet: user._doc.userGreet,
+      isActive: user._doc.isActive,
     };
 
     return {

@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 
-import { Header, MapWithAllRetrievers } from '../components';
+import { Header, MapWithAllRetrievers, UserList } from '../components';
 
 import styles from './pages.module.scss';
 import { noImageRetriever, retrieverMapPointPng } from '../../assets/images';
@@ -10,9 +10,10 @@ import { useEffect } from 'react';
 
 const Homepage = () => {
   const { isTransparent } = useIsTransparentContext();
-  
+
   return (
     <div className={styles.homepage}>
+      
       <div
         className={classnames(
           styles.homepageMenu,
@@ -25,8 +26,8 @@ const Homepage = () => {
         <MapWithAllRetrievers />
       </div>
 
-      <div className={styles.homepageLogo}>
-        <img src={noImageRetriever} alt="" />
+      <div className={styles.usersList}>
+        <UserList />
       </div>
     </div>
   );

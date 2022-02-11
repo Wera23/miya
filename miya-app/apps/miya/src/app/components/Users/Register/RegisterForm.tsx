@@ -44,6 +44,8 @@ const RegisterForm: FC<RegisterTypes> = ({ initialValues }) => {
     userCityId: Yup.string(),
     userImageId: Yup.string(),
     userGenderId: Yup.string(),
+    userGreetId: Yup.boolean(),
+    isActiveId: Yup.boolean()
   });
 
   const formik = useFormik({

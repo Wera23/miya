@@ -1,6 +1,6 @@
+import React, { useState, createContext, useContext, useCallback } from 'react';
+
 import { Retriever } from '@miya-app/shared-types';
-import React, { useState, createContext, useContext } from 'react';
-import { useCallback } from 'react';
 import {
   getAllRetrievers,
 } from '../services/retrieverService';

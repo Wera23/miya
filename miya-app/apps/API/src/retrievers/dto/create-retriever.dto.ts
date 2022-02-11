@@ -7,8 +7,6 @@ export class CreateRetriever {
   owner?: string;
   description?: string;
   id: number;
-  lat: number;
-  long: number;
   instagram: string;
   facebook: string;
   image: string;

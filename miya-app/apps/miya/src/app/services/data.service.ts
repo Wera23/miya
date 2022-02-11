@@ -68,6 +68,12 @@ class DataService {
       .get('retrievers')
       .catch((error: AxiosResponse) => Promise.reject(error));
   }
+
+  getUsers(): AxiosPromise {
+    return apiService
+      .get('users')
+      .catch((error: AxiosResponse) => Promise.reject(error));
+  }
 }
 
 export const dataService = new DataService();

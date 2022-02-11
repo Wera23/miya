@@ -23,6 +23,10 @@ export class User {
   @Prop()
   userPassword: string;
   @Prop()
+  userGreet: boolean;
+  @Prop()
+  isActive: boolean;
+  @Prop()
   @IsOptional()
   userDescription?: string;
   @Prop()

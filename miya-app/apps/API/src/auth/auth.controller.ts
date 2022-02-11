@@ -13,6 +13,8 @@ export class AuthController {
       req.body.username,
       req.body.dateOfBirth,
       req.body.userPassword,
+      req.body.userGreet,
+      req.body.isActive,
       req.body.userDescription,
       req.body.userVoivodeship,
       req.body.userCity,

@@ -20,9 +20,10 @@ import {
 } from './context';
 import { UserContextProvider } from './context/UserContext';
 import RetrieversGallery from './components/Retrievers/RetrieversGallery/RetrieversGallery';
-import {ToastContainer} from "react-toastify";
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { RetrieversContextProvider } from './context/RetrieversContext';
+import { UsersContextProvider } from './context/UsersContext';
 
 export function App() {
   useEffect(() => {
@@ -37,34 +38,39 @@ export function App() {
     <LoggedContextProvider>
       <UserContextProvider>
         <LocalizationProvider dateAdapter={DateAdapter as any}>
-          <RetrieversContextProvider>
-          <RetrieverContextProvider>
-            <DeleteRetrieverContextProvider>
-              <TransparentContextProvider>
-                <ThemeProvider theme={appTheme}>
-                  <ModalProvider>
-                    <ToastContainer />
-                    <BrowserRouter>
-                      <Routes>
-                        <Route
-                          path="/home"
-                          element={<PrivateRoute component={Homepage} />}
-                        />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/gallery" element={<RetrieversGallery />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route
-                          path="*"
-                          element={<Navigate to="/home" replace />}
-                        />
-                      </Routes>
-                    </BrowserRouter>
-                  </ModalProvider>
-                </ThemeProvider>
-              </TransparentContextProvider>
-            </DeleteRetrieverContextProvider>
-          </RetrieverContextProvider>
-          </RetrieversContextProvider>
+          <UsersContextProvider>
+            <RetrieversContextProvider>
+              <RetrieverContextProvider>
+                <DeleteRetrieverContextProvider>
+                  <TransparentContextProvider>
+                    <ThemeProvider theme={appTheme}>
+                      <ModalProvider>
+                        <ToastContainer />
+                        <BrowserRouter>
+                          <Routes>
+                            <Route
+                              path="/home"
+                              element={<PrivateRoute component={Homepage} />}
+                            />
+                            <Route path="/login" element={<Login />} />
+                            <Route
+                              path="/gallery"
+                              element={<RetrieversGallery />}
+                            />
+                            <Route path="/register" element={<Register />} />
+                            <Route
+                              path="*"
+                              element={<Navigate to="/home" replace />}
+                            />
+                          </Routes>
+                        </BrowserRouter>
+                      </ModalProvider>
+                    </ThemeProvider>
+                  </TransparentContextProvider>
+                </DeleteRetrieverContextProvider>
+              </RetrieverContextProvider>
+            </RetrieversContextProvider>
+          </UsersContextProvider>
         </LocalizationProvider>
       </UserContextProvider>
     </LoggedContextProvider>

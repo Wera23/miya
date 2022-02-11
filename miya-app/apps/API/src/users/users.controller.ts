@@ -32,6 +32,8 @@ export class UsersController {
       user.username,
       user.dateOfBirth,
       user.userPassword,
+      user.userGreet,
+      user.isActive,
       user.userDescription,
       user.userVoivodeship,
       user.userCity,

@@ -44,8 +44,6 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
     voivodeshipId: Yup.string().required('To pole jest wymagane'),
     ownerId: Yup.string(),
     descriptionId: Yup.string().max(400),
-    latId: Yup.number().required('To pole jest wymagane'),
-    longId: Yup.number().required('To pole jest wymagane'),
     instagramId: Yup.string(),
     facebookId: Yup.string(),
     imageId: Yup.string(),
@@ -67,8 +65,6 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
   });
 
   const instagramCorrectName = formik.values.instagramId;
-
-
 
   return (
     <DetailsModal
@@ -184,38 +180,6 @@ const AddRetrieverForm: FC<AddRetrieverTypes> = ({
             icon="paw"
             size="small"
           />
-
-          <div className={styles.retrieverCoordinates}>
-            <Input
-              inputId={RetrieverFormTypes.lat}
-              label="Lat"
-              value={formik.values.latId}
-              placeholder="Podaj współrzędną lat"
-              onChange={formik.handleChange}
-              icon="paw"
-              size="small"
-            />
-
-            <Input
-              inputId={RetrieverFormTypes.long}
-              label="Long"
-              value={formik.values.longId}
-              placeholder="Podaj współrzędną long"
-              onChange={formik.handleChange}
-              icon="paw"
-              size="small"
-            />
-          </div>
-
-          {formik.errors.latId &&
-            formik.errors.longId &&
-            formik.touched.latId &&
-            formik.touched.longId && (
-              <Message
-                colorMessage="error"
-                messageText="* To pole jest wymagane"
-              />
-            )}
 
           <Input
             inputId={RetrieverFormTypes.instagram}

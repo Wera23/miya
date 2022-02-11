@@ -10,5 +10,6 @@ export { default as RegisterForm } from './Users/Register/RegisterForm';
 export { default as UserProfile } from './Profiles/UserProfile';
 export { default as RetrieverProfile } from './Profiles/RetrieverProfile';
 export { default as EditUserModal } from './Users/EditUser/EditUserModal';
+export { default as UserList } from './Users/UserList/UserList';
 
 export { default as UploadImage } from './UploadImage/UploadImage';
